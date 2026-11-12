@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Shape of a Legacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f8f9;--surface:#fcfcfb;--ink:#14171a;--ink-2:#4f555c;--muted:#8a8f95;--rule:#dfe2e6;--accent:#2a78d6;color-scheme:light}
+@media (prefers-color-scheme: dark){:root{--paper:#111315;--surface:#1a1a19;--ink:#eef0f2;--ink-2:#c0c5ca;--rule:#2c3034;--accent:#6da7ec;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:19px/1.55 "Newsreader",Georgia,serif}
+.col{max-width:680px;margin:0 auto;padding:40px 20px 56px}
+.kicker{font:13px "IBM Plex Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+h1{font-weight:600;font-size:clamp(32px,5vw,46px);line-height:1.1;margin:0 0 14px}
+h2{font:500 15px "IBM Plex Sans",sans-serif;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:40px 0 12px}
+p{margin:0 0 16px}.lede{color:var(--ink-2)}
+ol.parts{list-style:none;padding:0;margin:0;border-top:1px solid var(--rule)}
+ol.parts li{padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:4px 12px}
+.n{font:400 15px "IBM Plex Mono",monospace;color:var(--muted);padding-top:3px}
+.t{font-weight:600}.d{grid-column:2;font-size:16px;color:var(--ink-2)}
+.tag{font:12px "IBM Plex Sans",sans-serif;color:var(--muted);margin-left:8px}
+a{color:var(--accent)}
+ul.dl{padding-left:20px;font-size:17px}
+footer{font:12.5px "IBM Plex Sans",sans-serif;color:var(--muted);margin-top:40px}
+</style>
+</head>
+<body><div class="col">
+<p class="kicker">A series · Thinking like a physicist about history</p>
+<h1>The Shape of a Legacy</h1>
+<p class="lede">How strongly does a Southern county's present still follow the map of slavery in 1860, and what does the shape of that dependence over 150 years say about what kind of memory it is? Each part takes one idea from statistical physics and shows it at work in ordinary census data.</p>
+
+<h2>The series</h2>
+<ol class="parts">
+<li><span class="n">0</span><span class="t">Searching for the age of fate</span><span class="d">How an attempt to measure historicity became a search for patterns in contingency, and why slavery in the South.</span></li>
+<li><span class="n">1</span><span class="t">Two of everything</span><span class="d">Baconton, Georgia, and how to ask whether a place remembers.</span></li>
+<li><span class="n">2</span><span class="t"><a href="part1/">The hardest line to move</a><span class="tag">interactive</span></span><span class="d">Amplitude versus shape: the Great Migration drained the South without erasing its map.</span></li>
+<li><span class="n">3</span><span class="t">Fooled by a smooth map</span><span class="d">Spatial noise, null ensembles, and two results that dissolved under scrutiny.</span></li>
+<li><span class="n">4</span><span class="t">When the drain became a mixer</span><span class="d">Return migration, accelerating erosion, and why county histories scatter while the regional curve looks like a law.</span></li>
+<li><span class="n">5</span><span class="t">A step that looks like a slope</span><span class="d">A century-long schooling penalty that broke in one generation at desegregation.</span></li>
+<li><span class="n">6</span><span class="t">Where it lives now</span><span class="d">The modern form of the legacy: wider racial gaps inside the same counties.</span></li>
+<li><span class="n">7</span><span class="t">Three ways a place remembers</span><span class="d">Frozen, eroding, and reversed: several ages of the past on one plot.</span></li>
+</ol>
+
+<h2>Read the whole thing</h2>
+<ul class="dl">
+<li><a href="downloads/results-narrative.md">Results narrative</a>: the current best story the data tell, with every number.</li>
+<li><a href="downloads/analysis-log.md">Analysis log</a>: what was done and what was thought at each step, including the wrong turns.</li>
+<li><a href="downloads/derived-data.zip">Derived data</a> (CSV) and <a href="downloads/code.zip">analysis code</a> (Python).</li>
+</ul>
+
+<footer>Data: IPUMS National Historical Geographic Information System; NCI SEER U.S. county population estimates; FAO GAEZ crop suitability; Opportunity Insights Opportunity Atlas. Analysis done with Claude.</footer>
+</div></body>
+</html>

@@ -3,42 +3,220 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Joseph Brisendine</title>
+<title>Joseph Murphy Brisendine</title>
+<meta name="description" content="Joseph Brisendine — biophysics, the origins of biological information, and philosophy.">
 <style>
+  :root {
+    --bg: #f4efe6;
+    --ink: #2a2622;
+    --muted: #6b635a;
+    --rule: #cfc5b6;
+    --link: #8b1e1e;
+    --margin: 5.5rem;
+  }
+  * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: #f4efe6;
-    color: #2a2622;
-    font-family: Georgia, "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 17px;
     line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
   }
   main {
-    max-width: 640px;
-    margin: 18vh auto 0;
-    padding: 0 24px;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4.5rem 24px 5rem;
   }
-  h1 {
+  header h1 {
     font-weight: normal;
-    font-size: 2.4rem;
+    font-size: 2.5rem;
     letter-spacing: 0.01em;
+    margin: 0 0 0.35rem;
+  }
+  header hr {
+    border: 0;
+    border-top: 1.5px solid var(--ink);
+    margin: 0 0 1.75rem;
+  }
+  .bio p { margin: 0 0 1rem; }
+  nav.links { margin: 1.25rem 0 0; font-size: 0.95rem; }
+  nav.links a { margin-right: 1.25rem; }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  section { margin-top: 3.25rem; }
+  h2 {
+    font-weight: normal;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
     margin: 0 0 0.4rem;
   }
-  hr {
-    border: 0;
-    border-top: 1px solid #2a2622;
-    margin: 0 0 1.5rem;
+  h2 + .rule { border-top: 1px solid var(--rule); margin-bottom: 1.1rem; }
+  .intro { color: var(--muted); font-style: italic; margin: 0 0 1.4rem; }
+
+  .entry {
+    display: grid;
+    grid-template-columns: var(--margin) 1fr;
+    gap: 0 1rem;
+    margin-bottom: 1.15rem;
   }
-  p { margin: 0 0 1rem; }
-  a { color: #8b1e1e; }
-  .note { color: #6b635a; font-style: italic; }
+  .year { color: var(--muted); font-variant-numeric: oldstyle-nums; }
+  .title { display: block; }
+  .meta { display: block; color: var(--muted); font-size: 0.92rem; }
+  .meta em { font-style: italic; }
+  .me { color: var(--ink); }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    main { padding-top: 3rem; }
+    header h1 { font-size: 2.1rem; }
+    .entry { grid-template-columns: 1fr; }
+    .year { font-size: 0.85rem; letter-spacing: 0.04em; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <h1>Joseph Brisendine</h1>
+
+<header>
+  <h1>Joseph Murphy Brisendine</h1>
   <hr>
-  <p>Research and writing in biophysics, the origins of life, and philosophy.</p>
-  <p class="note">The full site launches on November 13, 2026.</p>
+  <div class="bio">
+    <p>I trained in philosophy and then in biophysics. My research asked how proteins store, move, and compute with information: de novo protein design, charge transport through peptides, and engineered allosteric switches, carried out in Ronald Koder's lab at the City College of New York. I left academia in 2021 and spent the next four years teaching high school math.</p>
+    <p>In 2026 I saw what agentic AI made possible and went back to the questions I had felt closest to answering when I left. I couldn't finish them on my own with what was available to me then. Everything I've done since has been a collaboration with Claude (Anthropic), and I present it as exactly that: an example of using AI for good.</p>
+  </div>
+  <nav class="links">
+    <a href="https://writing.josephbrisendine.com"><em>Talking Matter</em> (Substack)</a>
+    <a href="https://scholar.google.com/scholar?q=%22JM+Brisendine%22">Google Scholar</a>
+  </nav>
+</header>
+
+<section id="with-ai">
+  <h2>With AI &middot; 2026&ndash;</h2>
+  <div class="rule"></div>
+  <p class="intro">Research done in collaboration with Claude (Anthropic).</p>
+
+  <div class="entry">
+    <span class="year">2026</span>
+    <div>
+      <a class="title" href="free-energy-cost-of-a-code.html">The free energy cost of implementing a code through biochemistry</a>
+      <span class="meta"><span class="me">J. M. Brisendine</span> &amp; Claude (Anthropic).</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="year">in prep.</span>
+    <div>
+      <span class="title">A code from a meaning-free state</span>
+      <span class="meta">Draft. With Claude (Anthropic).</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="year">exploratory</span>
+    <div>
+      <span class="title">Mapping the information in a cell</span>
+      <span class="meta">With Claude (Anthropic).</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="year">exploratory</span>
+    <div>
+      <span class="title">Membrane criticality and the cost of signalling</span>
+      <span class="meta">With Claude (Anthropic). Try the <a href="membrane-explorer.html">membrane signalling explorer</a>.</span>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <h2>Writing</h2>
+  <div class="rule"></div>
+  <p class="intro">Four series on <a href="https://writing.josephbrisendine.com"><em>Talking Matter</em></a>, my Substack with Claude: one human and one AI working out how they belong to one universe. Interactive tools that Substack can&rsquo;t embed are hosted here.</p>
+
+  <div class="entry"><span class="year">I</span><div><span class="title">Origins simulations</span><span class="meta">How codes, and meaning, can arise in chemistry.</span></div></div>
+  <div class="entry"><span class="year">II</span><div><span class="title">Contingency</span><span class="meta">Statistical physics in ordinary census data, beginning with <a href="legacy/">The Shape of a Legacy</a>: how long the South remembers slavery.</span></div></div>
+  <div class="entry"><span class="year">III</span><div><span class="title">Reading club: Spinoza, Pope, Schelling</span><span class="meta">A slow reading of the pantheist tradition, beginning with Einstein&rsquo;s 1930 essay &ldquo;Religion and Science,&rdquo; read in <a href="einstein-1930-german.html">the original German</a>.</span></div></div>
+  <div class="entry"><span class="year">IV</span><div><span class="title">Essays</span><span class="meta">Toward a scientific pantheism, beginning with &ldquo;Why I Am Writing Again.&rdquo;</span></div></div>
+</section>
+
+<section id="before-ai">
+  <h2>Before AI &middot; 2013&ndash;2020</h2>
+  <div class="rule"></div>
+
+  <div class="entry">
+    <span class="year">2020</span>
+    <div>
+      <a class="title" href="https://doi.org/10.1073/pnas.1916046117">Designing heterotropically activated allosteric conformational switches using supercharging</a>
+      <span class="meta">P. J. Schnatz, <span class="me">J. M. Brisendine</span>, C. C. Laing, B. H. Everson, C. A. French, P. M. Molinaro, R. L. Koder. <em>PNAS</em>.</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="year">2019</span>
+    <div>
+      <a class="title" href="https://doi.org/10.1007/978-3-030-00075-2_6">The equivalence of free energy and information: thermodynamic descriptions as a condition of possibility of objectivity</a>
+      <span class="meta"><span class="me">J. M. Brisendine</span>. <em>Springer Proceedings in Complexity</em>.</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="year">2018</span>
+    <div>
+      <span class="title">Information content, charge transport properties, and computational capacities of proteins</span>
+      <span class="meta">PhD dissertation, Biochemistry, CUNY Graduate Center. Advisor: R. L. Koder.</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="year">2018</span>
+    <div>
+      <a class="title" href="https://doi.org/10.1021/acs.jpclett.8b00176">Probing charge transport through peptide bonds</a>
+      <span class="meta"><span class="me">J. M. Brisendine</span>, S. Refaely-Abramson, Z.-F. Liu, J. Cui, F. Ng, J. B. Neaton, R. L. Koder, L. Venkataraman. <em>J. Phys. Chem. Lett.</em></span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="year">2016</span>
+    <div>
+      <a class="title" href="https://doi.org/10.1016/j.bbabio.2015.10.002">Fast, cheap and out of control: insights into thermodynamic and informatic constraints on natural protein sequences from de novo protein design</a>
+      <span class="meta"><span class="me">J. M. Brisendine</span>, R. L. Koder. <em>BBA &ndash; Bioenergetics</em>.</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="year">2013</span>
+    <div>
+      <a class="title" href="https://doi.org/10.1016/j.ab.2013.03.036">A three-dimensional printed cell for rapid, low-volume spectroelectrochemistry</a>
+      <span class="meta"><span class="me">J. M. Brisendine</span>, A. C. Mutter, J. F. Cerda, R. L. Koder. <em>Analytical Biochemistry</em>.</span>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="rule"></div>
+  <div class="entry"><span class="year">2018</span><div><span class="title">PhD, Biochemistry</span><span class="meta">CUNY Graduate Center, New York</span></div></div>
+  <div class="entry"><span class="year">2006</span><div><span class="title">MA, Modern Continental Philosophy</span><span class="meta">Staffordshire University, UK</span></div></div>
+  <div class="entry"><span class="year">2004</span><div><span class="title">BA, Philosophy</span><span class="meta">Oglethorpe University, Atlanta</span></div></div>
+</section>
+
+<footer>
+  &copy; 2026 Joseph Brisendine
+</footer>
+
 </main>
 </body>
 </html>
