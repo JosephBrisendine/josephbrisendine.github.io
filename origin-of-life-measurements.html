@@ -1,0 +1,177 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Measurements That Decide It</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#F3F6F7; --panel:#FFFFFF; --ink:#13202A; --ink2:#46566A; --muted:#748392; --rule:#D6DEE3; --band:#E9EEF1;
+  --poss:#0E7C86; --poss-soft:#D5ECEE; --copy:#B85C0B; --copy-soft:#F5E3D2; --xch:#6248B0; --xch-soft:#E6E0F5;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-math:"STIX Two Text","Cambria Math","Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1418; --panel:#151D23; --ink:#E4EBEF; --ink2:#AEBBC6; --muted:#7F8E9B; --rule:#2A363F; --band:#1C262D;
+  --poss:#4EC1CB; --poss-soft:#173A3E; --copy:#EE9A4E; --copy-soft:#43301F; --xch:#A994F0; --xch-soft:#2C2648; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1418; --panel:#151D23; --ink:#E4EBEF; --ink2:#AEBBC6; --muted:#7F8E9B; --rule:#2A363F; --band:#1C262D;
+  --poss:#4EC1CB; --poss-soft:#173A3E; --copy:#EE9A4E; --copy-soft:#43301F; --xch:#A994F0; --xch-soft:#2C2648; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+a{color:var(--xch)}
+.wrap{max-width:900px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:24px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.1;margin:0;font-weight:700;text-wrap:balance}
+h2{font-size:22px;margin:0;text-wrap:balance}
+h3{font-size:17px;margin:0;line-height:1.3;text-wrap:balance}
+.lede{color:var(--ink2);margin:0;max-width:66ch}
+header{display:flex;flex-direction:column;gap:12px}
+.how{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px;font-size:14.5px;color:var(--ink2)}
+.how b{display:block;color:var(--ink);font-size:13px;font-family:var(--f-mono);letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+.group{display:flex;flex-direction:column;gap:12px}
+.group>.gh{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.group>.gh span{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.m{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--copy);border-radius:6px;padding:16px 18px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px}
+.m.p{border-left-color:var(--poss)} .m.x{border-left-color:var(--xch)}
+.num{font-family:var(--f-math);font-size:30px;line-height:1;color:var(--muted);grid-row:span 3}
+.m dl{margin:6px 0 0;display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:4px 14px;font-size:14.5px}
+.m dt{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.m dd{margin:0;color:var(--ink2)}
+.m dd.th{font-family:var(--f-math);font-size:16px;color:var(--ink)}
+@media (max-width:560px){.m{grid-template-columns:minmax(0,1fr)}.num{grid-row:auto;font-size:24px}.m dl{grid-template-columns:minmax(0,1fr)}.m dt{padding-top:6px}}
+.callout{border-left:3px solid var(--xch);padding:4px 0 4px 14px;font-size:14.5px;color:var(--ink2);max-width:70ch}
+.callout b{color:var(--ink)}
+footer{font-size:13px;color:var(--muted);max-width:760px}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Origins simulations · for experimental collaborators · 20 November 2026</div>
+  <h1>Measurements that would decide a first path to a cell</h1>
+  <p class="byline" style="margin:0;font-size:15px;color:var(--ink2)"><a href="/" style="color:inherit">Joseph Murphy Brisendine</a> with Claude</p>
+  <p class="lede">This page goes with <a href="/origin-of-life-solvable.html">Making the origin of life a solvable problem</a>. That page turns the origin of cells into a ledger of inequalities that any history must have satisfied. Most of the ledger is already pinned by published measurements. What remains is a short list of numbers nobody has measured yet. Each one moves a specific inequality past or below its threshold.</p>
+  <p class="lede">If your lab can make one of these measurements, or already has the data, we would like to hear from you: write to <a href="mailto:josephbrisendine@gmail.com">josephbrisendine@gmail.com</a>. We can't do bench work ourselves. What we offer is the reading: for any value you measure, we can say what it opens or closes on the path, in the same units as everything else.</p>
+</header>
+
+<div class="how">
+  <div><b>Measure</b>the quantity, with conditions as close as practical to those stated</div>
+  <div><b>Threshold</b>the value that flips the inequality; a number on either side is informative</div>
+  <div><b>What it decides</b>which step it opens or closes, and how many bits it moves</div>
+  <div><b>Our expectation</b>registered before the measurement, so it can be wrong</div>
+</div>
+
+<p class="callout"><b>A measured value that differs from ours is still useful.</b> It goes straight into the same inequality and moves the slack, which is log₂(available ÷ required). The ledger is built so that being wrong in a number is a correction, not a collapse.</p>
+
+<section class="group">
+  <div class="gh"><h2>Completion: the largest bill</h2><span>copying</span></div>
+  <p class="lede">A QT45-class ribozyme copier loses about 11.3 bits per copy, roughly one working copy in 2,500. A lineage making 40 copy attempts per division can afford about 3.8. Fidelity accounts for only 2.3 of those bits; most of the deficit is copies that never finish.</p>
+
+  <article class="m"><div class="num">1</div><h3>Re-priming across a cycle</h3><dl>
+    <dt>Measure</dt><dd>The fraction ρ of stalled primer–template complexes that resume extension after one freeze–thaw (or pH plus freeze–thaw) cycle</dd>
+    <dt>Threshold</dt><dd class="th">ρ ≥ 0.5, with a ×5 tether gain</dd>
+    <dt>Decides</dt><dd>Whether the environment can pay the completion bill (−3.3 bits at the junction; 9 of QT45's 11.3 bits per copy). If ρ ≈ 0, that route closes.</dd>
+    <dt>We expect</dt><dd>ρ &gt; 0, since cycling already improves yield about ×1.2–1.4 per cycle (Attwater et al. 2025); the magnitude is unknown</dd>
+  </dl></article>
+
+  <article class="m"><div class="num">2</div><h3>Completion on a tethered partner</h3><dl>
+    <dt>Measure</dt><dd>Per-junction completion of a QT-class copier copying a partner tethered to it</dd>
+    <dt>Threshold</dt><dd class="th">≥ 0.95 for the copier; ≈ 0.97 for a cis genome of about 130 nt</dd>
+    <dt>Decides</dt><dd>Tests the tether gain the ledger assumes (×5, not yet measured)</dd>
+    <dt>We expect</dt><dd>A gain of ×5–10 per junction</dd>
+  </dl></article>
+
+  <article class="m"><div class="num">3</div><h3>The commitment ratio per junction</h3><dl>
+    <dt>Measure</dt><dd>k<sub>c</sub>/k<sub>off</sub> at a junction: the rate of chemical extension relative to the rate the primer falls off, on a tethered template</dd>
+    <dt>Threshold</dt><dd class="th">about ×17 above QT45's free-template value</dd>
+    <dt>Decides</dt><dd>Whether structure alone (effective molarity from a tether) can pay completion without help from cycling. Completion is a matter of commitment, a rate ratio, not of dissipation per step.</dd>
+    <dt>We expect</dt><dd>A ×5 tether gets a little over half of the way (in log terms); the rest has to come from re-priming over time</dd>
+  </dl></article>
+
+  <article class="m"><div class="num">4</div><h3>Copies per protocell division</h3><dl>
+    <dt>Measure</dt><dd>Complete genome copies made per protocell division, in any fatty-acid protocell system</dd>
+    <dt>Threshold</dt><dd class="th">≳ 5–9 complete copies per division</dd>
+    <dt>Decides</dt><dd>Every rent threshold in the ledger moves by log₂ of this number: doubling the copies per division buys one bit per copy</dd>
+    <dt>We expect</dt><dd>Unknown; not yet measured for any fatty-acid protocell</dd>
+  </dl></article>
+
+  <article class="m"><div class="num">5</div><h3>Fidelity at useful yield</h3><dl>
+    <dt>Measure</dt><dd>Copying error rate per site at a yield that a lineage could live on</dd>
+    <dt>Threshold</dt><dd class="th">ε ≈ 0.02 per site</dd>
+    <dt>Decides</dt><dd>The fidelity term of Eigen's inequality. QT45 (0.059) falls short by only 0.1–0.6 bits.</dd>
+    <dt>We expect</dt><dd>Reachable</dd>
+  </dl></article>
+</section>
+
+<section class="group">
+  <div class="gh"><h2>Membranes and magnesium</h2><span>compartments</span></div>
+  <p class="lede">RNA copying without help wants ≳ 30–50 mM Mg²⁺; pure fatty-acid membranes tolerate about 1–5 mM. Which of these gives way decides whether an attached amino acid is needed on the first copier at all.</p>
+
+  <article class="m p"><div class="num">6</div><h3>RNA retention through freeze–thaw at high Mg²⁺</h3><dl>
+    <dt>Measure</dt><dd>RNA retention through freeze–thaw of fatty-acid vesicles with some phospholipid, at 25–50 mM Mg²⁺ (also cold and unfrozen)</dd>
+    <dt>Threshold</dt><dd class="th">Tolerance ≈ 4 + 150x mM (x = phospholipid fraction; a fit to one study) predicts ≥ 40 mM at x ≈ 0.25</dd>
+    <dt>Decides</dt><dd>Whether a Mg²⁺-rich pond needs the amino-acid handle at all. No retention data exist.</dd>
+    <dt>We expect</dt><dd>Retention-grade tolerance somewhat below the dye-based 40 mM</dd>
+  </dl></article>
+
+  <article class="m p"><div class="num">7</div><h3>Content release per freeze–thaw cycle</h3><dl>
+    <dt>Measure</dt><dd>The fraction of encapsulated content released per freeze–thaw cycle, as a function of phospholipid fraction</dd>
+    <dt>Threshold</dt><dd class="th">≲ 4–8% per cycle for a lasting genetic code</dd>
+    <dt>Decides</dt><dd>Fluid phospholipid membranes are measured at 18–57% per cycle, which would rule out keeping a code inside a freezing nursery unless some membrane or setting retains far better</dd>
+    <dt>We expect</dt><dd>Gel-phase membranes under 10%; fluid membranes 20–50%</dd>
+  </dl></article>
+
+  <article class="m p"><div class="num">8</div><h3>Release under slow freezing, gel-phase blends</h3><dl>
+    <dt>Measure</dt><dd>Release per cycle for saturated (gel-phase) phospholipid blends under slow freezing, at about 30 mM Mg²⁺</dd>
+    <dt>Threshold</dt><dd class="th">≲ 4–8% per cycle</dd>
+    <dt>Decides</dt><dd>Where a lasting code can be kept. In our models no setting has yet been shown to keep one; this is the most likely candidate inside the freeze–thaw nursery, and otherwise the code has to wait until the lineage leaves it.</dd>
+    <dt>We expect</dt><dd>Open; this is the ledger's main unresolved question</dd>
+  </dl></article>
+
+  <article class="m p"><div class="num">9</div><h3>Membrane conversion under pond conditions</h3><dl>
+    <dt>Measure</dt><dd>Conversion of fatty acid to phospholipid by an acylating ribozyme, or by thioester transacylation of lysophospholipids (shown without enzymes by Liu et al. 2020), ideally with a catalyst that works at neutral pH</dd>
+    <dt>Threshold</dt><dd class="th">≳ 0.5–1 conversion per year</dd>
+    <dt>Decides</dt><dd>Makes phospholipid-driven growth heritable. A neutral-pH catalyst would also test whether coupling could come first, which the ledger leaves open.</dd>
+    <dt>We expect</dt><dd>The thioester route works if thioesters are supplied</dd>
+  </dl></article>
+
+  <article class="m p"><div class="num">10</div><h3>Rupture and dispersal per cycle</h3><dl>
+    <dt>Measure</dt><dd>Vesicle rupture and content dispersal per freeze–thaw cycle</dd>
+    <dt>Threshold</dt><dd class="th">Sets the escape edge: −log₂ P(content survives a generation)</dd>
+    <dt>Decides</dt><dd>Prices the last tightening, when a lineage gives up the dispersal its setting supplied</dd>
+    <dt>We expect</dt><dd>Escape pays +0.5 to +1.5 bits per generation in separated droplets</dd>
+  </dl></article>
+</section>
+
+<section class="group">
+  <div class="gh"><h2>The amino-acid handle and the first code</h2><span>charging</span></div>
+  <p class="lede">An aminoacylated primer extends about ×100 faster at 0 mM Mg²⁺ in nonenzymatic extension (Radakovic et al. 2021). The ledger says that benefit pays only below about 25–35 mM Mg²⁺, and that the first code bit has to be kept accurate by discrimination or a recheck.</p>
+
+  <article class="m x"><div class="num">11</div><h3>A ribozyme copier using an attached amino acid</h3><dl>
+    <dt>Measure</dt><dd>Whether a ribozyme copier (not just nonenzymatic extension) finishes copies at low Mg²⁺ when an amino acid is attached</dd>
+    <dt>Threshold</dt><dd class="th">Copying restored toward its high-Mg²⁺ rate, below ≈ 25–35 mM</dd>
+    <dt>Decides</dt><dd>The existence test for the handle step</dd>
+    <dt>We expect</dt><dd>It works, with any α-amino acid: a free α-amine is what matters</dd>
+  </dl></article>
+
+  <article class="m x"><div class="num">12</div><h3>Charging supply and charge lifetime in the cold</h3><dl>
+    <dt>Measure</dt><dd>Supply of activated amino acids per vesicle in a cold pond; lifetime of the charged handle at 0–5 °C and its Mg²⁺ dependence</dd>
+    <dt>Threshold</dt><dd class="th">≈ 2–15 charges per vesicle per charge lifetime</dd>
+    <dt>Decides</dt><dd>Whether the handle can be funded</dd>
+    <dt>We expect</dt><dd>Half-life of days at 0 °C (about ×29 longer than at 25 °C); Mg²⁺ shortens it</dd>
+  </dl></article>
+
+  <article class="m x"><div class="num">13</div><h3>Charging specificity for close pairs</h3><dl>
+    <dt>Measure</dt><dd>Specificity of self-aminoacylating ribozymes for close amino-acid pairs (Ile vs Val vs Leu)</dd>
+    <dt>Threshold</dt><dd class="th">≥ 3 kT single pass, or 2 kT plus one recheck; ≈ 5 kT for a majority code without a recheck</dd>
+    <dt>Decides</dt><dd>Whether early charging can be accurate without proofreading. A code is only as good as its weakest assignment, so the closest pair is the one that matters.</dd>
+    <dt>We expect</dt><dd>Close pairs at ≤ 2.2 kT (from aptamer data), so a recheck is needed</dd>
+  </dl></article>
+</section>
+
+<div class="callout"><b>Lower priority, still useful:</b> nucleotide permeability against temperature and phospholipid fraction (sets the feeding limit, predicted at 0.83–0.94 phospholipid fraction); misincorporation with bound peptides (matters only for peptides kept private to a protocell); ligation length statistics in the cold.</div>
+
+<footer>Thresholds and expectations come from the lab's constraint ledger (v2.4, 20 November 2026), built from four model families run in parallel plus the published literature. QT45: Gianni et al. 2026. Other work cited: Radakovic &amp; Szostak 2021; Liu et al. 2020; Budin &amp; Szostak 2011; Dalai et al. 2018; Salibi et al. 2023 and Litschel et al. 2018 (freeze–thaw release); Attwater et al. 2025 (copying across cycles). Full derivations are on the <a href="/origin-of-life-solvable.html">main page</a>.</footer>
+</div>
+
+</body></html>

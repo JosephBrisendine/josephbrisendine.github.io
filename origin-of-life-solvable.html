@@ -1,0 +1,1005 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Origin of Life as a Solvable Problem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* One long figure: Part 1 (the units), Laws and constants, Part 2 (the funnel), Misreadings. Teal = counting possibilities, amber = counting copies, violet = exchange rates between them. */
+:root{
+  --bg:#F3F6F7; --panel:#FFFFFF; --ink:#13202A; --ink2:#46566A; --muted:#748392; --rule:#D6DEE3;
+  --poss:#0E7C86; --poss-soft:#D5ECEE; --copy:#B85C0B; --copy-soft:#F5E3D2; --xch:#6248B0; --xch-soft:#E6E0F5;
+  --pass:#2C6CA3; --fail:#B4432E; --band:#E9EEF1; --trap-soft:#F4DCD6; --dead:#9AA6B0;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-math:"STIX Two Text","Cambria Math","Times New Roman",serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1418; --panel:#151D23; --ink:#E4EBEF; --ink2:#AEBBC6; --muted:#7F8E9B; --rule:#2A363F;
+  --poss:#4EC1CB; --poss-soft:#173A3E; --copy:#EE9A4E; --copy-soft:#43301F; --xch:#A994F0; --xch-soft:#2C2648;
+  --pass:#6AA8E0; --fail:#EE7B63; --band:#1C262D; --trap-soft:#3D2420; --dead:#5B6873; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1418; --panel:#151D23; --ink:#E4EBEF; --ink2:#AEBBC6; --muted:#7F8E9B; --rule:#2A363F;
+  --poss:#4EC1CB; --poss-soft:#173A3E; --copy:#EE9A4E; --copy-soft:#43301F; --xch:#A994F0; --xch-soft:#2C2648;
+  --pass:#6AA8E0; --fail:#EE7B63; --band:#1C262D; --trap-soft:#3D2420; --dead:#5B6873; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+a{color:var(--xch)}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 16px 64px;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:12px;max-width:760px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.08;margin:0;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.thesis{font-family:var(--f-math);font-size:clamp(20px,2.6vw,25px);line-height:1.35;margin:0}
+.thesis em{font-style:italic}
+.lede{color:var(--ink2);margin:0;max-width:66ch}
+.toc{display:flex;flex-wrap:wrap;gap:8px;font-size:14px}
+.toc a{border:1px solid var(--rule);border-radius:5px;padding:4px 10px;text-decoration:none;color:var(--ink);background:var(--panel)}
+.part{display:flex;flex-direction:column;gap:10px;max-width:760px;margin-top:20px;scroll-margin-top:16px}
+.part h1{font-size:clamp(26px,4vw,38px)}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:24px;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;scroll-margin-top:16px}
+@media (max-width:820px){.panel{grid-template-columns:minmax(0,1fr);padding:18px}}
+.cap{display:flex;flex-direction:column;gap:10px;min-width:0}
+.tag{font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--muted);letter-spacing:.06em}
+h2{font-size:21px;line-height:1.2;margin:0;font-weight:600;text-wrap:balance}
+.cap p{margin:0;color:var(--ink2);font-size:15px}
+.draw{min-width:0;display:flex;flex-direction:column;gap:18px}
+.draw>p{margin:0;color:var(--ink2)}
+.math{font-family:var(--f-math);font-size:19px;line-height:1.4;padding:10px 14px;background:var(--band);border-radius:4px;overflow-x:auto;white-space:nowrap}
+.math i{font-style:italic}
+.math .op{padding:0 .18em}
+.math .note{font-family:var(--f-body);font-size:13px;color:var(--muted);padding-left:.8em;white-space:normal}
+.fam{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:620px){.fam{grid-template-columns:1fr}}
+.card{border:1px solid var(--rule);border-radius:5px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.p{border-top:3px solid var(--poss)} .card.c{border-top:3px solid var(--copy)}
+.card h3{margin:0;font-size:16px;font-weight:600}
+.card h3 .k{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--muted);margin-left:6px}
+.card p{margin:0;font-size:14.5px;color:var(--ink2)}
+.card ul,.plain{margin:0;padding-left:18px;font-size:14px;color:var(--ink2);display:flex;flex-direction:column;gap:4px}
+.card .math{font-size:17px}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink2)}
+.scroll{overflow-x:auto}
+.scroll svg{min-width:560px}
+.xch{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:5px;overflow:hidden}
+.xrow{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) minmax(0,1.3fr);gap:14px;padding:12px 14px;border-top:1px solid var(--rule);align-items:center}
+.xrow:first-child{border-top:0}
+.xrow.h{background:var(--band);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.xrow .nm{font-weight:600;font-size:15px}
+.xrow .nm span{display:block;font-weight:400;font-size:12.5px;color:var(--muted);font-family:var(--f-mono)}
+.xrow .fx{font-family:var(--f-math);font-size:17px;line-height:1.6}
+.xrow .rd{font-size:14px;color:var(--ink2)}
+@media (max-width:620px){.xrow{grid-template-columns:1fr;gap:4px}.xrow.h{display:none}}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:11.5px;padding:1px 7px;border-radius:10px;vertical-align:1px}
+.pill.p{background:var(--poss-soft);color:var(--poss)} .pill.c{background:var(--copy-soft);color:var(--copy)} .pill.x{background:var(--xch-soft);color:var(--xch)}
+.callout{border-left:3px solid var(--xch);padding:4px 0 4px 14px;font-size:14.5px;color:var(--ink2)}
+.callout b{color:var(--ink)}
+.new{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:720px){.new{grid-template-columns:1fr}}
+.new .card h3{font-size:15px}
+.old{font-size:14px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:8px}
+.old span{border:1px solid var(--rule);border-radius:3px;padding:3px 8px;font-size:13px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink2)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+table.t{border-collapse:collapse;width:100%;font-size:14px}
+table.t th,table.t td{border-top:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+table.t th{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--band)}
+table.t td.f{font-family:var(--f-math);font-size:15.5px}
+table.t td.n{font-weight:600;white-space:nowrap}
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:5px}
+.fun{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:860px){.fun{grid-template-columns:1fr}}
+.fpanel{grid-template-columns:minmax(0,1fr)}
+.fhead{display:flex;flex-direction:column;gap:10px;max-width:80ch}
+.fhead p{margin:0;color:var(--ink2);font-size:15px}
+.nav{display:flex;flex-wrap:wrap;gap:6px}
+.nav button{font:inherit;font-size:13px;border:1px solid var(--rule);background:transparent;color:var(--ink);border-radius:5px;padding:4px 10px;cursor:pointer}
+.nav button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--panel)}
+.nav button:focus-visible,.ringhit:focus-visible{outline:2px solid var(--xch);outline-offset:2px}
+.ringhit{cursor:pointer}
+.det{border:1px solid var(--rule);border-radius:5px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.det .st{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.det .tt{font-size:21px;font-weight:600;line-height:1.2}
+.det .walls{display:flex;flex-wrap:wrap;gap:6px}
+.det .sec{display:flex;flex-direction:column;gap:4px}
+.det .sec h4{margin:0;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.det .sec.f h4{color:var(--fail)}
+.det .sec ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--ink2);display:flex;flex-direction:column;gap:3px}
+.det .ineq{font-family:var(--f-math);font-size:17.5px;background:var(--band);border-radius:4px;padding:8px 12px;overflow-x:auto}
+.det .ineq i{font-style:italic}
+.pay{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:720px){.pay{grid-template-columns:1fr}}
+.pay div{border-top:2px solid var(--ink);padding-top:8px;font-size:14px;color:var(--ink2)}
+.pay b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+.mis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:720px){.mis{grid-template-columns:1fr}}
+.mis .card h3{font-size:15px}
+.status{display:inline-block;font-family:var(--f-mono);font-size:11.5px;padding:2px 8px;border-radius:10px;white-space:nowrap}
+.s-ok{background:var(--poss-soft);color:var(--poss)} .s-part{background:var(--copy-soft);color:var(--copy)} .s-model{background:var(--xch-soft);color:var(--xch)}
+footer{font-size:13px;color:var(--muted);max-width:760px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:6px 9px;border-radius:4px;max-width:260px;line-height:1.4;z-index:5}
+.ex{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:640px){.ex{grid-template-columns:1fr}}
+.ex div{border-top:2px solid var(--fail);padding-top:8px;font-size:14px;color:var(--ink2)}
+.ex div.lo{border-color:var(--dead)}
+.ex b{display:block;color:var(--ink);font-size:14.5px}
+.note2{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Origins simulations · 20 November 2026</div>
+  <h1>Making the origin of life a solvable problem</h1>
+  <p class="byline" style="margin:0;font-size:15px;color:var(--ink2)"><a href="/" style="color:inherit">Joseph Murphy Brisendine</a> with Claude</p>
+  <p class="lede" style="color:var(--ink);font-size:17px">By any account, <i>E. coli</i> is a very skilled self-replicator. Presumably, though, the first successful self-replicator was far less skilled: just barely able to persist, and only with substantial help from its environment. So asking about the origin of life means asking how bad something can be at self-replication and still persist with that help, and what it takes to keep persisting as the help is withdrawn.</p>
+  <p class="lede">When people hear "origin of life", they usually think of a story: a possible scenario, set in a warm pond or at a deep-sea vent. Those who know the field also know that the early Earth left no fossils of the first replicators, so any such story is at best an educated guess. Sceptics go further: Fred Hoyle compared the chance assembly of a cell to a tornado sweeping through a junkyard and assembling a Boeing 747. In those terms the problem cannot be solved. There is no way to check a story against a record that doesn't exist, and no way to argue with odds that are posed as one enormous draw.</p>
+  <p class="thesis">We change the terms. Instead of proposing a scenario, we derive what must have been true <em>however</em> cells arose, using information and time as resources, and we read other people's measurements against those bounds.</p>
+  <div class="callout" style="border-color:var(--copy);font-size:15px"><b>Example: Eigen's paradox.</b> Eigen showed in 1971 that a replicator can keep only about 1/ε sites, where ε is its error rate per site: no long genome without an accurate copier, and no accurate copier without a long genome. Posed that way, it is a closed loop. In the ledger it becomes an inequality: the rent per copy must stay below what the lineage can buy back, with every payer counted. Those payers are copy number (doubling the copies per division buys one bit), completion, and the environment's help (re-priming and rechecking across freeze–thaw). Read that way, the QT45 ribozyme fails by 7.5 bits per copy, but fidelity, the paradox's own term, would on its own fall short by only 0.1–0.6 bits. The deficit is mostly completion, which the paradox never counted. A tether plus re-priming could pay it, and a single measurement (ρ, below) decides whether it did. The paradox does not dissolve. It becomes a sum with a named shortfall.</div>
+  <p class="lede">The question turns into a short list of constraints on counts of parts over time, and information theory lets us state them quantitatively. The page starts from the structure of self-replication. Part 1 builds the units: possibilities and copies on one scale, then the environment on that same scale as a vector of resources it supplies for free. A lineage then traces a trajectory through a space of information and time, which we call the phase space of the living state. Laws and constants come next. Part 2 writes coming alive as constraints on that trajectory, in the order they must be met. The last section shows how close a first path now is, and what a wet lab could do with it.</p>
+  <nav class="toc" aria-label="Contents"><a href="#question">The starting point</a><a href="#part1">Part 1 · Where the bits come from</a><a href="#laws">Laws and constants</a><a href="#part2">Part 2 · The replicator funnel</a><a href="#window">Too good, too soon</a><a href="#close">How close we are</a><a href="#misreadings">Clarifications</a></nav>
+  <div class="callout" style="border-color:var(--poss);font-size:15px"><b>For experimental labs:</b> thirteen unmeasured numbers would decide a first path to a cell, each with a threshold and what it opens or closes. <a href="/origin-of-life-measurements.html">See the measurements and get in touch →</a></div>
+</header>
+
+<!-- ============ THE QUESTION ============ -->
+<section class="panel" id="question">
+  <div class="cap">
+    <div class="tag">0 · THE STRUCTURE OF THE PROBLEM</div>
+    <h2>How bad can a self-replicator be?</h2>
+    <p>Two observations come before any chemistry: self-replication is a matter of counts, and a replicator must eventually separate from the environment that helps it. Everything later on this page follows from them.</p>
+  </div>
+  <div class="draw">
+    <ul class="plain" style="font-size:15px;gap:10px">
+      <li><b>Self-replication is a matter of counts.</b> A replicator persists when every part it needs is remade at least as fast as it is lost: by decay, by errors, by copies that never finish, by dilution at division. A copy works only if every part it needs works, so survival fractions multiply across parts. So the requirements are counts of parts made, kept and lost, per copy and per generation.</li>
+      <li><b>The environment is the driver, and the replicator must separate from it.</b> At first the setting supplies much of what is needed: monomers, energy, cycling, compartments, even dispersal. But anything the environment supplies, a lineage cannot take with it. Persisting only while the setting does the work is not yet persisting on one's own. So we take as the endpoint <b>the first replicator able to leave the setting that made it possible</b>, and ask what it must have internalized, and in what order.</li>
+      <li><b>Why bits.</b> Survival fractions multiply along every chain of copies, and their logarithms add. Taking log₂ of each ratio of counts puts every requirement on one additive scale. "How bad can it be?" then becomes two precise questions: how many bits must it specify, and how many bits per copy can it afford to lose?</li>
+    </ul>
+    <div class="tw"><table class="t">
+      <thead><tr><th>Replicator</th><th>Ratio of counts, per genome copy</th><th>Rent per copy</th></tr></thead>
+      <tbody>
+        <tr><td class="n"><i>E. coli</i></td><td>about one new mutation per few hundred genome copies (Drake's rule)</td><td class="f">≲ 0.005 bits</td></tr>
+        <tr><td class="n">QT45 ribozyme copier</td><td>about one working copy in 2,500, mostly from copies that don't finish</td><td class="f">11.3 bits</td></tr>
+      </tbody>
+    </table></div>
+    <p>The origin of life lies somewhere along that gap. The rest of this page asks where along it a lineage could first persist on its own, and what had to pay the difference. (The <i>E. coli</i> figure counts errors only, and counts every site as constrained, so it is an upper bound.)</p>
+  </div>
+</section>
+
+<!-- ============ PART 1 ============ -->
+<div class="part" id="part1">
+  <div class="eyebrow">Part 1</div>
+  <h1>Where the bits come from</h1>
+  <p class="lede">Every bit in the ledger is <i>log₂ of a ratio of two counts</i> that could, in principle, be counted at the bench. Mass and energy have no axes of their own: mass limits how many copies can be made, and a free-energy difference buys discrimination, which is measured in bits. Two other kinds of constraint sit beside the bits and are marked as such: concentration inequalities (how much Mg²⁺ a membrane tolerates) and order constraints (which step must come first).</p>
+</div>
+
+<!-- A -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">A · TWO THINGS WE COUNT</div>
+    <h2>Possibilities and copies</h2>
+    <p>Teal bits count possibilities. They measure how much of sequence space a function must pin down, and how well a signal from the environment predicts its state. This is information in the usual sense.</p>
+    <p>Amber quantities count copies, and they recur. They are <b>bit rates</b>: log₂ fold change per copy or per generation, so one bit per generation is one doubling per generation. A PCR user already thinks in these units.</p>
+    <p>The two kinds differ in dimension. Bits are a stock and bit rates are a flow, so they are never added together.</p>
+  </div>
+  <div class="draw">
+    <div class="fam">
+      <div class="card p">
+        <h3>Counting possibilities <span class="k">bits · a stock</span></h3>
+        <svg viewBox="0 0 300 168" role="img" aria-label="An 8 by 8 grid of 64 sequences, one of which works: 6 bits of specification">
+          <g id="grid"></g>
+          <text x="172" y="40" font-size="13" style="fill:var(--ink)">64 sequences tried</text>
+          <text x="172" y="60" font-size="13" style="fill:var(--poss);font-weight:600">1 works</text>
+          <text x="172" y="96" font-size="22" style="fill:var(--ink);font-family:var(--f-math)">log₂ 64 = 6</text>
+          <text x="172" y="116" font-size="12">bits of specification</text>
+        </svg>
+        <div class="math"><i>I</i><sub>s</sub> = log₂(<i>N</i><sub>tried</sub> ⁄ <i>N</i><sub>works</sub>)</div>
+        <ul>
+          <li><b>Search cost</b> of a function (functional information, as defined by Szostak and Hazen).</li>
+          <li><b>Re-findability:</b> a pond making <i>M</i> tries finds it again if <i>M</i>·2<sup>−b</sup> ≥ 1.</li>
+          <li><b>Signal bits:</b> how much a signal tells about the state of the world.</li>
+          <li>A genetic code is a third kind: a <b>channel</b>, worth at most about 1 − H₂(ε) bits per binary read (for a q-letter position, log₂q − H₂(ε) − ε·log₂(q − 1)). It becomes a rate only through reads per generation.</li>
+        </ul>
+      </div>
+      <div class="card c">
+        <h3>Counting copies <span class="k">bit rates · per copy, per generation</span></h3>
+        <svg viewBox="0 0 300 168" role="img" aria-label="One parent makes 14 copies; 13 fail and 1 works: a rent of 3.8 bits per copy">
+          <g id="tree"></g>
+          <text x="172" y="40" font-size="13" style="fill:var(--ink)">14 copies made</text>
+          <text x="172" y="60" font-size="13" style="fill:var(--copy);font-weight:600">1 comes out working</text>
+          <text x="172" y="96" font-size="22" style="fill:var(--ink);font-family:var(--f-math)">log₂ 14 ≈ 3.8</text>
+          <text x="172" y="116" font-size="12">bits lost per copy (rent)</text>
+        </svg>
+        <div class="math"><i>R</i><sub>c</sub> = log₂(<i>N</i><sub>made</sub> ⁄ <i>N</i><sub>working</sub>)</div>
+        <ul>
+          <li><b>Rent per copy</b> (the measured input): copies made per working copy. For QT45 it is 11.3 bits, about one working copy in 2,500.</li>
+          <li><b>Erosion per division <i>E</i><sub>div</sub></b> (the rent as a rate): −log₂ of complete daughters ÷ (2 × complete mothers).</li>
+          <li><b>Headroom <i>h</i>:</b> log₂(gain ÷ loss) while rare. Can it grow at all?</li>
+          <li><b>Edge <i>e</i>:</b> log₂(my offspring ÷ a matched rival's) per generation. Does it win? This is invasion fitness, in bits.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">B · THE EXCHANGE RATES</div>
+    <h2>Where the two kinds meet, and where mass and energy come in</h2>
+    <p>Possibilities and copies meet only through a few conversion rules. Each comes from standard copying chemistry, evolutionary theory or physics; the copy-number map is a simple segregation calculation.</p>
+    <p>The common currency is held together by these rates. It is an exchange, not an identity.</p>
+  </div>
+  <div class="draw">
+    <div class="xch" role="table">
+      <div class="xrow h" role="row"><div>Rate</div><div>Form</div><div>What it says</div></div>
+      <div class="xrow" role="row">
+        <div class="nm">Error rent <span>Eigen · per constrained site</span></div>
+        <div class="fx">ε · log₂e ≈ 1.44 ε <span class="pill c">bits/copy</span></div>
+        <div class="rd">Each site that must stay right costs this much per copy. The charge is per <b>site</b>, not per bit, because a site can hold less than 2 bits<sub>s</sub>.</div>
+      </div>
+      <div class="xrow" role="row">
+        <div class="nm">Completion rent <span>per junction</span></div>
+        <div class="fx">(<i>L</i>⁄3) · log₂(1⁄<i>p</i><sub>j</sub>) <span class="pill c">bits/copy</span></div>
+        <div class="rd">A copy that stalls is lost just as surely as one that is wrong. For QT45 this is the larger bill. (<i>L</i>/3 junctions assumes triplet ligation.)</div>
+      </div>
+      <div class="xrow" role="row">
+        <div class="nm">Copy number <span>per copy → per division</span></div>
+        <div class="fx"><i>E</i><sub>div</sub> ≈ −log₂[1 − (1 − 2<sup>−<i>R</i><sub>c</sub></sup>)<sup><i>k</i>/2</sup>]</div>
+        <div class="rd">A daughter is complete if at least one of its <i>k</i>/2 copies survives, with <i>k</i> copy attempts per division and a copier that picks intact templates. (Where that assumption fails, as in a family with no reader, the same form fits with a smaller effective <i>k</i>, stated per family.) So kept ⇔ <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>* ≈ log₂(<i>k</i>/2) − log₂ ln[1/(1 − 2<sup>−<i>e</i><sub>pay</sub></sup>)]. <b>Doubling the copies per division buys one bit per copy of rent.</b> Mass bounds the count: <i>k</i> ≤ monomer supply ÷ monomers per copy.</div>
+      </div>
+      <div class="xrow" role="row">
+        <div class="nm">Signal value <span>Kelly · Bergstrom–Lachmann</span></div>
+        <div class="fx">gain ≤ <i>I</i>(signal; state) <span class="pill p">bits/signal</span>→<span class="pill c">bits/gen</span></div>
+        <div class="rd">Information about the world buys at most that many doublings, per signal. It becomes a rate only through signals per generation, and assumes multiplicative fitness. It is a bound, not a price, and it is not applied to the code.</div>
+      </div>
+      <div class="xrow" role="row">
+        <div class="nm">Energy <span>discrimination · Boltzmann</span></div>
+        <div class="fx">ΔΔ<i>G</i> ⁄ (<i>kT</i> ln 2) bits per event</div>
+        <div class="rd">A free-energy difference buys a selectivity e<sup>ΔΔ<i>G</i>/<i>kT</i></sup>, again log₂ of a ratio of counts: 2 <i>kT</i> ≈ ×7 ≈ 2.9 bits. Accurate charging needs ≥ 3–4 <i>kT</i> (4.3–5.8 bits), or 2 <i>kT</i> plus one freeze–thaw recheck. <i>kT</i> ln 2 per bit is the Landauer floor, not what the chemistry pays.</div>
+      </div>
+      <div class="xrow" role="row">
+        <div class="nm">Drift <span>population size</span></div>
+        <div class="fx">|<i>e</i>| &lt; 1 ⁄ (<i>N</i><sub>e</sub> ln 2) is neutral</div>
+        <div class="rd">Time enters here. A small edge needs enough protocells and generations to beat chance.</div>
+      </div>
+    </div>
+    <div class="callout"><b>Why not a single conversion factor?</b> The buy-back Γ = <i>R</i><sub>c</sub>/<i>E</i><sub>div</sub> has units of copies per division and is not a constant. In one model family it runs from about 2 to 120. It is about 10 at the keep threshold with 40 attempts per division, and about 2 for the marginal cost of a part added near that threshold. So per-copy rents add, but per-division erosions do not add part by part.</div>
+  </div>
+</section>
+
+<!-- C -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">C · THE ENVIRONMENT ON THE SAME SCALE</div>
+    <h2>An environment is a vector of gifts</h2>
+    <p>Each component is a resource the setting supplies for free: activated nucleotides, cycling, Mg²⁺, compartments, dispersal and so on.</p>
+    <p>Gifts come in two kinds. A <b>stock gift</b> replaces a function, so it removes bits<sub>s</sub> from what must be specified. A <b>rate gift</b> changes fidelity, completion or copy number, so it changes how much can be held. The two are never summed.</p>
+    <p>A real place (a pond, a vent, a drip) is a point in gift space. The walls do not depend on which place it is. Only the starting point does.</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="gifts" viewBox="0 0 680 410" role="img" aria-label="An illustrative gift vector: fourteen gifts, each a bar showing how much a freezing pond supplies"></svg></div>
+    <div class="math"><i>I</i><sub>closure</sub> − <i>I</i><sub>gift,s</sub>(<b>g</b>) ≤ β · <i>n</i><sub>c,max</sub>,  <i>n</i><sub>c,max</sub> = [<i>R</i><sub>c</sub>*(<i>k</i>, <i>e</i><sub>pay</sub>) − Σ log₂(1/<i>p</i><sub>j</sub>)] ⁄ log₂(1/(1 − ε))<span class="note">what must be specified, minus what stock gifts supply, must fit in the sites the lineage can afford to keep; rate gifts set that number (β ≤ 2 bits<sub>s</sub> per site)</span></div>
+    <div class="callout"><b>A consequence:</b> at QT45's completion (<i>p</i><sub>j</sub> 0.66) <i>n</i><sub>c,max</sub> is negative. No stock gift can rescue poor completion; only a rate gift can.</div>
+    <div class="legend"><span><i style="background:var(--poss)"></i>supplied by the setting (illustrative freezing pond)</span><span><i style="background:var(--copy-soft);border:1px solid var(--copy)"></i>left for the lineage to provide</span></div>
+  </div>
+</section>
+
+<!-- D -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">D · THE PHASE SPACE OF THE LIVING STATE</div>
+    <h2>Now a trajectory can be traced</h2>
+    <p>Put both on one picture. Across: gifts withdrawn. Up: information the lineage holds and keeps. A lineage can only sit where what it holds covers what is no longer given. Each step up has to be found within the time available, and kept at a bit rate it can afford.</p>
+    <p><b>The nursery</b> is the gift-rich corner of this space. There, cycling multiplies the number of tries (finding), pays some rents (keeping) and supplies dispersal. It is where a lineage can start, and a place it must eventually leave.</p>
+    <p>So coming alive becomes a set of constraints on this space, rather than a story. <a href="#part2">Part 2</a> lists them in order.</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="phase" viewBox="0 0 680 420" role="img" aria-label="Phase diagram: gifts withdrawn across, information held up; the nursery in the lower left; a staircase trajectory climbing along the closure line to the exit"></svg></div>
+    <div class="legend"><span><i style="background:var(--copy)"></i>trajectory, one kept step at a time</span><span><i style="background:var(--fail);opacity:.25"></i>forbidden: holds less than the setting no longer gives</span><span><i style="background:var(--poss-soft);border:1px solid var(--poss)"></i>nursery</span></div>
+    <div class="math">each step <i>i</i>:  found ⇔ <i>b</i><sub>i</sub> ≤ log₂ <i>M</i>(<i>t</i>)<span class="op">,</span>  kept ⇔ <i>E</i><sub>div</sub>(<i>R</i><sub>c</sub>, <i>k</i>) &lt; <i>e</i><sub>pay</sub><span class="note">information (bits) and time (bit rates; tries grow with cycles) are the two axes of cost</span></div>
+  </div>
+</section>
+
+<!-- E -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">E · TWO BUDGETS, TWO CLOCKS</div>
+    <h2>Finding is paid once. Keeping is paid on every copy.</h2>
+    <p>The search budget is log₂ of the number of tries: molecules × cycles × time. A millilitre at 1 µM of 50-mers holds about 6×10¹⁴ molecules, roughly 49 bits per cycle.</p>
+    <p>The keeping budget is set by how many copies each division makes: a few bits per copy. It is spent again on every copy.</p>
+    <p>A stock is compared with a stock, and a rate with a rate. Keeping binds most often. Search over the whole path is not free either: it sits right at its budget.</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="budgets" viewBox="0 0 680 345" role="img" aria-label="Search budgets and keeping budgets, drawn on separate scales"></svg></div>
+    <div class="legend">
+      <span><i style="background:var(--poss-soft);border:1px solid var(--poss)"></i>budget available</span>
+      <span><i style="background:var(--poss)"></i>search cost</span>
+      <span><i style="background:var(--copy)"></i>rent, completion</span>
+      <span><i style="background:var(--copy);opacity:.55"></i>rent, fidelity</span>
+    </div>
+    <div class="math">found ⇔ <i>b</i> ≤ log₂(<i>M</i>)<span class="op">;</span>  kept ⇔ <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>*(<i>k</i>, <i>e</i><sub>pay</sub>) ≈ 3.8–3.9 bits per copy<span class="note">at k = 40 attempts per division (our model's choice; each doubling adds one bit) and e_pay = 0.405, a free variable</span></div>
+    <div class="callout" style="border-color:var(--copy)"><b>Housekeeping information.</b> Keeping costs a steady flow of selection: each protocell generation, selection must make up for what copying loses. We call that rate <b>housekeeping information</b>, after housekeeping heat in nonequilibrium thermodynamics (the steady cost of holding a driven system in place), not housekeeping genes or metabolic upkeep. It is the genetic load of Haldane and Muller, measured in bits per protocell generation, and it equals the rent. It is a rate, not the information the lineage carries. It is also information, not heat: the chemistry's own dissipation can lower it but never pay it. A lineage is kept when its payoff edge exceeds it. Part of it can be paid by a gift instead (mixing or a feed that resupplies lost content); a lineage paid that way is held by its environment, not kept.<br><br><b>Excess information</b> is the one-time counterpart: what a sweep writes as a variant takes over, log₂(1/p₀) bits at fixation from a starting frequency p₀. Finding is paid once; keeping is paid every generation.</div>
+  </div>
+</section>
+
+<!-- F -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">F · THE ANSWER TO HOYLE</div>
+    <h2>One draw versus a ratchet</h2>
+    <p>The junkyard-tornado argument prices a cell as one draw. All of its bits have to be found at once, against one budget.</p>
+    <p>Bits add along a path, because the log of a product is a sum. A step that is kept does not have to be found again, so each step is searched against its own budget.</p>
+    <p>Staging works only if every landing holds. That moves the hard question from probability to rates: can the lineage pay its rent at every step?</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="hoyle" viewBox="0 0 680 290" role="img" aria-label="Left: one cliff of thousands of bits against a budget near 100. Right: a staircase of small steps, each with a lock showing it is kept."></svg></div>
+    <div class="math">2<sup>−(<i>b</i><sub>1</sub>+<i>b</i><sub>2</sub>+…)</sup> = 2<sup>−<i>b</i><sub>1</sub></sup> · 2<sup>−<i>b</i><sub>2</sub></sup> ⋯  <span class="op">but</span>  each <i>b</i><sub>i</sub> ≤ log₂ <i>M</i><sub>i</sub>, provided step <i>i</i> is kept</div>
+    <div class="callout"><b>What adds and what doesn't:</b> search bits add, and per-copy rents add, because survival probabilities multiply. Per-division erosions do not add part by part: near the keep limit, an added part's per-division cost is about half its per-copy rent.</div>
+  </div>
+</section>
+
+<!-- G -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">G · WORKED EXAMPLE 1 · A SLACK</div>
+    <h2>QT45, read against the ledger</h2>
+    <p>Two measured numbers, fidelity and junction completion, become a rent of 11.3 bits per copy. A lineage making 40 copy attempts per division can afford about 3.8, so the slack is −7.5. (Forty is our model's choice. Each doubling of copy attempts adds one bit: at 400 the slack is about −4.1.)</p>
+    <p>Most of the deficit is completion (9.0), not fidelity (2.3). So whatever happened, something must have paid for completion. A ×5 tether plus re-priming ρ ≥ 0.5 across freeze–thaw closes the gap (the tether gain is assumed; it has not been measured).</p>
+    <p><b>The measurement that decides it:</b> the fraction of stalled copies that resume after a cycle (ρ).</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="qt45" viewBox="0 0 680 210" role="img" aria-label="QT45 rent bar: fidelity 2.3 plus completion 9.0 equals 11.3 bits per copy, against an affordable 3.8; slack minus 7.5"></svg></div>
+    <div class="math"><i>R</i><sub>c</sub> = 2.3<span class="note">fidelity</span> + 9.0<span class="note">completion</span> = 11.3  <span class="op">vs</span>  3.8  ⇒  slack = −7.5 bits per copy</div>
+    <div class="callout">A deficit is not a verdict that QT45 is wrong. It names the bill, who could pay it, and the number that would show it was paid.</div>
+  </div>
+</section>
+
+<!-- G2 -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">G′ · WORKED EXAMPLE 2 · AN ORDER</div>
+    <h2>The amino-acid handle: paid below a magnesium level, a cost above it</h2>
+    <p>We call an amino acid attached to the copying RNA a <b>handle</b>. An aminoacylated primer extends about ×100 faster at 0 mM Mg²⁺, and no faster at 50 mM (Radakovic et al. 2021). The same ledger that says QT45 is short on completion says who can pay that bill, and when.</p>
+  </div>
+  <div class="draw">
+    <div class="math"><i>g</i><sub>eff</sub> = <i>g</i>(Mg) + <i>f</i><sub>ch</sub> · (1 − <i>g</i>(Mg))<span class="note">the amino acid restores copying toward its high-Mg²⁺ rate; its benefit vanishes where Mg²⁺ alone suffices</span></div>
+    <ul class="plain">
+      <li><b>Needed only where membranes can't hold Mg²⁺.</b> Single-chain membranes tolerate about 1–5 mM (pure fatty acid) to about 10 mM (with monoesters). Copying without help works above about 20 mM and beats a handle only above about 30–35 mM. Below about 20 mM an attached amino acid is required, and any of the α-amino acids tested will do: a free α-amine is what matters. Identity matters only if the handle is also to found a code.</li>
+      <li><b>It must ride on the genome.</b> A free (trans) handle loses to the shared copying budget at every benefit tested (×1–×100), unless a controller holds its copying to a fixed ratio, which costs more than linkage. In cis it keeps the chromosome, so the handle and the first chromosome are one step.</li>
+      <li><b>It needs a supply.</b> About 55–80% of handles must be charged at 0–2.5 mM Mg²⁺: roughly 2–15 charges per vesicle per charge lifetime, by two model families. A charge lasts about 29 times longer at 0 °C than at 25 °C, and Mg²⁺ shortens it.</li>
+      <li><b>It stops paying at about 25–35 mM Mg²⁺</b> (two families; +0.43 bits per division at 10 mM, +0.08 at 20, −0.07 at 50, derived rather than head to head). About 25% phospholipid raised tolerance to ≥ 40 mM in one study (a dye, at room temperature). In a pond whose Mg²⁺ rises as it evaporates, the handle is lost at about 38–42 mM, a few mM after the static crossover, and freed for other jobs.</li>
+    </ul>
+    <div class="callout">One example shows a slack, the other an order. The handle comes <b>with</b> the copier in fatty-acid compartments, not after it.</div>
+  </div>
+</section>
+
+<!-- H -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">H · OTHER PEOPLE'S MEASUREMENTS</div>
+    <h2>Slack for published results</h2>
+    <p>Slack = log₂(available ÷ required). A deficit names the number the next experiment has to move, and by how much.</p>
+    <p>Each row is in the unit of its own inequality (bits<sub>s</sub>, bits per copy, or log₂ of a concentration ratio), shown under the name. Bars show ranges, dots single values.</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="slack" viewBox="0 0 680 360" role="img" aria-label="Range bars of slack in log2 units for nine published results"></svg></div>
+    <div class="legend">
+      <span><i style="background:var(--pass)"></i>passes (slack &gt; 0)</span>
+      <span><i style="background:var(--fail)"></i>fails (slack &lt; 0)</span>
+      <span>Hover or tab to a bar for the inequality.</span>
+    </div>
+  </div>
+</section>
+
+<!-- I -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">I · WHAT IS NEW</div>
+    <h2>The ingredients are familiar. The ledger is not.</h2>
+    <p>Each tool already exists in someone's corner of the field. What is new is putting them in one currency, against one clock, so that they become inequalities that must have held however the history went.</p>
+  </div>
+  <div class="draw">
+    <div class="old"><span>functional information · Szostak, Hazen</span><span>error threshold · Eigen</span><span>value of information · Kelly, Bergstrom &amp; Lachmann</span><span>invasion fitness · adaptive dynamics</span><span>kin and multilevel selection · Hamilton</span><span>stochastic corrector · Szathmáry &amp; Demeter</span></div>
+    <div class="new">
+      <div class="card"><h3>1 · Weigh finding against keeping</h3><p>Search bills and rent bills are both log₂ of counts, so we can say which one binds. Most often it is keeping.</p></div>
+      <div class="card"><h3>2 · Slack for any measurement</h3><p>A rate constant, a fidelity or a tolerance becomes a pass or fail by a stated number of bits, plus the bypass that would pay for it.</p></div>
+      <div class="card"><h3>3 · Tiers of certainty</h3><p>Laws hold for any chemistry. Constants hold within a chemistry class, or where two model families agree, or come from one family. Readers can see which layer each claim rests on.</p></div>
+    </div>
+    <div class="callout"><b>Where the currency is approximate:</b> possibilities and copies meet through exchange rates, not by definition. The Eigen rent is per site; the copy-number map assumes a copier that picks intact templates; Kelly's rate is an upper bound.</div>
+  </div>
+</section>
+
+<!-- ============ LAWS ============ -->
+<div class="part" id="laws">
+  <div class="eyebrow">Between the parts</div>
+  <h1>Laws and constants</h1>
+  <p class="lede">We split the ledger the way physics does. A <b>law</b> holds for any chemistry and any parameters. A <b>constant</b> is a number a law takes as input: from the literature, from two model families that agree, or from one family. The laws say what any path must pay and in what units; the constants say how much this chemistry charges.</p>
+</div>
+
+<section class="panel fpanel">
+  <div class="draw">
+    <div class="tw"><table class="t">
+      <thead><tr><th>Law</th><th>Statement</th><th>Constants it needs</th></tr></thead>
+      <tbody>
+        <tr><td class="n">L0 Counting</td><td>Every quantity is log₂ of a ratio of counts. Stocks (bits) and rates (bits per event) are never added; a rate becomes a stock only over a stated window, and two rates add only on the same clock. <i>(A convention.)</i></td><td>—</td></tr>
+        <tr><td class="n">L1 Finding</td><td class="f">found ⇔ <i>M</i>(<i>T</i>)·2<sup>−<i>b</i></sup> ≳ 1</td><td>log₂ <i>M</i>(<i>T</i>): ≈ 10–17 bits<sub>s</sub> is re-made without heredity in our nursery</td></tr>
+        <tr><td class="n">L2 Keeping</td><td>Kept at level <i>L</i> over <i>T</i> ⇔ headroom when rare &gt; 0 and edge head-to-head &gt; 0. Kept ⇔ erosion per division &lt; payoff edge per division; steady share of protocells carrying it <i>f</i>* = 1 − <i>E</i><sub>div</sub>/<i>e</i><sub>pay</sub>.</td><td><i>e</i><sub>pay</sub> (free); copy attempts <i>k</i></td></tr>
+        <tr><td class="n">L3 Copy floor</td><td class="f">log₂(<i>k</i> · <i>P</i><sub>func</sub> ⁄ <i>s</i>) &gt; 0</td><td><i>k</i>; <i>s</i> = 2 strand steps for +/− copying</td></tr>
+        <tr><td class="n">L4 Rent</td><td class="f"><i>R</i><sub>c</sub> = Σ<sub>j</sub> log₂(1/<i>p</i><sub>j</sub>) + <i>n</i><sub>c</sub> · log₂(1/(1 − ε))</td><td><i>p</i><sub>j</sub>, ε, <i>n</i><sub>c</sub>, junctions per copy</td></tr>
+        <tr><td class="n">L5 Tie</td><td>(Price) A gift that raises every protocell equally, whether it carries the content or not, moves nothing; a gift's edge is proportional to its content-tied share. Without a payoff or a commons, the content cannot spread. Heredity cannot be a gift.</td><td>tied share; between- vs within-unit covariance</td></tr>
+        <tr><td class="n">L6 Linkage</td><td>Under a shared copying budget, gene <i>i</i> changes share by log₂(<i>q</i><sub>i</sub>/<i>q̄</i>) per round. Unlinked genes stay together only if between-unit selection beats that spread plus drift (≈ 1/<i>K</i>); otherwise linkage or a stoichiometric controller.</td><td>per-copy survival spread; capacity <i>K</i></td></tr>
+        <tr><td class="n">L7 Internalization</td><td>Two inequalities, never summed: (rate) (1 − <i>a</i>)·τ·<i>e</i><sub>f</sub> &gt; <i>E</i><sub>int</sub>; (stock) the internal version must already be findable, <i>b</i><sub>int</sub> ≤ log₂ <i>M</i>(<i>T</i><sub>fail</sub>).</td><td>gift availability <i>a</i>, tied share τ, internal rent</td></tr>
+        <tr><td class="n">Holding</td><td class="f"><i>I</i><sub>closure</sub> − <i>I</i><sub>gift,s</sub> ≤ β · <i>n</i><sub>c,max</sub></td><td><i>n</i><sub>c,max</sub> from L2 and L4 at the rate gifts in force</td></tr>
+        <tr><td class="n">L9 Drift</td><td class="f">|<i>e</i>| ≳ 1/(<i>N</i><sub>e</sub> ln 2) to be selected</td><td><i>N</i><sub>e</sub> (state with each edge)</td></tr>
+        <tr><td class="n">L10 Exchange</td><td>Discrimination: ΔΔ<i>G</i>/(<i>kT</i> ln 2) bits per event. Kelly: signal value ≤ <i>I</i>(signal; state) per signal. Mass: <i>k</i> ≤ monomer supply ÷ monomers per copy. Energy enters only through discrimination and mass.</td><td>ΔΔ<i>G</i>, signals per generation, monomer supply</td></tr>
+        <tr><td class="n">L11 Keeping identity</td><td>At steady state, the information selection must supply each protocell generation to hold a kept lineage equals its rent: the genetic load in bits, −log₂(<i>w̄</i>/<i>w</i><sub>max</sub>) = <i>E</i><sub>div</sub>. This is housekeeping information. What selection actually writes is at most this; the rest is paid by losses that still leave descendants, or by resupply from outside. Checked in three model families (within 3%).</td><td>level <i>L</i>; stationary population</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Corollaries:</b> exit (L2 and L7 applied at the destination); the fidelity check before escape; content must copy at least as fast as its unit divides; a lasting code comes only after completion stops depending on freeze–thaw, because the same cycles release a fluid membrane's contents. The walls of Part 2 are these laws with constants filled in. The order of the walls is not a law: it follows from which constants bind first.</p>
+    <div class="tw"><table class="t">
+      <thead><tr><th>Key constant</th><th>Value or bracket</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="n"><i>e</i><sub>pay</sub></td><td>free; ours 0.405 bits per protocell generation</td><td>scanned</td></tr>
+        <tr><td class="n">Copies per division</td><td>keep threshold <i>R</i><sub>c</sub>* ≈ 3.8–3.9 bits/copy at 40 attempts (a model choice; +1 bit per doubling); ≳ 5–9 complete copies per division</td><td>one family</td></tr>
+        <tr><td class="n">Completion <i>p</i><sub>j</sub></td><td>QT45 0.66; a cis genome of ~130 nt needs ≈ 0.97</td><td>literature + model</td></tr>
+        <tr><td class="n">Re-priming ρ</td><td>≥ 0.5 with a ×5 tether</td><td><b>unmeasured: the first decisive measurement</b></td></tr>
+        <tr><td class="n">Fidelity ε</td><td>QT45 0.059; the path needs ≈ 0.02</td><td>literature</td></tr>
+        <tr><td class="n">Membrane Mg²⁺ tolerance</td><td>single-chain ≈ 1–5 mM (pure fatty acid) to ≈ 10 mM (with monoester); ≈ 4 + 150<i>x</i> mM with phospholipid fraction <i>x</i> (a fit to one study)</td><td>literature</td></tr>
+        <tr><td class="n">Handle cutoff</td><td>≈ 25–35 mM Mg²⁺ (lost at ≈ 38–42 mM in a rising-Mg²⁺ pond)</td><td>two families</td></tr>
+        <tr><td class="n">Charging supply</td><td>≈ 2–15 charges per vesicle per lifetime</td><td>two families (×2–4 apart)</td></tr>
+        <tr><td class="n">Bridge lifetime needed</td><td>≳ 25–100 years; measured hours to days</td><td>two families</td></tr>
+        <tr><td class="n">Feeding limit <i>x</i><sub>e</sub></td><td>0.83–0.94 phospholipid fraction</td><td>analytic + literature</td></tr>
+        <tr><td class="n">Exchange between units</td><td>≲ 0.5–1% per generation</td><td>two families</td></tr>
+        <tr><td class="n">Content release per freeze–thaw</td><td>lasting code needs ≲ 4–8% per cycle; fluid phospholipid membranes measured at 18–57%</td><td>one family + literature</td></tr>
+        <tr><td class="n">Escape edge</td><td>−log₂ P(content survives a generation) − tightening cost: +0.5 to +1.5 bits per generation in separated droplets; −0.08 in the pond</td><td>two families (form)</td></tr>
+        <tr><td class="n">Charging discrimination</td><td>single pass: ≥ 3 <i>kT</i> to found, ≈ 5 <i>kT</i> for a majority code; or 2 <i>kT</i> + one recheck. Close amino-acid pairs measured at ≤ 2.2 <i>kT</i></td><td>model + literature</td></tr>
+        <tr><td class="n">Whole-path search</td><td>cost 93–152 bits<sub>s</sub> vs budget 92–133</td><td>estimate</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ============ PART 2 ============ -->
+<div class="part" id="part2">
+  <div class="eyebrow">Part 2</div>
+  <h1>The replicator funnel</h1>
+  <p class="lede">What it takes to come alive, written as constraints on the phase space of the living state, in the order they must be met.</p>
+</div>
+
+<section class="panel">
+  <div class="cap">
+    <div class="tag">A · THE NURSERY</div>
+    <h2>Where a trajectory can start</h2>
+  </div>
+  <div class="draw">
+    <p>A nursery is a region of gift space where the setting supplies most of what self-replication needs. Our working example is a cold, cycling, low-Mg²⁺ setting with concentration, activated monomers and amino acids. Its periodic driver, freeze–thaw or wet–dry cycling, does three separate things:</p>
+    <ul class="plain" style="font-size:15px">
+      <li><b>It multiplies tries (finding).</b> Every cycle is another search, so the search budget log₂ <i>M</i> grows with time.</li>
+      <li><b>It pays rents (keeping).</b> Strand separation, re-priming and rechecking come with the cycle instead of being encoded.</li>
+      <li><b>It supplies dispersal.</b> Freeze rupture and mixing spread lineages. Tightening later throws this away.</li>
+    </ul>
+    <p>The nursery is not a claim about a particular place. Templates it supplies are a stock, not heredity: a flow-fed stock collapses when the feed stops. Whatever the nursery supplies, the lineage has not yet learned to provide for itself. To leave, it must internalize each gift it depends on, in an order the walls allow, and still pay its rent. That is the funnel.</p>
+    <div class="math" style="white-space:normal">exit ⇔ for every gift: supplied at the destination, or internalized,  and <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there</div>
+  </div>
+</section>
+
+<section class="panel fpanel">
+  <div class="fhead">
+    <div class="tag">B · THE FUNNEL</div>
+    <h2>Coming alive, as walls in order</h2>
+    <p>Read down from the nursery to the first cell able to leave it. Each ring is a wall: an inequality the lineage must satisfy to be kept at that level. A published measurement lands on a particular wall with a slack.</p>
+    <p>A step whose payer does not exist yet falls into a side basin. These walls hold whatever the setting was. Settings only change where on the map a lineage starts, and which basins are open.</p>
+  </div>
+  <div class="fun">
+    <div><svg id="funnel" viewBox="0 0 640 640" role="img" aria-label="A funnel of nine crossings from the nursery to the first individual, with three side basins for orders that fail"></svg>
+      <div class="legend" style="margin-top:8px">
+        <span><i style="background:var(--copy)"></i>path that is kept</span>
+        <span><i style="background:var(--fail)"></i>order that fails</span>
+        <span>Tap a ring or a number.</span>
+      </div></div>
+    <div class="det" aria-live="polite">
+      <div class="nav" id="fnav" aria-label="Crossings"></div>
+      <div class="st" id="fst"></div>
+      <div class="tt" id="ftt"></div>
+      <div class="walls" id="fwl"></div>
+      <div id="fbody" style="display:flex;flex-direction:column;gap:12px"></div>
+    </div>
+  </div>
+  <div class="pay">
+    <div><b>Order, not a story</b>Each crossing needs a payer that only exists after the one before it. The basins are the orders that fail. Where our runs leave an order open, the crossing says so.</div>
+    <div><b>A number for each wall</b>The binding term at each ring is a slack, so the hardest wall can be named.</div>
+    <div><b>A measurement to make</b>A negative slack names what must have paid, and which measured number would show it.</div>
+  </div>
+</section>
+
+<div class="part" id="window">
+  <div class="eyebrow">Part 2, continued</div>
+  <h1>Too good, too soon</h1>
+  <p class="lede">A replicator on the path has to stay inside a window. Below it, the lineage can't pay its rent and dies out. Above it, the replicator copies better than its current organization can keep tied to its content. Then selection rewards whatever copies fastest, and the lineage slides into a stable basin with no way forward. The window rises as organization is added, so what is too good early on becomes fine later.</p>
+</div>
+<section class="panel">
+  <div class="cap">
+    <div class="tag">C · TOO GOOD, TOO SOON</div>
+    <h2>The path climbs inside a rising window</h2>
+    <p><b>Floor, good enough:</b> the lineage pays its rent (E<sub>div</sub> &lt; e<sub>pay</sub>). It rises as gifts are withdrawn, because each withdrawn gift is a new bill.</p>
+    <p><b>Ceiling, too good:</b> the most copying power the current unit can keep tied to its content. It rises as privacy, coupling and a chromosome are installed.</p>
+    <p>The same jump in copying power is a trap at step 2 and safe at step 5. "Too soon" means crossing the ceiling before the tie that would hold it is in place.</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="map" viewBox="0 0 700 470" role="img" aria-label="A rising band between a floor and a ceiling; an amber path climbs inside it; one branch crosses the ceiling early and falls into a basin above; below the floor is extinction"></svg></div>
+    <div class="legend">
+      <span><i style="background:var(--poss-soft);border:1px solid var(--poss)"></i>the window (kept)</span>
+      <span><i style="background:var(--copy)"></i>the path</span>
+      <span><i style="background:var(--trap-soft);border:1px solid var(--fail)"></i>stable dead-end basin</span>
+      <span><i style="background:var(--dead);opacity:.35"></i>extinct</span>
+    </div>
+  </div>
+</section>
+<section class="panel">
+  <div class="cap">
+    <div class="tag">D · A CROSS-SECTION</div>
+    <h2>Why the basin holds: it is deeper than the path</h2>
+    <p>Cut the map at one step and plot how hard it is to stay at each level of copying power. The window is a shallow channel. Past the ceiling, the ground drops into a deeper well. A lineage that falls in is more stable there than on the path, which is why it doesn't come back.</p>
+    <p>Depth depends on population size: a basin is about 2N<sub>e</sub> times as deep, in bits, as the edge (bits per generation) that holds it. At N<sub>e</sub> ≈ 900, an edge of only −0.01 bits per generation makes a dead end about 18 bits deep. In our runs the window is 0–5 bits deep and dead ends are effectively permanent, unless about 0.5% mixing per cycle lets a lineage climb back out.</p>
+    <p>The well is stable but has no exit. Shedding content made it faster, and nothing in it pays for building the next tie.</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="cut" viewBox="0 0 700 300" role="img" aria-label="Cross-section: a cliff on the left to extinction, a shallow channel for the window, a ridge at the ceiling, then a deep well for the basin"></svg></div>
+  </div>
+</section>
+<section class="panel">
+  <div class="cap">
+    <div class="tag">E · EXAMPLES FROM THE LEDGER</div>
+    <h2>Crossings we have seen</h2>
+    <p>Each one is a measured or modelled failure from the lab's runs, placed on this map.</p>
+  </div>
+  <div class="draw">
+    <div class="ex">
+      <div><b>Speed with content, before coupling</b>A faster copier, or extra freeze–thaw cycles, in uncoupled compartments. Shorter, faster, meaning-free copies take over, as in Spiegelman's Qβ experiments ("Spiegelman's monster"; W2, W3).</div>
+      <div><b>A product released too early</b>Below about 70% phospholipid, a released peptide or cofactor helps everyone equally. Non-makers free-ride, and the makers lose (W11).</div>
+      <div><b>A gift that is too complete</b>Supplied templates, or a near-full-strength label-blind substitute. Nothing needs to be tied, and the stock persists only while it is fed (W6, C8). This basin is held by its supply, not by selection: it collapses when the feed stops.</div>
+            <div class="lo"><b>Below the floor: the wrong step first</b>Fidelity before completion, or a membrane in the Mg²⁺ dead zone. The lineage can't pay its rent and dies out.</div>
+      <div class="lo"><b>Below the floor: tightening before coupling</b>A membrane sealed before division waits on content. The copier is smothered by its own broken copies.</div>
+      <div class="lo"><b>Below the floor: a gift withdrawn too fast</b>Escape before what it depended on is internalized (X1, X2).</div>
+    </div>
+    <p class="note2">Axes are schematic: "copying power" stands for speed and yield together, and "organization" for the order of crossings on the funnel. The curve shapes are illustrative, not fitted.</p>
+  </div>
+</section>
+
+<!-- ============ HOW CLOSE ============ -->
+<div class="part" id="close">
+  <div class="eyebrow">Where this leaves us</div>
+  <h1>How close we are, and what a wet lab can do</h1>
+  <p class="lede">We do not claim success. What we can now do is state the remaining distance. Every step on a first path is either already shown in the laboratory, shown in parts, or reduced to a named measurement with a threshold to beat. As far as we know, no earlier account of the origin of life could say how far it was from done in one currency.</p>
+</div>
+
+<section class="panel fpanel">
+  <div class="draw">
+    <h2>The first path, step by step</h2>
+    <div class="legend"><span><span class="status s-ok">shown</span> demonstrated in the lab</span><span><span class="status s-part">in parts</span> pieces shown, or one number short</span><span><span class="status s-model">modelled</span> derived or simulated only</span></div>
+    <div class="tw"><table class="t">
+      <thead><tr><th>Step</th><th>Status</th><th>Where it stands</th></tr></thead>
+      <tbody>
+        <tr><td class="n">A ribozyme copier</td><td><span class="status s-part">in parts</span></td><td>QT45-class copiers exist. Finding one costs ≤ 42 bits<sub>s</sub> (our estimate), well inside the budget (+18). Fidelity is nearly enough (−0.1 to −0.6). <b>Completion is the bill:</b> −3.3 at the junction, payable by a tether (gain assumed) plus re-priming across freeze–thaw.</td></tr>
+        <tr><td class="n">An attached amino acid (the handle)</td><td><span class="status s-part">in parts</span></td><td>Aminoacylated primers extend ~×100 faster at 0 Mg²⁺ in nonenzymatic, activated-monomer extension (Radakovic 2021), which passes the ledger by +2.6 to +5.9. Not yet shown on a ribozyme copier. Needed only in low-Mg²⁺, fatty-acid compartments.</td></tr>
+        <tr><td class="n">One chromosome</td><td><span class="status s-model">modelled</span></td><td>A shared copying budget forces linkage (one simulation family plus an analytic check). A cis genome is kept from completion ≈ 0.97 (~130 nt, 40 attempts per division); linkage is forced by ≈ 0.98.</td></tr>
+        <tr><td class="n">Compartments that grow and divide</td><td><span class="status s-ok">shown</span></td><td>Fatty-acid vesicles grow, divide and keep RNA, at low Mg²⁺; division needs gentle shear (Zhu &amp; Szostak 2009). Phospholipid drives competitive growth (Budin &amp; Szostak 2011): +0.7 to +2.9 at the loose stage.</td></tr>
+        <tr><td class="n">Converting the membrane</td><td><span class="status s-part">in parts</span></td><td>This growth advantage is inherited only if gained fatty acid is converted to phospholipid. No acylating ribozyme yet, but thioester transacylation of lysophospholipids works without enzymes (Liu et al. 2020).</td></tr>
+        <tr><td class="n">Charging and the first code bit</td><td><span class="status s-part">in parts</span></td><td>Tiny aminoacylating ribozymes exist (Turk 2010). Measured selectivity for close amino-acid pairs is ≤ 2.2 kT, enough only with one freeze–thaw recheck. <b>Which</b> label a code takes needs only a slight bias (of order 1/N<sub>e</sub> per cycle); keeping it accurate needs the recheck or ≈ 5 kT. In models, the first bit lands on the polarity position whether handles or channels pay first.</td></tr>
+        <tr><td class="n">Coupling, channels, tightening, escape</td><td><span class="status s-model">modelled</span></td><td>Ordered and priced in the models. Phospholipid-driven growth comes before coupling, or with it. Feeding limit (where a tighter membrane starts to starve the cell) at 0.83–0.94 phospholipid fraction. In separated droplets, tight beats loose by −log₂ of the chance content survives a generation (+0.5 to +1.5 bits per generation, two families). At high Mg²⁺, tight + channels are favoured. A lasting code needs to leave the freeze–thaw, which releases a fluid membrane's contents.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout">Most of the deficits that remain are in keeping; whole-path search sits at the edge of its budget. Each one has a bypass that the models show would work, and a measurement that would show whether nature had it.</div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="cap">
+    <div class="tag">FOR A WET LAB</div>
+    <h2>If you want to try to build a living cell from scratch</h2>
+    <p>The ledger turns the attempt into a checklist. Each measurement below decides a step, and each has a threshold. Clearing them in order is what a first path requires.</p>
+    <p>Our numbers are not the last word. A measured value that differs from ours goes straight into the same inequality and moves the slack, so the ledger stays useful even where we are wrong.</p>
+  </div>
+  <div class="draw">
+    <div class="tw"><table class="t">
+      <thead><tr><th>#</th><th>Measure</th><th>Threshold to beat</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>Re-priming: the fraction of stalled primer–template complexes that resume after one freeze–thaw cycle (ρ)</td><td>ρ ≥ 0.5 with a ×5 tether</td></tr>
+        <tr><td class="n">2</td><td>Per-junction completion of a QT-class copier on a tethered partner</td><td>≥ 0.95 for the copier; ≈ 0.97 for a cis genome</td></tr>
+        <tr><td class="n">3</td><td>The commitment ratio k<sub>c</sub>/k<sub>off</sub> per junction on a tethered template</td><td>≈ ×17 above QT45's free-template value</td></tr>
+        <tr><td class="n">4</td><td>Complete genome copies made per protocell division</td><td>≳ 5–9; every rent threshold moves by log₂ of this number</td></tr>
+        <tr><td class="n">5</td><td>Copying fidelity at useful yield</td><td>ε ≈ 0.02 per site</td></tr>
+        <tr><td class="n">6</td><td>RNA retention through freeze–thaw of fatty-acid vesicles with some phospholipid, at 25–50 mM Mg²⁺</td><td>tolerance ≈ 4 + 150<i>x</i> mM (a fit to one study) predicts ≥ 40 mM at <i>x</i> ≈ 0.25; above that, no handle is needed</td></tr>
+        <tr><td class="n">7</td><td>Content release per freeze–thaw cycle vs phospholipid fraction</td><td>≲ 4–8% per cycle for a lasting code (one family); fluid phospholipid membranes measured at 18–57%</td></tr>
+        <tr><td class="n">8</td><td>Release under slow freezing for gel-phase (saturated) phospholipid blends at ≈ 30 mM Mg²⁺: where a lasting code could be kept</td><td>≲ 4–8% per cycle</td></tr>
+        <tr><td class="n">9</td><td>An acylating ribozyme, or thioester transacylation of lysophospholipids (shown without enzymes, Liu 2020), ideally at neutral pH</td><td>conversion ≳ 0.5–1 per year</td></tr>
+        <tr><td class="n">10</td><td>Rupture and dispersal per freeze–thaw cycle</td><td>sets the escape edge, −log₂ P(content survives a generation)</td></tr>
+        <tr><td class="n">11</td><td>A ribozyme copier using an attached amino acid to finish copies at low Mg²⁺</td><td>restores copying toward its high-Mg²⁺ rate below ≈ 25–35 mM</td></tr>
+        <tr><td class="n">12</td><td>Supply of activated amino acids per vesicle in a cold pond, and charged-handle lifetime at 0–5 °C</td><td>≈ 2–15 charges per vesicle per charge lifetime</td></tr>
+        <tr><td class="n">13</td><td>Charging specificity of self-aminoacylating ribozymes for close pairs (Ile vs Val vs Leu)</td><td>≥ 3 <i>kT</i> single pass, or 2 <i>kT</i> plus a recheck</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout" style="border-color:var(--poss)">Each measurement, with what it decides and our registered expectation, is on the <a href="/origin-of-life-measurements.html">collaboration page</a>.</div>
+    <div class="callout"><b>Two starting conditions the ledger favours:</b> a cold, freeze–thaw (and pH-cycling) setting at low Mg²⁺, with fatty-acid vesicles and a copier carrying an attached amino acid; or Mg²⁺ ≳ 35 mM with membranes ≥ 25% phospholipid and no handle. In both, completion must be paid first.</div>
+  </div>
+</section>
+
+<!-- ============ MISREADINGS ============ -->
+<div class="part" id="misreadings">
+  <div class="eyebrow">Scope</div>
+  <h1>Clarifications</h1>
+  <p class="lede">This way of setting up the question differs from the usual one, so a few points of scope are worth stating directly.</p>
+</div>
+<section class="panel fpanel">
+  <div class="draw">
+    <div class="mis">
+      <div class="card"><h3>Constraints, not a scenario</h3><p>We map what any path must satisfy rather than propose one. A pond, a vent or a drip is a starting point in gift space, and the walls hold for each of them.</p></div>
+      <div class="card"><h3>Bits add along a kept path</h3><p>Once a step is kept, the next is searched against its own budget. So the bits measure cost, not improbability, and the central question becomes one of rates.</p></div>
+      <div class="card"><h3>A deficit is a bill</h3><p>Negative slack names what had to be paid, the bypass that could pay it, and the measurement that would show it was paid. It says where to look next.</p></div>
+      <div class="card"><h3>It builds on the stochastic corrector</h3><p>The keeping law extends Szathmáry and Demeter's stochastic corrector and the origin of chromosomes. What it adds: the threshold in one currency with the payoff free, the copy-number map, helper RNAs losing at any benefit, and the amino-acid handle and first chromosome as one step.</p></div>
+      <div class="card"><h3>What "kept" means</h3><p>Kept is persistence at a stated level against a matched control with the function erased. It is not fixation. The control can persist too, so persistence on its own is not taken as evidence of function.</p></div>
+      <div class="card"><h3>The handle result is conditional</h3><p>The amino-acid handle is needed only at low Mg²⁺ in fatty-acid membranes. It reverses at about 25% phospholipid in a Mg²⁺-rich pond, so it is a statement about conditions rather than about a peptide world.</p></div>
+      <div class="card"><h3>The code's bits are prices</h3><p>For the code we price finding (bits<sub>s</sub>) and keeping (bit rates). These are different quantities from the ≈ 4.2 bits of codon-table entropy per codon.</p></div>
+      <div class="card"><h3>Housekeeping information is an analogy of role</h3><p>It plays the role that housekeeping heat plays in nonequilibrium thermodynamics: the steady cost of holding a driven state. It is measured in bits per protocell generation, not in heat, and population entropy production is not used as a test of keeping.</p></div>
+      <div class="card"><h3>Stereochemistry and selection, at different steps</h3><p>A slight chemical bias can pick a label; selection and proofreading keep it. "Cells before code" concerns founding; sharing between coded lineages can come later.</p></div>
+    </div>
+    <div class="callout"><b>The field's words for ours:</b> edge = invasion fitness (in bits per generation); headroom = growth when rare; rent = the Eigen threshold generalized to completion; the tie = privatization (kin selection); kept at a level = a stable unit of selection at that level.</div>
+  </div>
+</section>
+
+<footer>Numbers are from the lab's constraint ledger, v2.4 (20 Nov 2026). Model results come from four model families run in parallel; thresholds marked "two families" were reproduced in both. QT45: Gianni et al. 2026. Other measurements: Radakovic &amp; Szostak 2021; Budin &amp; Szostak 2011; Chen, Salehi-Ashtiani &amp; Szostak 2005; Chen, Roberts &amp; Szostak 2004; Dalai et al. 2018; Zhu &amp; Szostak 2009; Liu et al. 2020 (thioester transacylation); Salibi et al. 2023 and Litschel et al. 2018 (freeze–thaw release); Tagami, Attwater &amp; Holliger 2017; Attwater et al. 2025; Turk et al. 2010; Haldane 1937 and Muller 1950 (genetic load); Leibler &amp; Kussell 2010; aptamer selectivities as compiled. Search budgets are estimates.</footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e;}
+const css=v=>`var(--${v})`;
+const STEPS=['copier + reader + handle','phospholipid growth','code bit','coupling','feeding limit','channels','tightening'];
+
+/* GIFTS */
+(function(){const s=document.getElementById('gifts');
+const G=[['G1','energy / redox gradient',.2],['G2','activated nucleotides',.6],['G3','amino acids',.7],['G3a','amino-acid activation',.5],['G4','amphiphiles',.8],['G5','compartments',.9],['G6','concentration (ice)',.9],['G7','cycling (freeze–thaw)',1],['G8','mixing / dispersal',.6],['G9','Mg²⁺ (low here)',.15],['G10','cold (stability)',1],['GpH','pH cycling',.4],['Gx','lipid grading',.2],['Gs','separation into units',.1]];
+const L=210,R=640,rh=26,top=10;
+G.forEach(([id,nm,v],i)=>{const y=top+i*rh;
+ el('text',{x:0,y:y+15,'font-size':11,style:'fill:var(--muted);font-family:var(--f-mono)'},s,id);
+ el('text',{x:42,y:y+15,'font-size':12.5,style:'fill:var(--ink)'},s,nm);
+ el('rect',{x:L,y:y+4,width:R-L,height:15,rx:2,fill:css('copy-soft'),stroke:css('copy'),'stroke-width':.8},s);
+ el('rect',{x:L,y:y+4,width:(R-L)*v,height:15,rx:2,fill:css('poss')},s);});
+const y=top+G.length*rh+16;
+el('text',{x:L,y:y,'font-size':11},s,'none supplied');el('text',{x:R,y:y,'font-size':11,'text-anchor':'end'},s,'fully supplied');
+el('text',{x:0,y:y+20,'font-size':11,style:'fill:var(--muted)'},s,'Levels are illustrative, for one freezing pond.');
+})();
+
+/* PHASE */
+(function(){const s=document.getElementById('phase');
+const X0=70,X1=650,Y0=370,Y1=20,sx=v=>X0+v*(X1-X0),sy=v=>Y0-v*(Y0-Y1);
+el('path',{d:`M${sx(0)},${sy(0)} L${sx(1)},${sy(1)} L${sx(1)},${sy(0)} Z`,fill:css('fail'),opacity:.12},s);
+el('line',{x1:sx(0),y1:sy(0),x2:sx(1),y2:sy(1),stroke:css('fail'),'stroke-width':1.5,'stroke-dasharray':'5 4'},s);
+el('text',{x:sx(.78),y:sy(.68),'font-size':11.5,'text-anchor':'middle',style:'fill:var(--fail)',transform:`rotate(-31 ${sx(.78)} ${sy(.68)})`},s,'held = no longer given');
+el('text',{x:sx(.8),y:sy(.2),'font-size':12,'text-anchor':'middle',style:'fill:var(--fail)'},s,'forbidden: the lineage');
+el('text',{x:sx(.8),y:sy(.2)+15,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail)'},s,'cannot be kept here');
+el('rect',{x:sx(0),y:sy(.34),width:sx(.24)-sx(0),height:sy(0)-sy(.34),fill:css('poss-soft'),stroke:css('poss'),'stroke-width':1.2,rx:4},s);
+el('text',{x:sx(.235),y:sy(0)-24,'font-size':12.5,'text-anchor':'end',style:'fill:var(--poss);font-weight:600'},s,'nursery');
+el('text',{x:sx(.235),y:sy(0)-9,'font-size':10.5,'text-anchor':'end',style:'fill:var(--poss)'},s,'gift-rich, many tries');
+const st=[[STEPS[0],.07],[STEPS[1],.19],[STEPS[2],.3],[STEPS[3],.41],[STEPS[4],.52],[STEPS[5],.64],[STEPS[6],.78],['leaves',.9]];
+let px=sx(.02),py=sy(.08);let d=`M${px},${py}`;
+st.forEach(([nm,v])=>{const ny=sy(v+0.06),nx=sx(v+0.02);d+=` L${px},${ny} L${nx},${ny}`;px=nx;py=ny;
+ el('circle',{cx:px,cy:py,r:3.5,fill:css('copy')},s);
+ el('text',{x:px-4,y:py-8,'font-size':10.5,'text-anchor':'end',style:'fill:var(--ink2)'},s,nm);});
+el('path',{d,fill:'none',stroke:css('copy'),'stroke-width':2.5,'stroke-linejoin':'round'},s);
+el('path',{d:`M${px},${py} l18,-14`,stroke:css('copy'),'stroke-width':2.5,fill:'none'},s);
+el('line',{x1:X0,y1:Y0,x2:X1,y2:Y0,stroke:css('ink2')},s);el('line',{x1:X0,y1:Y0,x2:X0,y2:Y1,stroke:css('ink2')},s);
+el('text',{x:(X0+X1)/2,y:Y0+28,'font-size':12.5,'text-anchor':'middle',style:'fill:var(--ink)'},s,'gifts withdrawn →');
+el('text',{x:18,y:(Y0+Y1)/2,'font-size':12.5,'text-anchor':'middle',style:'fill:var(--ink)',transform:`rotate(-90 18 ${(Y0+Y1)/2})`},s,'information held and kept (bits) →');
+el('text',{x:X0+8,y:Y1+12,'font-size':11,style:'fill:var(--muted)'},s,'each riser: found within time; each tread: kept at an affordable bit rate');
+el('text',{x:X0+8,y:Y1+27,'font-size':11,style:'fill:var(--muted)'},s,'phospholipid-driven growth comes before coupling, or with it');
+})();
+
+const C=css;
+/* A: map */
+(function(){
+const s=document.getElementById('map');
+const X0=70,X1=670,Y0=420,Y1=30,W=X1-X0,H=Y0-Y1;
+const sx=u=>X0+u*W, sy=v=>Y0-v*H;
+const floor=u=>0.10+0.42*u, ceil=u=>0.26+0.52*u+0.06*Math.sin(u*3);
+const N=80, pts=f=>Array.from({length:N+1},(_,i)=>{const u=i/N;return [sx(u),sy(f(u))];});
+const line=a=>a.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+// extinct region
+const F=pts(floor);
+el('path',{d:line(F)+` L${sx(1)},${sy(0)} L${sx(0)},${sy(0)} Z`,fill:C('dead'),opacity:.22},s);
+// window band
+const Cc=pts(ceil);
+el('path',{d:line(F)+' '+line(Cc.slice().reverse()).replace('M','L')+' Z',fill:C('poss-soft')},s);
+el('path',{d:line(F),fill:'none',stroke:C('poss'),'stroke-width':1.6},s);
+el('path',{d:line(Cc),fill:'none',stroke:C('fail'),'stroke-width':1.8,'stroke-dasharray':'6 4'},s);
+// basin above ceiling, early
+const bx=sx(.30),by=sy(.86);
+[64,46,28].forEach((r,i)=>el('ellipse',{cx:bx,cy:by,rx:r*1.7,ry:r*.75,fill:i===2?C('fail'):C('trap-soft'),opacity:i===2?.35:1,stroke:C('fail'),'stroke-width':1,'stroke-opacity':.6},s));
+el('text',{x:bx,y:by-4,'font-size':13,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},s,'dead-end basin');
+el('text',{x:bx,y:by+12,'font-size':11,'text-anchor':'middle',style:'fill:var(--fail)'},s,'stable, no way forward');
+// path in window
+const mid=u=>floor(u)+0.5*(ceil(u)-floor(u))+0.05*Math.sin(u*14)*(ceil(u)-floor(u));
+const P=Array.from({length:N+1},(_,i)=>{const u=0.02+i/N*0.95;return [sx(u),sy(mid(u))];});
+el('path',{d:line(P),fill:'none',stroke:C('copy'),'stroke-width':3,'stroke-linecap':'round'},s);
+const end=P[P.length-1];
+el('path',{d:`M${end[0]},${end[1]} l14,-12`,stroke:C('copy'),'stroke-width':3,fill:'none'},s);
+el('text',{x:end[0]-10,y:end[1]+22,'font-size':12,'text-anchor':'end',style:'fill:var(--ink);font-weight:600'},s,'leaves the nursery');
+// too-good-too-soon branch from u=.18
+const u0=.18,p0=[sx(u0),sy(mid(u0))];
+el('path',{d:`M${p0[0]},${p0[1]} C ${sx(.2)},${sy(.62)} ${sx(.24)},${sy(.78)} ${bx-48},${by+22}`,fill:'none',stroke:C('fail'),'stroke-width':2.2,'stroke-dasharray':'5 4'},s);
+el('circle',{cx:p0[0],cy:p0[1],r:4,fill:C('fail')},s);
+el('text',{x:sx(.205)+6,y:sy(.56),'font-size':11.5,style:'fill:var(--fail)'},s,'too good, too soon');
+// same jump later is safe
+const u1=.66,p1=[sx(u1),sy(mid(u1))];
+el('path',{d:`M${p1[0]},${p1[1]} l0,-${(sy(mid(u1))-sy(mid(u1)+0.1)).toFixed(1)}`,stroke:C('copy'),'stroke-width':2,'stroke-dasharray':'3 3'},s);
+el('text',{x:p1[0]-8,y:sy(mid(u1)+0.1)+4,'font-size':11.5,'text-anchor':'end',style:'fill:var(--ink2)'},s,'the same jump, later: still inside');
+// low branch
+const u2=.42,p2=[sx(u2),sy(mid(u2))];
+el('path',{d:`M${p2[0]},${p2[1]} C ${sx(.44)},${sy(.3)} ${sx(.47)},${sy(.2)} ${sx(.5)},${sy(.12)}`,fill:'none',stroke:C('muted'),'stroke-width':2,'stroke-dasharray':'5 4'},s);
+el('text',{x:sx(.51),y:sy(.1),'font-size':11.5,style:'fill:var(--muted)'},s,'too little, or a gift withdrawn too fast');
+// labels on curves
+el('text',{x:sx(.86),y:sy(ceil(.86))-10,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},s,'ceiling: too good');
+el('text',{x:sx(.86),y:sy(floor(.86))+20,'font-size':12,'text-anchor':'middle',style:'fill:var(--poss);font-weight:600'},s,'floor: good enough');
+el('text',{x:sx(.8),y:sy(.2),'font-size':13,'text-anchor':'middle',style:'fill:var(--muted)'},s,'extinct');
+// step ticks
+const steps=['copier','handle','PL growth','code bit','coupling','feed limit','channels','tightening'];
+steps.forEach((t,i)=>{const u=0.06+i*0.12;el('line',{x1:sx(u),y1:Y0,x2:sx(u),y2:Y0+5,stroke:C('muted')},s);el('text',{x:sx(u),y:Y0+18,'font-size':10.5,'text-anchor':'middle'},s,t);});
+// axes
+el('line',{x1:X0,y1:Y0,x2:X1,y2:Y0,stroke:C('ink2')},s);el('line',{x1:X0,y1:Y0,x2:X0,y2:Y1,stroke:C('ink2')},s);
+el('text',{x:(X0+X1)/2,y:Y0+40,'font-size':12.5,'text-anchor':'middle',style:'fill:var(--ink)'},s,'organization along the funnel →  (ties installed, gifts withdrawn)');
+el('text',{x:20,y:(Y0+Y1)/2,'font-size':12.5,'text-anchor':'middle',style:'fill:var(--ink)',transform:`rotate(-90 20 ${(Y0+Y1)/2})`},s,'copying power (speed × yield) →');
+})();
+
+/* B: cross-section */
+(function(){
+const s=document.getElementById('cut');
+const X0=60,X1=670,Y0=250,Yt=40;
+const sx=u=>X0+u*(X1-X0);
+// potential: cliff at left, shallow channel, ridge, deep well
+const V=u=>{ if(u<0.12) return 0.05+ (0.12-u)*-6; // falling to extinction (drawn below)
+  const ch=0.55-0.12*Math.exp(-Math.pow((u-0.33)/0.11,2));
+  const ridge=0.32*Math.exp(-Math.pow((u-0.55)/0.05,2));
+  const well=-0.55*Math.exp(-Math.pow((u-0.8)/0.09,2));
+  return ch+ridge+well;};
+const sy=v=>Y0-v*(Y0-Yt)/1.0;
+const pts=[];for(let i=0;i<=200;i++){const u=i/200;let v=V(u);if(u<0.12)v=Math.min(0.95,0.546+(0.12-u)*4);pts.push([sx(u),sy(v)]);}
+const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+el('path',{d:d+` L${sx(1)},${Y0+30} L${sx(0)},${Y0+30} Z`,fill:C('band')},s);
+el('path',{d,fill:'none',stroke:C('ink2'),'stroke-width':2},s);
+// shade regions
+const reg=(a,b,col,op)=>el('rect',{x:sx(a),y:Yt-10,width:sx(b)-sx(a),height:Y0+30-Yt+10,fill:col,opacity:op},s);
+reg(0,.12,C('dead'),.18);reg(.12,.5,C('poss-soft'),.55);reg(.62,1,C('trap-soft'),.6);
+// ball on path
+const ub=.33;el('circle',{cx:sx(ub),cy:sy(V(ub))-9,r:8,fill:C('copy')},s);
+const uw=.8;el('circle',{cx:sx(uw),cy:sy(V(uw))-9,r:8,fill:C('fail')},s);
+// labels
+el('text',{x:sx(.06),y:Yt+8,'font-size':12,'text-anchor':'middle',style:'fill:var(--muted)'},s,'extinct: can\'t stay');
+el('text',{x:sx(.31),y:Yt+8,'font-size':12,'text-anchor':'middle',style:'fill:var(--poss);font-weight:600'},s,'the window: a shallow channel');
+el('text',{x:sx(.55),y:Yt+8,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail)'},s,'ceiling');
+el('text',{x:sx(.81),y:Yt+8,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},s,'dead-end basin: deeper');
+el('text',{x:sx(.12),y:Y0+22,'font-size':11,'text-anchor':'middle'},s,'floor');
+el('text',{x:sx(.55),y:Y0+22,'font-size':11,'text-anchor':'middle'},s,'ceiling');
+el('text',{x:(X0+X1)/2,y:Y0+44,'font-size':12.5,'text-anchor':'middle',style:'fill:var(--ink)'},s,'copying power at one step along the funnel →');
+el('text',{x:18,y:(Y0+Yt)/2+10,'font-size':12,'text-anchor':'middle',style:'fill:var(--ink)',transform:`rotate(-90 18 ${(Y0+Yt)/2+10})`},s,'↑ harder to stay');
+})();
+
+/* A1 grid */
+(function(){const g=document.getElementById('grid');const s=15,gap=4,x0=8,y0=8;
+for(let r=0;r<8;r++)for(let c=0;c<8;c++){const hit=(r===2&&c===5);
+el('rect',{x:x0+c*(s+gap),y:y0+r*(s+gap),width:s,height:s,rx:2,fill:hit?css('poss'):css('band'),stroke:hit?css('poss'):css('rule'),'stroke-width':1},g);} })();
+
+/* A2 copies */
+(function(){const g=document.getElementById('tree');const px=20,py=84;
+el('circle',{cx:px,cy:py,r:11,fill:css('copy')},g);
+const pts=[];for(let r=0;r<7;r++){pts.push([92,14+r*23]);pts.push([132,14+r*23]);}
+pts.forEach(([x,y])=>{el('line',{x1:px+11,y1:py,x2:x-9,y2:y,stroke:css('rule'),'stroke-width':1},g);});
+pts.forEach(([x,y],i)=>{if(i===6){el('circle',{cx:x,cy:y,r:8,fill:css('copy')},g);}
+ else{el('circle',{cx:x,cy:y,r:8,fill:css('panel'),stroke:css('muted'),'stroke-width':1.2,'stroke-dasharray':'3 2'},g);
+  el('line',{x1:x-4,y1:y-4,x2:x+4,y2:y+4,stroke:css('muted'),'stroke-width':1.2},g);}});
+})();
+
+/* E budgets */
+(function(){const s=document.getElementById('budgets');
+const L=150,R=660;
+function axis(y,max,step,unit){const sc=v=>L+(v/max)*(R-L);
+ el('line',{x1:L,y1:y,x2:R,y2:y,stroke:css('rule')},s);
+ for(let v=0;v<=max;v+=step){el('line',{x1:sc(v),y1:y,x2:sc(v),y2:y+4,stroke:css('muted')},s);el('text',{x:sc(v),y:y+17,'font-size':11,'text-anchor':'middle'},s,v);}
+ el('text',{x:R,y:y+32,'font-size':11,'text-anchor':'end'},s,unit);return sc;}
+el('text',{x:0,y:18,'font-size':13,style:'fill:var(--poss);font-weight:600'},s,'SEARCH · paid once per step');
+let sc=axis(124,160,20,'bits_s');
+el('text',{x:0,y:52,'font-size':12.5,style:'fill:var(--ink)'},s,'QT45-class copier');
+el('rect',{x:L,y:38,width:sc(60)-L,height:20,fill:css('poss-soft'),stroke:css('poss'),'stroke-width':1},s);
+el('rect',{x:L,y:43,width:sc(42)-L,height:10,fill:css('poss')},s);
+el('text',{x:sc(60)+6,y:52,'font-size':11.5},s,'cost ≤ 42 vs budget ≈ 60 → +18');
+el('text',{x:0,y:90,'font-size':12.5,style:'fill:var(--ink)'},s,'whole path');
+el('rect',{x:sc(92),y:76,width:sc(133)-sc(92),height:20,fill:css('poss-soft'),stroke:css('poss'),'stroke-width':1,'stroke-dasharray':'3 2'},s);
+el('rect',{x:sc(93),y:81,width:sc(152)-sc(93),height:10,fill:css('poss'),opacity:.8},s);
+el('text',{x:sc(92)-6,y:90,'font-size':11.5,'text-anchor':'end'},s,'cost 93–152 vs budget 92–133: at the edge');
+el('line',{x1:L,y1:200,x2:R,y2:200,stroke:css('rule'),'stroke-dasharray':'2 4'},s);
+el('text',{x:0,y:178,'font-size':13,style:'fill:var(--copy);font-weight:600'},s,'KEEPING · paid on every copy');
+el('text',{x:R,y:178,'font-size':11,'text-anchor':'end',style:'fill:var(--muted)'},s,'different scale and unit: never add across');
+let sk=axis(300,12,1,'bits per copy');
+el('text',{x:0,y:232,'font-size':12.5,style:'fill:var(--ink)'},s,'affordable (k = 40)');
+el('rect',{x:L,y:218,width:sk(3.8)-L,height:20,fill:css('poss-soft'),stroke:css('poss'),'stroke-width':1},s);
+el('text',{x:sk(3.8)+6,y:232,'font-size':11.5},s,'≈ 3.8  (1 good copy in 14)');
+el('text',{x:0,y:268,'font-size':12.5,style:'fill:var(--ink)'},s,'QT45 rent');
+el('rect',{x:L,y:254,width:sk(2.3)-L,height:20,fill:css('copy'),opacity:.55},s);
+el('rect',{x:sk(2.3)+2,y:254,width:sk(11.3)-sk(2.3)-2,height:20,fill:css('copy')},s);
+el('line',{x1:sk(3.8),y1:212,x2:sk(3.8),y2:282,stroke:css('ink'),'stroke-width':1.5,'stroke-dasharray':'4 3'},s);
+el('text',{x:sk(11.3)-6,y:268,'font-size':11.5,'text-anchor':'end',style:'fill:var(--panel);font-weight:600'},s,'11.3  (1 in 2,500)');
+})();
+
+/* F Hoyle */
+(function(){const s=document.getElementById('hoyle');
+const base=250;
+el('text',{x:20,y:20,'font-size':13,style:'fill:var(--ink);font-weight:600'},s,'One draw');
+el('text',{x:20,y:38,'font-size':11.5},s,'thousands of bits_s, found at once');
+el('rect',{x:60,y:50,width:90,height:base-50,fill:css('fail'),opacity:.18},s);
+el('line',{x1:60,y1:50,x2:150,y2:50,stroke:css('fail'),'stroke-width':2},s);
+el('text',{x:105,y:72,'font-size':11.5,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},s,'b ≫ log₂M');
+const by=base-60;
+el('line',{x1:40,y1:by,x2:180,y2:by,stroke:css('poss'),'stroke-width':2,'stroke-dasharray':'5 3'},s);
+el('text',{x:40,y:by-8,'font-size':11},s,'budget ≈ 100');
+el('line',{x1:30,y1:base,x2:650,y2:base,stroke:css('rule')},s);
+el('text',{x:105,y:base+18,'font-size':11.5,'text-anchor':'middle'},s,'fails, as Hoyle says');
+el('text',{x:250,y:20,'font-size':13,style:'fill:var(--ink);font-weight:600'},s,'A ratchet');
+el('text',{x:250,y:38,'font-size':11.5},s,'each step searched alone, then kept');
+const steps=['copier + handle','PL growth','code bit','coupling','channels','escape'];
+const w=56,h=28;let x=250,y=base;
+steps.forEach((nm,i)=>{const nx=x+w,ny=y-h;
+ el('path',{d:`M${x},${y} L${x},${ny} L${nx},${ny}`,fill:'none',stroke:css('copy'),'stroke-width':2},s);
+ el('line',{x1:x,y1:y,x2:x,y2:y-58,stroke:css('poss'),'stroke-width':1,'stroke-dasharray':'2 3',opacity:.7},s);
+ const lx=x+w/2,ly=ny-12;
+ el('rect',{x:lx-5,y:ly-3,width:10,height:8,rx:1.5,fill:css('copy')},s);
+ el('path',{d:`M${lx-3},${ly-3} v-3 a3,3 0 0 1 6,0 v3`,fill:'none',stroke:css('copy'),'stroke-width':1.5},s);
+ el('text',{x:x+w/2,y:base+16+(i%2)*13,'font-size':10.5,'text-anchor':'middle'},s,nm);
+ x=nx;y=ny;});
+el('text',{x:x+6,y:y+4,'font-size':11.5,style:'fill:var(--ink)'},s,'leaves the');
+el('text',{x:x+6,y:y+18,'font-size':11.5,style:'fill:var(--ink)'},s,'nursery');
+el('text',{x:250,y:68,'font-size':11},s,'dotted: each b_i ≤ log₂M_i');
+el('text',{x:250,y:82,'font-size':11,style:'fill:var(--copy)'},s,'lock: E_div < e_pay at that landing');
+})();
+
+/* G QT45 */
+(function(){const s=document.getElementById('qt45');
+const L=20,R=660,max=12,sc=v=>L+(v/max)*(R-L);
+el('rect',{x:L,y:40,width:sc(2.3)-L,height:34,fill:css('copy'),opacity:.55},s);
+el('rect',{x:sc(2.3)+2,y:40,width:sc(11.3)-sc(2.3)-2,height:34,fill:css('copy')},s);
+el('text',{x:(L+sc(2.3))/2,y:62,'font-size':12.5,'text-anchor':'middle',style:'fill:var(--ink);font-weight:600'},s,'fidelity 2.3');
+el('text',{x:(sc(2.3)+sc(11.3))/2,y:62,'font-size':12.5,'text-anchor':'middle',style:'fill:var(--panel);font-weight:600'},s,'completion 9.0');
+el('text',{x:L,y:28,'font-size':12,style:'fill:var(--ink)'},s,'rent per copy, from two measured numbers');
+el('rect',{x:L,y:104,width:sc(3.8)-L,height:34,fill:css('poss-soft'),stroke:css('poss')},s);
+el('text',{x:L+8,y:126,'font-size':12.5,style:'fill:var(--ink);font-weight:600'},s,'affordable 3.8');
+el('text',{x:L,y:96,'font-size':12,style:'fill:var(--ink)'},s,'what a lineage can pay (40 attempts per division)');
+const y=156;
+el('line',{x1:sc(3.8),y1:y,x2:sc(11.3),y2:y,stroke:css('fail'),'stroke-width':2},s);
+el('line',{x1:sc(3.8),y1:y-6,x2:sc(3.8),y2:y+6,stroke:css('fail'),'stroke-width':2},s);
+el('line',{x1:sc(11.3),y1:y-6,x2:sc(11.3),y2:y+6,stroke:css('fail'),'stroke-width':2},s);
+el('text',{x:(sc(3.8)+sc(11.3))/2,y:y+20,'font-size':13,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},s,'slack −7.5 bits per copy');
+el('line',{x1:sc(3.8),y1:34,x2:sc(3.8),y2:150,stroke:css('ink'),'stroke-width':1.2,'stroke-dasharray':'4 3'},s);
+for(let v=0;v<=12;v+=2){el('text',{x:sc(v),y:204,'font-size':11,'text-anchor':'middle'},s,v);}
+el('text',{x:R,y:190,'font-size':11,'text-anchor':'end'},s,'bits per copy');
+})();
+
+/* H slack */
+(function(){const s=document.getElementById('slack');const tip=document.getElementById('tip');
+const rows=[
+ ['QT45 find cost','search · bits_s',18,18,'Search cost ≤ 42 bits_s against a budget of about 60. The copier is not the hard part to find.'],
+ ['Radakovic 2021, ×100 at 0 Mg²⁺','handle · bits',2.6,5.9,'The restoring form: an attached amino acid restores copying at low Mg²⁺.'],
+ ['Budin & Szostak 2011, x̄ 0.5','membrane growth · bits',0.7,2.9,'Phospholipid-driven growth pays at the leaky stage; near the feeding limit it fades (−3.9 to +0.9 at x̄ 0.85).'],
+ ['Aptamer selectivity ×7 (2 kT)','charging · bits/event',-1.5,0,'Fails alone; reaches 0 with one freeze–thaw recheck. Proofreading is needed.'],
+ ['QT45 completion (p₀ 0.66)','completion · bits/copy',-3.3,-3.3,'Closed by a ×5 tether plus re-priming ρ ≥ 0.5.'],
+ ['Single-chain Mg²⁺ tolerance 1–10 mM','Mg²⁺ ceiling · log₂ conc.',-4.6,-1.0,'Tolerance vs the 20–35 mM copying needs without help: a handle (or a chelator) is required. About 25% phospholipid lifted tolerance above 40 mM in one study.'],
+ ['QT45 whole rent','rent · bits/copy',-7.5,-7.5,'Completion is 9.0 of the 11.3 bits per copy; fidelity is 2.3.'],
+ ['Radakovic bridges, t½ 9–72 h','bridge lifetime · log₂',-11.5,-8,'Bridges make, never keep (two model families).'],
+ ['Chen, Roberts & Szostak 2004','osmotic coupling · log₂',-16.5,-11,'Osmotic coupling needs ≈ 0.27 M nucleotide. Not a founding mechanism.'],
+];
+const L=250,R=660,lo=-17,hi=20,sc=v=>L+(v-lo)/(hi-lo)*(R-L),rh=34,top=14;
+for(let v=-15;v<=20;v+=5){el('line',{x1:sc(v),y1:top,x2:sc(v),y2:top+rows.length*rh,stroke:css('rule'),'stroke-width':v===0?0:1,opacity:.6},s);
+ el('text',{x:sc(v),y:top+rows.length*rh+18,'font-size':11,'text-anchor':'middle'},s,(v>0?'+':'')+v);}
+el('line',{x1:sc(0),y1:top-4,x2:sc(0),y2:top+rows.length*rh+4,stroke:css('ink'),'stroke-width':1.5},s);
+el('text',{x:R,y:top+rows.length*rh+34,'font-size':11,'text-anchor':'end'},s,'slack, log₂ units of each row');
+rows.forEach((r,i)=>{const y=top+i*rh+rh/2;const [nm,u,a,b,info]=r; const col=(a+b)/2>=0?css('pass'):css('fail');
+ el('text',{x:0,y:y-2,'font-size':12.5,style:'fill:var(--ink)'},s,nm);
+ el('text',{x:0,y:y+12,'font-size':10.5,style:'fill:var(--muted);font-family:var(--f-mono)'},s,u);
+ let g=el('g',{tabindex:0},s);
+ el('rect',{x:sc(-17),y:y-rh/2,width:R-sc(-17),height:rh,fill:'transparent'},g);
+ if(a===b){el('circle',{cx:sc(a),cy:y,r:6,fill:col},g);}
+ else{el('rect',{x:sc(Math.min(a,b)),y:y-5,width:Math.max(4,sc(Math.max(a,b))-sc(Math.min(a,b))),height:10,rx:5,fill:col},g);}
+ const lab=a===b?((a>0?'+':'')+a):((a>0?'+':'')+a+' to '+(b>0?'+':'')+b);
+ const lx=(a+b)/2>=0?sc(Math.max(a,b))+9:sc(Math.min(a,b))-9;
+ el('text',{x:lx,y:y+4,'font-size':11.5,'text-anchor':(a+b)/2>=0?'start':'end',style:'fill:var(--ink2)'},g,lab);
+ const show=e=>{tip.hidden=false;tip.textContent=nm+': '+info;let tx=(e.clientX||0)+14,ty=(e.clientY||0)+14;if(tx>innerWidth-270)tx=innerWidth-270;tip.style.left=Math.max(8,tx)+'px';tip.style.top=ty+'px';};
+ g.addEventListener('mousemove',show);g.addEventListener('mouseleave',()=>tip.hidden=true);
+ g.addEventListener('focus',()=>{const bb=g.getBoundingClientRect();show({clientX:bb.left+bb.width/2,clientY:bb.top});});
+ g.addEventListener('blur',()=>tip.hidden=true);
+});
+})();
+
+/* FUNNEL */
+(function(){
+const F=[
+ {s:'nursery',t:'The nursery',w:['W1','W6','W10'],
+  what:['Gifts: cold, freeze–thaw cycling, concentration, amino acids with thioester activation, low Mg²⁺, dispersal.','Search pays for the copier: cost ≤ 42 bits<sub>s</sub> against a budget of about 60, slack +18.'],
+  ineq:'<i>M</i> · 2<sup>−<i>b</i></sup> ≥ 1  (found)',
+  fail:['Supplied templates give a stock, not a lineage (W6): it collapses when the feed stops.']},
+ {s:'copier + handle',t:'Copier and reader, with a cis amino-acid handle where Mg²⁺ is low: the first chromosome',w:['W9','W14','W16','W17'],
+  what:['<b>The rate gap comes first.</b> QT45\'s rent is 11.3 bits per copy against ≈ 3.8 affordable (slack −7.5), mostly completion. A tether × freeze–thaw cycles plus re-priming must pay it.','<b>Copier and reader are one step.</b> The reader is the copier copying itself; erase it and the lineage dies. Reading is what lets copy number buy back per-copy losses.','<b>The handle.</b> Without an amino acid, copying works above ≈ 20 mM Mg²⁺ and beats a handle only above ≈ 30–35 mM, but single-chain membranes hold about 1–10 mM. An attached amino acid restores copying (×100 at 0 Mg²⁺, ×1 at 50 mM). Any of the α-amino acids tested works: no identity is needed.','<b>Linkage.</b> A shared copying budget keeps the handle only in cis and forces linkage; the linked chromosome is kept once completion reaches ≈ 0.97 (~130 nt, 40 attempts per division).','<b>Pond-dependent.</b> With about 25% phospholipid, membranes held ≥ 40 mM in one study; in a Mg²⁺-rich pond a copier without a handle then wins. In a pond whose Mg²⁺ rises, the handle is lost at ≈ 38–42 mM.'],
+  ineq:'<i>E</i><sub>div</sub>(<i>R</i><sub>c</sub>, <i>k</i>) &lt; <i>e</i><sub>pay</sub>  ⇔  <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>* ≈ 3.9 bits/copy at <i>k</i> = 40',
+  fail:['The Mg²⁺ dead zone, in fatty-acid (low-phospholipid) membranes only: more Mg²⁺ than the membrane holds, less than copying needs.','Free (trans) handles lose to the shared budget at any benefit. Bridges make but never keep (−8 to −11.5).']},
+ {s:'phospholipid growth',t:'Phospholipid-driven growth, with conversion, to x ≈ 0.8',w:['W11'],
+  what:['Vesicles with more phospholipid take fatty acid from their neighbours and grow faster (Budin &amp; Szostak 2011). The advantage is inherited only if the fatty acid gained is converted (≳ 0.5–1 per year). Slack +0.7 to +2.9 at x̄ 0.5, fading near the feeding limit.','Released products start to pay above x ≈ 0.7 (retention = x).','<b>Before coupling, or with it.</b> This growth advantage invades a pond of already-coupled protocells only where outside fatty acid is scarce (≲ 0.1 membrane units per year); growth first, or both together, sweeps 20 of 20 (one family).'],
+  ineq:'edge ∝ content-tied share of the gift',
+  fail:['A released product below x ≈ 0.7 is a public good, and non-makers free-ride (a free K10 peptide gives no edge).']},
+ {s:'code bit',t:'The first code bit: founding is a plateau, a ratchet and a lock',w:['W15'],
+  what:['<b>Plateau:</b> the code first lives in a mixed steady state (25–45% of vesicles coded). <b>Ratchet:</b> a fidelity check tips it (22–98 generations after onset). <b>Lock:</b> once frozen, an inconsistent site loses −0.39 bits per division.','<b>The label is chosen, not bought.</b> A charging bias of order 1/<i>N</i><sub>e</sub> per cycle decides which label freezes (≈ 0.06–0.14 bits per cycle at <i>N</i><sub>e</sub> ≈ 300).','<b>Two possible payers</b> can fund the same bit: a handle-stage benefit before the feeding limit, or channels after it. The first to pay sets which codon position carries meaning; every model family predicts the 2nd base (polarity). In models the bit lands on the position its first payer reads: polarity, whether handles (4 of 6) or channels (18–20 of 20) pay first.','<b>Founded in the nursery, kept after the exit.</b> A lasting code needs units releasing ≲ 4–8% of contents per cycle, but freeze–thaw releases 18–57% from fluid membranes. So the code lasts once completion no longer depends on freeze–thaw. In a warm pond with no recheck, a majority code needs ≈ 5 kT.'],
+  ineq:'<i>B</i><sub>id</sub> · <i>f</i><sub>ch</sub> ≳ 1.15 bits/div  (founds);  release per cycle ≲ 4–8%  (lasts)',
+  fail:['An identity-blind benefit writes no bit (Lys ≈ 0.08 bits/div, far below the bar).']},
+ {s:'coupling',t:'Coupling: division waits on content',w:['W2','W3'],
+  what:['A protocell divides only once its content has copied, with some activated monomers made inside: the first compartment individual.','Content must copy at least as fast as the unit divides.','Comes with or after phospholipid-driven growth in most ponds (see crossing 3).'],
+  ineq:'<i>r</i><sub>content</sub> ≥ <i>r</i><sub>div</sub>',
+  fail:['Content or speed before privacy and coupling: the Spiegelman-monster basin, as in the Qβ experiments: a shorter, faster, meaning-free replicator.']},
+ {s:'feeding limit',t:'Pinned at the feeding limit: tighter membranes starve',w:['W5 = W7'],
+  what:['Tightening starves the cell past x ≈ 0.83–0.94. The pond holds x at that edge.'],
+  ineq:'<i>x</i> ≤ <i>x</i><sub>e</sub> ≈ 0.83–0.94 without a transporter',fail:['Tightening past the feeding limit with no channel.']},
+ {s:'channels',t:'Channels, in a population that holds itself just past the feeding limit',w:['W12'],
+  what:['A function is internalized only where the gift fails, and only if repaid.','The trigger needs an overshoot of ≈ 0.01–0.02 past the feeding limit, in a population that exchanges ≲ 1% per generation with its neighbours. Fidelity paid by the environment must be internalized before escape.','At 50 mM Mg²⁺, tight + channel sweeps a loose pond (20 of 20), but loose ponds still survive with measured membranes: the pair is favoured, not forced.'],
+  ineq:'(1 − <i>a</i>) · τ · <i>e</i><sub>f</sub> &gt; <i>E</i><sub>int</sub>  (repaid)',fail:['A small patch inside one pool is swamped by migrants from the rest of it.']},
+ {s:'tightening',t:'The last tightening',w:['W8','W17'],
+  what:['Route 1: escape into separate droplets (small volumes split off from the nursery). The edge is −log₂ of the chance content survives a generation without a rupture loss, minus tightening\'s cost: +0.5 to +1.5 bits per generation (two families). In the pond tightening costs −0.08.','Route 2: rising Mg²⁺ favours tight + channel (20 of 20), and forces it only where Mg²⁺ exceeds what loose membranes tolerate (≳ 40–50 mM, unmeasured).'],
+  ineq:'kept at the destination ⇔ <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there',
+  fail:['Escape withdraws gifts in order: activation, then lipid, then strand separation. Dispersal is given up.']},
+ {s:'leaves the nursery',t:'The first individual able to leave the nursery',w:['X1'],
+  what:['Every gift it depends on is present at the destination or has been internalized, and the rent still fits.','Above ≈ 25–30 mM Mg²⁺ the copying handle is a cost, so it is lost or freed for other jobs.'],
+  ineq:'exit ⇔ ∀ gifts: supplied or internalized, and <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there',fail:[]}
+];
+const S=document.getElementById('funnel');
+const cx=300,fTop=46,fBot=560,hw=t=>24+196*Math.pow(1-t,1.35),Y=t=>fTop+t*(fBot-fTop);
+const tt=i=>0.04+i*0.112;
+let Lp=[],Rp=[];for(let i=0;i<=60;i++){const t=i/60*0.97;Lp.push([cx-hw(t),Y(t)]);Rp.push([cx+hw(t),Y(t)]);}
+el('path',{d:'M'+Lp.map(p=>p.join(',')).join(' L')+' L'+Rp.reverse().map(p=>p.join(',')).join(' L')+'Z',fill:css('band'),stroke:css('rule'),'stroke-width':1.5},S);
+const defs=el('defs',{},S);const mk=el('marker',{id:'fa',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:6,markerHeight:6,orient:'auto'},defs);
+el('path',{d:'M0,0 L10,5 L0,10 z',fill:css('fail')},mk);
+const B=[[1,'Mg²⁺ dead zone','fatty-acid membranes','W17'],[2,'public good','released, x < 0.7','W11'],[4,'Spiegelman basin','content before coupling','W2']];
+B.forEach(([i,a,b,w])=>{const t=tt(i)+0.04,y=Y(t),bx=cx+hw(t)+92;
+ el('ellipse',{cx:bx,cy:y,rx:80,ry:28,fill:css('band'),stroke:css('fail'),'stroke-width':1.3,'stroke-dasharray':'4 3'},S);
+ el('text',{x:bx,y:y-3,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},S,a);
+ el('text',{x:bx,y:y+12,'font-size':10.5,'text-anchor':'middle',style:'fill:var(--fail)'},S,b+' · '+w);
+ const sx=cx+hw(tt(i))*0.55,sy=Y(tt(i));
+ el('path',{d:`M${sx},${sy} C ${sx+40},${sy} ${bx-90},${y} ${bx-72},${y}`,fill:'none',stroke:css('fail'),'stroke-width':1.5,'stroke-dasharray':'5 4','marker-end':'url(#fa)'},S);});
+const pts=[[cx,fTop-4]];F.forEach((f,i)=>{const sg=i%2?1:-1;pts.push([cx+sg*hw(tt(i))*0.45,Y(tt(i))]);});
+let d=`M${pts[0][0]},${pts[0][1]}`;for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],my=(a[1]+b[1])/2;d+=` C ${a[0]},${my} ${b[0]},${my} ${b[0]},${b[1]}`;}
+el('path',{d,fill:'none',stroke:css('copy'),'stroke-width':3,'stroke-linecap':'round'},S);
+const hits=[];
+F.forEach((f,i)=>{const t=tt(i),y=Y(t),r=hw(t);
+ const g=el('g',{class:'ringhit',tabindex:0,role:'button','aria-label':(i+1)+': '+f.t},S);
+ el('ellipse',{cx,cy:y,rx:r,ry:Math.max(4,r*0.1),fill:'none',stroke:css('ink2'),'stroke-width':1.6,'stroke-opacity':.55,class:'ring'},g);
+ el('rect',{x:cx-r-150,y:y-13,width:2*r+150,height:26,fill:'transparent'},g);
+ el('text',{x:cx-r-10,y:y+4,'font-size':12,'text-anchor':'end',style:'fill:var(--ink)'},g,(i+1)+' · '+f.s);
+ g.addEventListener('click',()=>show(i));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(i);}});
+ hits.push(g);});
+el('text',{x:cx,y:fTop-14,'font-size':11.5,'text-anchor':'middle',style:'fill:var(--muted);font-family:var(--f-mono)'},S,'meaning-free chemistry');
+el('text',{x:cx,y:fBot+34,'font-size':11.5,'text-anchor':'middle',style:'fill:var(--muted);font-family:var(--f-mono)'},S,'↓ toward an ideal self-replicator (not modelled past here)');
+const nav=document.getElementById('fnav');
+F.forEach((f,i)=>{const b=document.createElement('button');b.type='button';b.textContent=i+1;b.title=f.t;b.onclick=()=>show(i);nav.appendChild(b);});
+const ul=a=>'<ul>'+a.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+function show(i){const f=F[i];
+ document.getElementById('fst').textContent='Crossing '+(i+1)+' of '+F.length;
+ document.getElementById('ftt').textContent=f.t;
+ document.getElementById('fwl').innerHTML=f.w.map(w=>'<span class="pill x">'+w+'</span>').join('');
+ let h='<div class="ineq">'+f.ineq+'</div><div class="sec"><h4>What crosses it, and the numbers</h4>'+ul(f.what)+'</div>';
+ if(f.fail.length)h+='<div class="sec f"><h4>Orders and bypasses that fail</h4>'+ul(f.fail)+'</div>';
+ document.getElementById('fbody').innerHTML=h;
+ [...nav.children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i?'true':'false'));
+ hits.forEach((g,j)=>{const r=g.querySelector('.ring');r.setAttribute('stroke-width',j===i?3.2:1.6);r.setAttribute('stroke-opacity',j===i?1:.55);r.setAttribute('stroke',j===i?css('copy'):css('ink2'));});}
+show(1);
+})();
+</script>
+</body></html>
+
+</body></html>
