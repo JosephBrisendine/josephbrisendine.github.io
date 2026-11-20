@@ -144,7 +144,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
   <p class="lede">When people hear "origin of life", they usually think of a story: a possible scenario, set in a warm pond or at a deep-sea vent. Those who know the field also know that the early Earth left no fossils of the first replicators, so any such story is at best an educated guess. Sceptics go further: Fred Hoyle compared the chance assembly of a cell to a tornado sweeping through a junkyard and assembling a Boeing 747. In those terms the problem cannot be solved. There is no way to check a story against a record that doesn't exist, and no way to argue with odds that are posed as one enormous draw.</p>
   <p class="thesis">We change the terms. Instead of proposing a scenario, we derive what must have been true <em>however</em> cells arose, using information and time as resources, and we read other people's measurements against those bounds.</p>
   <p class="lede">The question turns into a short list of constraints on counts of parts over time, and information theory lets us state them quantitatively. The page starts from the structure of self-replication. Part 1 builds the units: possibilities and copies on one scale, then the environment on that same scale as a vector of resources it supplies for free. A lineage then traces a trajectory through a space of information and time, which we call the phase space of the living state. Laws and constants come next. Part 2 writes coming alive as constraints on that trajectory, in the order they must be met. The last section shows how close a first path now is, and what a wet lab could do with it.</p>
-  <nav class="toc" aria-label="Contents"><a href="#question">The starting point</a><a href="#part1">Part 1 · Where the bits come from</a><a href="#laws">Laws and constants</a><a href="#part2">Part 2 · The replicator funnel</a><a href="#window">Too good, too soon</a><a href="#bigidea">The big idea</a><a href="#close">How close we are</a><a href="#methods">Methods</a><a href="#misreadings">Clarifications</a></nav>
+  <nav class="toc" aria-label="Contents"><a href="#question">The starting point</a><a href="#part1">Part 1 · Where the bits come from</a><a href="#laws">Laws and constants</a><a href="#part2">Part 2 · The replicator funnel</a><a href="#window">Too good, too soon</a><a href="#bigidea">One trap, many names</a><a href="#close">How close we are</a><a href="#methods">Methods</a><a href="#misreadings">Clarifications</a></nav>
   <div class="callout" style="border-color:var(--poss);font-size:15px"><b>For experimental labs:</b> thirteen unmeasured numbers would decide a first path to a cell, each with a threshold and what it opens or closes. <a href="/origin-of-life-measurements.html">See the measurements and get in touch →</a></div>
 </header>
 
@@ -585,18 +585,15 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
 </section>
 <section class="panel" id="bigidea" style="border:3px solid var(--copy)">
   <div class="cap">
-    <div class="tag">D · THE BIG IDEA</div>
-    <h2>Getting too good too soon is a trap</h2>
-    <p class="thesis">A lineage that gets better at copying before it can keep the gain tied to itself doesn't just stall. It falls into a hole it can't climb out of.</p>
-    <p>Think of the figure as the ground under a rolling ball. The path to a cell is a shallow groove: a lineage can stay in it, but only just. Past the ceiling, the ground drops into a deeper hole. A ball that rolls in is steadier there than it ever was in the groove, so it stays.</p>
-    <p>The trap is a kind of success. The lineage got faster by shedding parts it would need for the next step, and nothing in the hole pays to rebuild them. In our simulations these dead ends were effectively permanent.</p>
+    <div class="tag">D · ONE TRAP, MANY NAMES</div>
+    <h2>The same trap, known separately in other fields</h2>
+    <p>Getting too good too soon is not peculiar to the origin of life. Several fields have met it and named it on their own terms, without treating it as one phenomenon.</p>
     <details class="mt"><summary>Show the math</summary>
-    <p>Depth depends on population size: a hole is about 2N<sub>e</sub> times as deep, in bits, as the edge (bits per generation) that holds the lineage there. At an effective population size N<sub>e</sub> ≈ 900, an edge of only −0.01 bits per generation makes a dead end about 18 bits deep, while the groove of the path is 0–5 bits deep. Only steady mixing between populations, about 0.5% per cycle, let a lineage climb back out.</p>
+    <p>Depth depends on population size: a trap is about 2N<sub>e</sub> times as deep, in bits, as the edge (bits per generation) that holds the lineage there. At an effective population size N<sub>e</sub> ≈ 900, an edge of only −0.01 bits per generation makes a dead end about 18 bits deep, while the window of the path is 0–5 bits deep. Only steady mixing between populations, about 0.5% per cycle, let a lineage climb back out.</p>
     </details>
   </div>
   <div class="draw">
-    <div class="scroll"><svg id="cut" viewBox="0 0 700 300" role="img" aria-label="The ground under a rolling ball: a cliff on the left to extinction, a shallow groove for the path, a ridge at the ceiling, then a deeper hole for the trap"></svg></div>
-    <div class="callout" style="border-color:var(--copy);font-size:15px"><b>The same trap has a name in many fields.</b>
+    <div class="callout" style="border-color:var(--copy);font-size:15px">
       <ul class="plain" style="margin-top:8px;gap:8px">
         <li><b>Molecular evolution: Spiegelman's monster.</b> RNA evolved in a test tube to copy faster shed most of its genome and kept only what the copying enzyme needed.</li>
         <li><b>Medicine: cancer.</b> A cell lineage that copies faster than the body can keep in check wins inside one body and dies with it.</li>
@@ -830,37 +827,7 @@ el('text',{x:20,y:(Y0+Y1)/2,'font-size':12.5,'text-anchor':'middle',style:'fill:
 })();
 
 /* B: cross-section */
-(function(){
-const s=document.getElementById('cut');
-const X0=60,X1=670,Y0=250,Yt=40;
-const sx=u=>X0+u*(X1-X0);
-// potential: cliff at left, shallow channel, ridge, deep well
-const V=u=>{ if(u<0.12) return 0.05+ (0.12-u)*-6; // falling to extinction (drawn below)
-  const ch=0.55-0.12*Math.exp(-Math.pow((u-0.33)/0.11,2));
-  const ridge=0.32*Math.exp(-Math.pow((u-0.55)/0.05,2));
-  const well=-0.55*Math.exp(-Math.pow((u-0.8)/0.09,2));
-  return ch+ridge+well;};
-const sy=v=>Y0-v*(Y0-Yt)/1.0;
-const pts=[];for(let i=0;i<=200;i++){const u=i/200;let v=V(u);if(u<0.12)v=Math.min(0.95,0.546+(0.12-u)*4);pts.push([sx(u),sy(v)]);}
-const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
-el('path',{d:d+` L${sx(1)},${Y0+30} L${sx(0)},${Y0+30} Z`,fill:C('band')},s);
-el('path',{d,fill:'none',stroke:C('ink2'),'stroke-width':2},s);
-// shade regions
-const reg=(a,b,col,op)=>el('rect',{x:sx(a),y:Yt-10,width:sx(b)-sx(a),height:Y0+30-Yt+10,fill:col,opacity:op},s);
-reg(0,.12,C('dead'),.18);reg(.12,.5,C('poss-soft'),.55);reg(.62,1,C('trap-soft'),.6);
-// ball on path
-const ub=.33;el('circle',{cx:sx(ub),cy:sy(V(ub))-9,r:8,fill:C('copy')},s);
-const uw=.8;el('circle',{cx:sx(uw),cy:sy(V(uw))-9,r:8,fill:C('fail')},s);
-// labels
-el('text',{x:sx(.06),y:Yt+8,'font-size':12,'text-anchor':'middle',style:'fill:var(--muted)'},s,'extinct: can\'t stay');
-el('text',{x:sx(.31),y:Yt+8,'font-size':12,'text-anchor':'middle',style:'fill:var(--poss);font-weight:600'},s,'the path: a shallow groove');
-el('text',{x:sx(.55),y:Yt+8,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail)'},s,'ceiling');
-el('text',{x:sx(.81),y:Yt+8,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},s,'the trap: a deeper hole');
-el('text',{x:sx(.12),y:Y0+22,'font-size':11,'text-anchor':'middle'},s,'floor');
-el('text',{x:sx(.55),y:Y0+22,'font-size':11,'text-anchor':'middle'},s,'ceiling');
-el('text',{x:(X0+X1)/2,y:Y0+44,'font-size':12.5,'text-anchor':'middle',style:'fill:var(--ink)'},s,'copying power →');
-el('text',{x:18,y:(Y0+Yt)/2+10,'font-size':12,'text-anchor':'middle',style:'fill:var(--ink)',transform:`rotate(-90 18 ${(Y0+Yt)/2+10})`},s,'↑ harder to stay');
-})();
+
 
 /* A1 grid */
 (function(){const g=document.getElementById('grid');const s=15,gap=4,x0=8,y0=8;
