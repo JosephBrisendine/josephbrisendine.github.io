@@ -212,16 +212,27 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
 <!-- A -->
 <section class="panel">
   <div class="cap">
-    <div class="tag">A · TWO THINGS WE COUNT</div>
-    <h2>Possibilities and copies</h2>
-    <p>Teal bits count possibilities. They measure how much of sequence space a function must pin down, and how well a signal from the environment predicts its state. This is information in the usual sense.</p>
-    <p>Amber quantities count copies, and they recur. They are <b>bit rates</b>: log₂ fold change per copy or per generation, so one bit per generation is one doubling per generation. A PCR user already thinks in these units.</p>
-    <p>The two kinds differ in dimension. Bits are a stock and bit rates are a flow, so they are never added together.</p>
+    <div class="tag">A · FINDING AND KEEPING</div>
+    <h2>Two costs, one decomposition</h2>
+    <p>Every step toward a cell costs something twice: once to find it, and again on every copy to keep it.</p>
+    <p><b style="color:var(--poss)">Teal marks finding.</b> Teal bits count possibilities: how much of sequence space a function must pin down. They are a stock, paid once.</p>
+    <p><b style="color:var(--copy)">Amber marks keeping.</b> Amber quantities are <b>bit rates</b>: log₂ fold change per copy or per generation, so one bit per generation is one doubling per generation. A PCR user already thinks in these units. They are a flow, paid continuously, so they are never added to bits.</p>
+    <p>Each inequality behind a "Show the math" toggle gives a step on the staircase its price and its place in the order. Some steps can swap places; others cannot.</p>
   </div>
   <div class="draw">
+    <div class="callout" id="housekeeping" style="border:2px solid var(--copy);border-radius:6px;padding:14px 16px;font-size:15px;color:var(--ink)">
+      <h3 style="margin:0 0 8px;font-size:17px">The decomposition: excess and housekeeping information</h3>
+      <p style="margin:0 0 8px">Physicists split the heat a driven system gives off into two parts. <i>Excess heat</i> is the cost of changing state, paid once, like cooling a warm fridge down. <i>Housekeeping heat</i> is the cost of holding a state that isn't equilibrium, paid continuously, like keeping the fridge cold with the door shut.</p>
+      <p style="margin:0 0 8px">We make the same split for the information selection has to supply. <i>Excess information</i> is paid once, when a new variant takes over: that is finding. <i>Housekeeping information</i> is paid every generation, to replace what copying loses: that is keeping, and it equals the rent.</p>
+      <p style="margin:0 0 8px">So finding and keeping are not the same cost, but they are two halves of one decomposition. That is what lets us build the whole staircase to a cell from only two resources, information and time: each step has a finding price in bits, paid once, and a keeping price in bits per generation, paid for as long as the step must hold.</p>
+      <p style="margin:0 0 8px">Population geneticists will recognize the housekeeping term: it is exactly the genetic load of Haldane and Muller. We did not set out to rederive it. We arrived at it by a different route, from the thermodynamic split, and that route is what puts it in the same units, and on the same clock, as everything else on this page.</p>
+      <details class="mt"><summary>Show the math</summary>
+      <p style="margin:0">In nonequilibrium thermodynamics this split is standard (Oono &amp; Paniconi 1998; Hatano &amp; Sasa 2001), and both parts are defined by comparing a process with its reverse. Copying, death and division have no true reverse, so we measure against a different reference: the best type in the population. The housekeeping term is then the genetic load, −log₂(<i>w̄</i>/<i>w</i><sub>max</sub>), in bits per protocell generation. It is information, not heat: the chemistry's own dissipation can lower it but never pay it. A lineage is kept when its payoff edge exceeds it. Part of it can be paid by a gift instead (mixing, or a feed that resupplies lost content); a lineage paid that way is held by its environment, not kept. Excess information is log₂(1/<i>p</i><sub>0</sub>) bits at fixation from a starting frequency <i>p</i><sub>0</sub>.</p>
+      </details>
+    </div>
     <div class="fam">
       <div class="card p">
-        <h3>Counting possibilities <span class="k">bits · a stock</span></h3>
+        <h3>Finding: counting possibilities <span class="k">bits · a stock · paid once</span></h3>
         <svg viewBox="0 0 300 168" role="img" aria-label="An 8 by 8 grid of 64 sequences, one of which works: 6 bits of specification">
           <g id="grid"></g>
           <text x="172" y="40" font-size="13" style="fill:var(--ink)">64 sequences tried</text>
@@ -234,11 +245,11 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
           <li><b>Search cost</b> of a function (functional information, as defined by Szostak and Hazen).</li>
           <li><b>Re-findability:</b> a pond making <i>M</i> tries finds it again if <i>M</i>·2<sup>−b</sup> ≥ 1.</li>
           <li><b>Signal bits:</b> how much a signal tells about the state of the world.</li>
-          <li>A genetic code is a third kind: a <b>channel</b>, worth at most about 1 − H₂(ε) bits per binary read (for a q-letter position, log₂q − H₂(ε) − ε·log₂(q − 1)). It becomes a rate only through reads per generation.</li>
         </ul>
+        <details class="mt"><summary>Show the math</summary><p style="margin:0;font-size:14px">A genetic code is a third kind: a <b>channel</b>, worth at most about 1 − H₂(ε) bits per binary read (for a q-letter position, log₂q − H₂(ε) − ε·log₂(q − 1)). It becomes a rate only through reads per generation.</p></details>
       </div>
       <div class="card c">
-        <h3>Counting copies <span class="k">bit rates · per copy, per generation</span></h3>
+        <h3>Keeping: counting copies <span class="k">bit rates · paid on every copy</span></h3>
         <svg viewBox="0 0 300 168" role="img" aria-label="One parent makes 14 copies; 13 fail and 1 works: a rent of 3.8 bits per copy">
           <g id="tree"></g>
           <text x="172" y="40" font-size="13" style="fill:var(--ink)">14 copies made</text>
@@ -364,16 +375,6 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     <details class="mt"><summary>Show the math</summary>
     <div class="math">found ⇔ <i>b</i> ≤ log₂(<i>M</i>)<span class="op">;</span>  kept ⇔ <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>*(<i>k</i>, <i>e</i><sub>pay</sub>) ≈ 3.8–3.9 bits per copy<span class="note">at k = 40 attempts per division (our model's choice; each doubling adds one bit) and <i>e</i><sub>pay</sub> = 0.405, a free variable</span></div>
     </details>
-    <div class="callout" id="housekeeping" style="border:2px solid var(--copy);border-radius:6px;padding:14px 16px;font-size:15px;color:var(--ink)">
-      <h3 style="margin:0 0 8px;font-size:17px">Housekeeping information: the cost of staying put</h3>
-      <p style="margin:0 0 8px">Physicists split the heat a driven system gives off into two parts. <i>Excess heat</i> is the cost of changing state, paid once, like cooling a warm fridge down. <i>Housekeeping heat</i> is the cost of holding a state that isn't equilibrium, paid continuously, like keeping the fridge cold with the door shut.</p>
-      <p style="margin:0 0 8px">We make the same split for the information selection has to supply. <i>Excess information</i> is paid once, when a new variant takes over: that is finding. <i>Housekeeping information</i> is paid every generation, to replace what copying loses: that is keeping, and it equals the rent.</p>
-      <p style="margin:0 0 8px">That is why this page keeps two budgets. Finding and keeping are the two halves of one decomposition, and keeping binds most often.</p>
-      <p style="margin:0 0 8px">Population geneticists will recognize the housekeeping term: it is exactly the genetic load of Haldane and Muller. We did not set out to rederive it. We arrived at it by a different route, from the thermodynamic split, and that route is what puts it in the same units, and on the same clock, as everything else on this page.</p>
-      <details class="mt"><summary>Show the math</summary>
-      <p style="margin:0">In nonequilibrium thermodynamics this split is standard (Oono &amp; Paniconi 1998; Hatano &amp; Sasa 2001), and both parts are defined by comparing a process with its reverse. Copying, death and division have no true reverse, so we measure against a different reference: the best type in the population. The housekeeping term is then the genetic load, −log₂(<i>w̄</i>/<i>w</i><sub>max</sub>), in bits per protocell generation. It is information, not heat: the chemistry's own dissipation can lower it but never pay it. A lineage is kept when its payoff edge exceeds it. Part of it can be paid by a gift instead (mixing, or a feed that resupplies lost content); a lineage paid that way is held by its environment, not kept. Excess information is log₂(1/<i>p</i><sub>0</sub>) bits at fixation from a starting frequency <i>p</i><sub>0</sub>.</p>
-      </details>
-    </div>
   </div>
 </section>
 
