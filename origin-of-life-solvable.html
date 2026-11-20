@@ -75,6 +75,10 @@ svg text{font-family:var(--f-body);fill:var(--ink2)}
 @media (max-width:620px){.xrow{grid-template-columns:1fr;gap:4px}.xrow.h{display:none}}
 .pill{display:inline-block;font-family:var(--f-mono);font-size:11.5px;padding:1px 7px;border-radius:10px;vertical-align:1px}
 .pill.p{background:var(--poss-soft);color:var(--poss)} .pill.c{background:var(--copy-soft);color:var(--copy)} .pill.x{background:var(--xch-soft);color:var(--xch)}
+details.mt{border-top:1px dashed var(--rule);padding-top:8px}
+details.mt>summary{cursor:pointer;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+details.mt[open]>summary{margin-bottom:12px}
+details.mt>*:not(summary){margin-top:10px}
 .callout{border-left:3px solid var(--xch);padding:4px 0 4px 14px;font-size:14.5px;color:var(--ink2)}
 .callout b{color:var(--ink)}
 .new{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -141,7 +145,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
   <p class="thesis">We change the terms. Instead of proposing a scenario, we derive what must have been true <em>however</em> cells arose, using information and time as resources, and we read other people's measurements against those bounds.</p>
   <div class="callout" style="border-color:var(--copy);font-size:15px"><b>Example: Eigen's paradox.</b> Eigen showed in 1971 that a replicator can keep only about 1/ε sites, where ε is its error rate per site: no long genome without an accurate copier, and no accurate copier without a long genome. Posed that way, it is a closed loop. In the ledger it becomes an inequality:<div style="font-family:var(--f-math);font-size:17px;color:var(--ink);margin:10px 0;overflow-x:auto;white-space:nowrap"><i>R</i><sub>c</sub> &nbsp;&lt;&nbsp; <i>R</i><sub>c</sub>*</div>The rent per copy must stay below what the lineage can buy back, with every payer counted. Those payers are copy number, completion, and the environment's help.</div>
   <p class="lede">The question turns into a short list of constraints on counts of parts over time, and information theory lets us state them quantitatively. The page starts from the structure of self-replication. Part 1 builds the units: possibilities and copies on one scale, then the environment on that same scale as a vector of resources it supplies for free. A lineage then traces a trajectory through a space of information and time, which we call the phase space of the living state. Laws and constants come next. Part 2 writes coming alive as constraints on that trajectory, in the order they must be met. The last section shows how close a first path now is, and what a wet lab could do with it.</p>
-  <nav class="toc" aria-label="Contents"><a href="#question">The starting point</a><a href="#part1">Part 1 · Where the bits come from</a><a href="#laws">Laws and constants</a><a href="#part2">Part 2 · The replicator funnel</a><a href="#window">Too good, too soon</a><a href="#close">How close we are</a><a href="#misreadings">Clarifications</a></nav>
+  <nav class="toc" aria-label="Contents"><a href="#question">The starting point</a><a href="#part1">Part 1 · Where the bits come from</a><a href="#laws">Laws and constants</a><a href="#part2">Part 2 · The replicator funnel</a><a href="#window">Too good, too soon</a><a href="#close">How close we are</a><a href="#methods">Methods</a><a href="#misreadings">Clarifications</a></nav>
   <div class="callout" style="border-color:var(--poss);font-size:15px"><b>For experimental labs:</b> thirteen unmeasured numbers would decide a first path to a cell, each with a threshold and what it opens or closes. <a href="/origin-of-life-measurements.html">See the measurements and get in touch →</a></div>
 </header>
 
@@ -158,11 +162,40 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
       <li><b>The environment is the driver, and the replicator must separate from it.</b> At first the setting supplies much of what is needed: monomers, energy, cycling, compartments, even dispersal. But anything the environment supplies, a lineage cannot take with it. Persisting only while the setting does the work is not yet persisting on one's own. So we take as the endpoint <b>the first replicator able to leave the setting that made it possible</b>, and ask what it must have internalized, and in what order.</li>
       <li><b>Why bits.</b> Survival fractions multiply along every chain of copies, and their logarithms add. Taking log₂ of each ratio of counts puts every requirement on one additive scale. "How bad can it be?" then becomes two precise questions: how many bits must it specify, and how many bits per copy can it afford to lose?</li>
     </ul>
+  </div>
+</section>
+
+<!-- F -->
+<section class="panel">
+  <div class="cap">
+    <div class="tag">THE ANSWER TO HOYLE</div>
+    <h2>One draw versus a ratchet</h2>
+    <p>The junkyard-tornado argument prices a cell as one draw. All of its bits have to be found at once, against one budget.</p>
+    <p>Bits add along a path, because the log of a product is a sum. A step that is kept does not have to be found again, so each step is searched against its own budget.</p>
+    <p>Staging works only if every landing holds. That moves the hard question from probability to rates: can the lineage pay its rent at every step?</p>
+  </div>
+  <div class="draw">
+    <div class="scroll"><svg id="hoyle" viewBox="0 0 680 290" role="img" aria-label="Left: one cliff of thousands of bits against a budget near 100. Right: a staircase of small steps, each with a lock showing it is kept."></svg></div>
+    <details class="mt"><summary>Show the math</summary>
+    <div class="math">2<sup>−(<i>b</i><sub>1</sub>+<i>b</i><sub>2</sub>+…)</sup> = 2<sup>−<i>b</i><sub>1</sub></sup> · 2<sup>−<i>b</i><sub>2</sub></sup> ⋯  <span class="op">but</span>  each <i>b</i><sub>i</sub> ≤ log₂ <i>M</i><sub>i</sub>, provided step <i>i</i> is kept</div>
+    <div class="callout"><b>What adds and what doesn't:</b> search bits add, and per-copy rents add, because survival probabilities multiply. Per-division erosions do not add part by part: near the keep limit, an added part's per-division cost is about half its per-copy rent.</div>
+    </details>
+  </div>
+</section>
+
+
+<section class="panel">
+  <div class="cap">
+    <div class="tag">0 · TWO REPLICATORS</div>
+    <h2>From <i>E. coli</i> to the first copier</h2>
+    <p>Rent is what copying loses, measured in bits per copy: log₂ of copies made for each copy that works. Compare two replicators. <i>E. coli</i> is a modern bacterium. QT45 is a <b>ribozyme</b>, an RNA molecule that does the job of an enzyme; this one copies RNA. Reported in 2026 by Philipp Holliger's group at the MRC Laboratory of Molecular Biology, it is only 45 nucleotides long, and in ice it can make both its complementary strand and a copy of itself, slowly and at low yield. It is the closest thing yet to the kind of copier the first replicators needed.</p>
+  </div>
+  <div class="draw">
     <div class="tw"><table class="t">
       <thead><tr><th>Replicator</th><th>Ratio of counts, per genome copy</th><th>Rent per copy</th></tr></thead>
       <tbody>
         <tr><td class="n"><i>E. coli</i></td><td>about one new mutation per few hundred genome copies (Drake's rule)</td><td class="f">≲ 0.005 bits</td></tr>
-        <tr><td class="n">QT45 ribozyme copier</td><td>about one working copy in 2,500, mostly from copies that don't finish</td><td class="f">11.3 bits</td></tr>
+        <tr><td class="n">QT45 (an RNA copier)</td><td>about one working copy in 2,500, mostly from copies that don't finish</td><td class="f">11.3 bits</td></tr>
       </tbody>
     </table></div>
     <p>The origin of life lies somewhere along that gap. The rest of this page asks where along it a lineage could first persist on its own, and what had to pay the difference. (The <i>E. coli</i> figure counts errors only, and counts every site as constrained, so it is an upper bound.)</p>
@@ -234,12 +267,13 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     <p>The common currency is held together by these rates. It is an exchange, not an identity.</p>
   </div>
   <div class="draw">
+    <details class="mt"><summary>Show the math</summary>
     <div class="xch" role="table">
       <div class="xrow h" role="row"><div>Rate</div><div>Form</div><div>What it says</div></div>
       <div class="xrow" role="row">
         <div class="nm">Error rent <span>Eigen · per constrained site</span></div>
         <div class="fx">ε · log₂e ≈ 1.44 ε <span class="pill c">bits/copy</span></div>
-        <div class="rd">Each site that must stay right costs this much per copy. The charge is per <b>site</b>, not per bit, because a site can hold less than 2 bits<sub>s</sub>.</div>
+        <div class="rd">Each site that must stay right costs this much per copy. The charge is per <b>site</b>, not per bit, because a site can hold less than 2 bits.</div>
       </div>
       <div class="xrow" role="row">
         <div class="nm">Completion rent <span>per junction</span></div>
@@ -249,7 +283,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
       <div class="xrow" role="row">
         <div class="nm">Copy number <span>per copy → per division</span></div>
         <div class="fx"><i>E</i><sub>div</sub> ≈ −log₂[1 − (1 − 2<sup>−<i>R</i><sub>c</sub></sup>)<sup><i>k</i>/2</sup>]</div>
-        <div class="rd">A daughter is complete if at least one of its <i>k</i>/2 copies survives, with <i>k</i> copy attempts per division and a copier that picks intact templates. (Where that assumption fails, as in a family with no reader, the same form fits with a smaller effective <i>k</i>, stated per family.) So kept ⇔ <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>* ≈ log₂(<i>k</i>/2) − log₂ ln[1/(1 − 2<sup>−<i>e</i><sub>pay</sub></sup>)]. <b>Doubling the copies per division buys one bit per copy of rent.</b> Mass bounds the count: <i>k</i> ≤ monomer supply ÷ monomers per copy.</div>
+        <div class="rd">A daughter is complete if at least one of its <i>k</i>/2 copies survives, with <i>k</i> copy attempts per division and a copier that picks intact templates. (Where that assumption fails, as in a model with no reader, the same form fits with a smaller effective <i>k</i>.) So kept ⇔ <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>* ≈ log₂(<i>k</i>/2) − log₂ ln[1/(1 − 2<sup>−<i>e</i><sub>pay</sub></sup>)]. <b>Doubling the copies per division buys one bit per copy of rent.</b> Mass bounds the count: <i>k</i> ≤ monomer supply ÷ monomers per copy.</div>
       </div>
       <div class="xrow" role="row">
         <div class="nm">Signal value <span>Kelly · Bergstrom–Lachmann</span></div>
@@ -267,8 +301,9 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
         <div class="rd">Time enters here. A small edge needs enough protocells and generations to beat chance.</div>
       </div>
     </div>
-    <div class="callout"><b>Why not a single conversion factor?</b> The buy-back Γ = <i>R</i><sub>c</sub>/<i>E</i><sub>div</sub> has units of copies per division and is not a constant. In one model family it runs from about 2 to 120. It is about 10 at the keep threshold with 40 attempts per division, and about 2 for the marginal cost of a part added near that threshold. So per-copy rents add, but per-division erosions do not add part by part.</div>
+    <div class="callout"><b>Why not a single conversion factor?</b> The buy-back Γ = <i>R</i><sub>c</sub>/<i>E</i><sub>div</sub> has units of copies per division and is not a constant. In one of our models it runs from about 2 to 120. It is about 10 at the keep threshold with 40 attempts per division, and about 2 for the marginal cost of a part added near that threshold. So per-copy rents add, but per-division erosions do not add part by part.</div>
   </div>
+    </details>
 </section>
 
 <!-- C -->
@@ -277,13 +312,15 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     <div class="tag">C · THE ENVIRONMENT ON THE SAME SCALE</div>
     <h2>An environment is a vector of gifts</h2>
     <p>Each component is a resource the setting supplies for free: activated nucleotides, cycling, Mg²⁺, compartments, dispersal and so on.</p>
-    <p>Gifts come in two kinds. A <b>stock gift</b> replaces a function, so it removes bits<sub>s</sub> from what must be specified. A <b>rate gift</b> changes fidelity, completion or copy number, so it changes how much can be held. The two are never summed.</p>
+    <p>Gifts come in two kinds. A <b>stock gift</b> replaces a function, so it removes bits from what must be specified. A <b>rate gift</b> changes fidelity, completion or copy number, so it changes how much can be held. The two are never summed.</p>
     <p>A real place (a pond, a vent, a drip) is a point in gift space. The walls do not depend on which place it is. Only the starting point does.</p>
   </div>
   <div class="draw">
     <div class="scroll"><svg id="gifts" viewBox="0 0 680 410" role="img" aria-label="An illustrative gift vector: fourteen gifts, each a bar showing how much a freezing pond supplies"></svg></div>
-    <div class="math"><i>I</i><sub>closure</sub> − <i>I</i><sub>gift,s</sub>(<b>g</b>) ≤ β · <i>n</i><sub>c,max</sub>,  <i>n</i><sub>c,max</sub> = [<i>R</i><sub>c</sub>*(<i>k</i>, <i>e</i><sub>pay</sub>) − Σ log₂(1/<i>p</i><sub>j</sub>)] ⁄ log₂(1/(1 − ε))<span class="note">what must be specified, minus what stock gifts supply, must fit in the sites the lineage can afford to keep; rate gifts set that number (β ≤ 2 bits<sub>s</sub> per site)</span></div>
+    <details class="mt"><summary>Show the math</summary>
+    <div class="math"><i>I</i><sub>closure</sub> − <i>I</i><sub>gift,s</sub>(<b>g</b>) ≤ β · <i>n</i><sub>c,max</sub>,  <i>n</i><sub>c,max</sub> = [<i>R</i><sub>c</sub>*(<i>k</i>, <i>e</i><sub>pay</sub>) − Σ log₂(1/<i>p</i><sub>j</sub>)] ⁄ log₂(1/(1 − ε))<span class="note">what must be specified, minus what stock gifts supply, must fit in the sites the lineage can afford to keep; rate gifts set that number (β ≤ 2 bits per site)</span></div>
     <div class="callout"><b>A consequence:</b> at QT45's completion (<i>p</i><sub>j</sub> 0.66) <i>n</i><sub>c,max</sub> is negative. No stock gift can rescue poor completion; only a rate gift can.</div>
+    </details>
     <div class="legend"><span><i style="background:var(--poss)"></i>supplied by the setting (illustrative freezing pond)</span><span><i style="background:var(--copy-soft);border:1px solid var(--copy)"></i>left for the lineage to provide</span></div>
   </div>
 </section>
@@ -300,7 +337,9 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
   <div class="draw">
     <div class="scroll"><svg id="phase" viewBox="0 0 680 420" role="img" aria-label="Phase diagram: gifts withdrawn across, information held up; the nursery in the lower left; a staircase trajectory climbing along the closure line to the exit"></svg></div>
     <div class="legend"><span><i style="background:var(--copy)"></i>trajectory, one kept step at a time</span><span><i style="background:var(--fail);opacity:.25"></i>forbidden: holds less than the setting no longer gives</span><span><i style="background:var(--poss-soft);border:1px solid var(--poss)"></i>nursery</span></div>
+    <details class="mt"><summary>Show the math</summary>
     <div class="math">each step <i>i</i>:  found ⇔ <i>b</i><sub>i</sub> ≤ log₂ <i>M</i>(<i>t</i>)<span class="op">,</span>  kept ⇔ <i>E</i><sub>div</sub>(<i>R</i><sub>c</sub>, <i>k</i>) &lt; <i>e</i><sub>pay</sub><span class="note">information (bits) and time (bit rates; tries grow with cycles) are the two axes of cost</span></div>
+    </details>
   </div>
 </section>
 
@@ -321,31 +360,17 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
       <span><i style="background:var(--copy)"></i>rent, completion</span>
       <span><i style="background:var(--copy);opacity:.55"></i>rent, fidelity</span>
     </div>
-    <div class="math">found ⇔ <i>b</i> ≤ log₂(<i>M</i>)<span class="op">;</span>  kept ⇔ <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>*(<i>k</i>, <i>e</i><sub>pay</sub>) ≈ 3.8–3.9 bits per copy<span class="note">at k = 40 attempts per division (our model's choice; each doubling adds one bit) and e_pay = 0.405, a free variable</span></div>
+    <details class="mt"><summary>Show the math</summary>
+    <div class="math">found ⇔ <i>b</i> ≤ log₂(<i>M</i>)<span class="op">;</span>  kept ⇔ <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>*(<i>k</i>, <i>e</i><sub>pay</sub>) ≈ 3.8–3.9 bits per copy<span class="note">at k = 40 attempts per division (our model's choice; each doubling adds one bit) and <i>e</i><sub>pay</sub> = 0.405, a free variable</span></div>
+    </details>
     <div class="callout" style="border-color:var(--copy)"><b>Housekeeping information.</b> Keeping costs a steady flow of selection: each protocell generation, selection must make up for what copying loses. We call that rate <b>housekeeping information</b>, after housekeeping heat in nonequilibrium thermodynamics (the steady cost of holding a driven system in place), not housekeeping genes or metabolic upkeep. It is the genetic load of Haldane and Muller, measured in bits per protocell generation, and it equals the rent. It is a rate, not the information the lineage carries. It is also information, not heat: the chemistry's own dissipation can lower it but never pay it. A lineage is kept when its payoff edge exceeds it. Part of it can be paid by a gift instead (mixing or a feed that resupplies lost content); a lineage paid that way is held by its environment, not kept.<br><br><b>Excess information</b> is the one-time counterpart: what a sweep writes as a variant takes over, log₂(1/p₀) bits at fixation from a starting frequency p₀. Finding is paid once; keeping is paid every generation.</div>
-  </div>
-</section>
-
-<!-- F -->
-<section class="panel">
-  <div class="cap">
-    <div class="tag">F · THE ANSWER TO HOYLE</div>
-    <h2>One draw versus a ratchet</h2>
-    <p>The junkyard-tornado argument prices a cell as one draw. All of its bits have to be found at once, against one budget.</p>
-    <p>Bits add along a path, because the log of a product is a sum. A step that is kept does not have to be found again, so each step is searched against its own budget.</p>
-    <p>Staging works only if every landing holds. That moves the hard question from probability to rates: can the lineage pay its rent at every step?</p>
-  </div>
-  <div class="draw">
-    <div class="scroll"><svg id="hoyle" viewBox="0 0 680 290" role="img" aria-label="Left: one cliff of thousands of bits against a budget near 100. Right: a staircase of small steps, each with a lock showing it is kept."></svg></div>
-    <div class="math">2<sup>−(<i>b</i><sub>1</sub>+<i>b</i><sub>2</sub>+…)</sup> = 2<sup>−<i>b</i><sub>1</sub></sup> · 2<sup>−<i>b</i><sub>2</sub></sup> ⋯  <span class="op">but</span>  each <i>b</i><sub>i</sub> ≤ log₂ <i>M</i><sub>i</sub>, provided step <i>i</i> is kept</div>
-    <div class="callout"><b>What adds and what doesn't:</b> search bits add, and per-copy rents add, because survival probabilities multiply. Per-division erosions do not add part by part: near the keep limit, an added part's per-division cost is about half its per-copy rent.</div>
   </div>
 </section>
 
 <!-- G -->
 <section class="panel">
   <div class="cap">
-    <div class="tag">G · WORKED EXAMPLE 1 · A SLACK</div>
+    <div class="tag">F · WORKED EXAMPLE 1 · A SLACK</div>
     <h2>QT45, read against the ledger</h2>
     <p>Two measured numbers, fidelity and junction completion, become a rent of 11.3 bits per copy. A lineage making 40 copy attempts per division can afford about 3.8, so the slack is −7.5. (Forty is our model's choice. Each doubling of copy attempts adds one bit: at 400 the slack is about −4.1.)</p>
     <p>Most of the deficit is completion (9.0), not fidelity (2.3). So whatever happened, something must have paid for completion. A ×5 tether plus re-priming ρ ≥ 0.5 across freeze–thaw closes the gap (the tether gain is assumed; it has not been measured).</p>
@@ -361,17 +386,19 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
 <!-- G2 -->
 <section class="panel">
   <div class="cap">
-    <div class="tag">G′ · WORKED EXAMPLE 2 · AN ORDER</div>
+    <div class="tag">F′ · WORKED EXAMPLE 2 · AN ORDER</div>
     <h2>The amino-acid handle: paid below a magnesium level, a cost above it</h2>
     <p>We call an amino acid attached to the copying RNA a <b>handle</b>. An aminoacylated primer extends about ×100 faster at 0 mM Mg²⁺, and no faster at 50 mM (Radakovic et al. 2021). The same ledger that says QT45 is short on completion says who can pay that bill, and when.</p>
   </div>
   <div class="draw">
+    <details class="mt"><summary>Show the math</summary>
     <div class="math"><i>g</i><sub>eff</sub> = <i>g</i>(Mg) + <i>f</i><sub>ch</sub> · (1 − <i>g</i>(Mg))<span class="note">the amino acid restores copying toward its high-Mg²⁺ rate; its benefit vanishes where Mg²⁺ alone suffices</span></div>
+    </details>
     <ul class="plain">
       <li><b>Needed only where membranes can't hold Mg²⁺.</b> Single-chain membranes tolerate about 1–5 mM (pure fatty acid) to about 10 mM (with monoesters). Copying without help works above about 20 mM and beats a handle only above about 30–35 mM. Below about 20 mM an attached amino acid is required, and any of the α-amino acids tested will do: a free α-amine is what matters. Identity matters only if the handle is also to found a code.</li>
       <li><b>It must ride on the genome.</b> A free (trans) handle loses to the shared copying budget at every benefit tested (×1–×100), unless a controller holds its copying to a fixed ratio, which costs more than linkage. In cis it keeps the chromosome, so the handle and the first chromosome are one step.</li>
-      <li><b>It needs a supply.</b> About 55–80% of handles must be charged at 0–2.5 mM Mg²⁺: roughly 2–15 charges per vesicle per charge lifetime, by two model families. A charge lasts about 29 times longer at 0 °C than at 25 °C, and Mg²⁺ shortens it.</li>
-      <li><b>It stops paying at about 25–35 mM Mg²⁺</b> (two families; +0.43 bits per division at 10 mM, +0.08 at 20, −0.07 at 50, derived rather than head to head). About 25% phospholipid raised tolerance to ≥ 40 mM in one study (a dye, at room temperature). In a pond whose Mg²⁺ rises as it evaporates, the handle is lost at about 38–42 mM, a few mM after the static crossover, and freed for other jobs.</li>
+      <li><b>It needs a supply.</b> About 55–80% of handles must be charged at 0–2.5 mM Mg²⁺: roughly 2–15 charges per vesicle per charge lifetime, in two independent models. A charge lasts about 29 times longer at 0 °C than at 25 °C, and Mg²⁺ shortens it.</li>
+      <li><b>It stops paying at about 25–35 mM Mg²⁺</b> (two independent models; +0.43 bits per division at 10 mM, +0.08 at 20, −0.07 at 50, derived rather than head to head). About 25% phospholipid raised tolerance to ≥ 40 mM in one study (a dye, at room temperature). In a pond whose Mg²⁺ rises as it evaporates, the handle is lost at about 38–42 mM, a few mM after the static crossover, and freed for other jobs.</li>
     </ul>
     <div class="callout">One example shows a slack, the other an order. The handle comes <b>with</b> the copier in fatty-acid compartments, not after it.</div>
   </div>
@@ -380,10 +407,10 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
 <!-- H -->
 <section class="panel">
   <div class="cap">
-    <div class="tag">H · OTHER PEOPLE'S MEASUREMENTS</div>
+    <div class="tag">G · OTHER PEOPLE'S MEASUREMENTS</div>
     <h2>Slack for published results</h2>
     <p>Slack = log₂(available ÷ required). A deficit names the number the next experiment has to move, and by how much.</p>
-    <p>Each row is in the unit of its own inequality (bits<sub>s</sub>, bits per copy, or log₂ of a concentration ratio), shown under the name. Bars show ranges, dots single values.</p>
+    <p>Each row is in the unit of its own inequality (bits, bits per copy, or log₂ of a concentration ratio), shown under the name. Bars show ranges, dots single values.</p>
   </div>
   <div class="draw">
     <div class="scroll"><svg id="slack" viewBox="0 0 680 360" role="img" aria-label="Range bars of slack in log2 units for nine published results"></svg></div>
@@ -398,7 +425,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
 <!-- I -->
 <section class="panel">
   <div class="cap">
-    <div class="tag">I · WHAT IS NEW</div>
+    <div class="tag">H · WHAT IS NEW</div>
     <h2>The ingredients are familiar. The ledger is not.</h2>
     <p>Each tool already exists in someone's corner of the field. What is new is putting them in one currency, against one clock, so that they become inequalities that must have held however the history went.</p>
   </div>
@@ -407,7 +434,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     <div class="new">
       <div class="card"><h3>1 · Weigh finding against keeping</h3><p>Search bills and rent bills are both log₂ of counts, so we can say which one binds. Most often it is keeping.</p></div>
       <div class="card"><h3>2 · Slack for any measurement</h3><p>A rate constant, a fidelity or a tolerance becomes a pass or fail by a stated number of bits, plus the bypass that would pay for it.</p></div>
-      <div class="card"><h3>3 · Tiers of certainty</h3><p>Laws hold for any chemistry. Constants hold within a chemistry class, or where two model families agree, or come from one family. Readers can see which layer each claim rests on.</p></div>
+      <div class="card"><h3>3 · Tiers of certainty</h3><p>Laws hold for any chemistry. Constants hold within a chemistry class, or where two independent models agree, or come from one model. Readers can see which layer each claim rests on.</p></div>
     </div>
     <div class="callout"><b>Where the currency is approximate:</b> possibilities and copies meet through exchange rates, not by definition. The Eigen rent is per site; the copy-number map assumes a copier that picks intact templates; Kelly's rate is an upper bound.</div>
   </div>
@@ -417,16 +444,17 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
 <div class="part" id="laws">
   <div class="eyebrow">Between the parts</div>
   <h1>Laws and constants</h1>
-  <p class="lede">We split the ledger the way physics does. A <b>law</b> holds for any chemistry and any parameters. A <b>constant</b> is a number a law takes as input: from the literature, from two model families that agree, or from one family. The laws say what any path must pay and in what units; the constants say how much this chemistry charges.</p>
+  <p class="lede">We split the ledger the way physics does. A <b>law</b> holds for any chemistry and any parameters. A <b>constant</b> is a number a law takes as input: from the literature, from two independent models that agree, or from one model. The laws say what any path must pay and in what units; the constants say how much this chemistry charges.</p>
 </div>
 
 <section class="panel fpanel">
   <div class="draw">
+    <details class="mt"><summary>Show the laws and constants</summary>
     <div class="tw"><table class="t">
       <thead><tr><th>Law</th><th>Statement</th><th>Constants it needs</th></tr></thead>
       <tbody>
         <tr><td class="n">L0 Counting</td><td>Every quantity is log₂ of a ratio of counts. Stocks (bits) and rates (bits per event) are never added; a rate becomes a stock only over a stated window, and two rates add only on the same clock. <i>(A convention.)</i></td><td>—</td></tr>
-        <tr><td class="n">L1 Finding</td><td class="f">found ⇔ <i>M</i>(<i>T</i>)·2<sup>−<i>b</i></sup> ≳ 1</td><td>log₂ <i>M</i>(<i>T</i>): ≈ 10–17 bits<sub>s</sub> is re-made without heredity in our nursery</td></tr>
+        <tr><td class="n">L1 Finding</td><td class="f">found ⇔ <i>M</i>(<i>T</i>)·2<sup>−<i>b</i></sup> ≳ 1</td><td>log₂ <i>M</i>(<i>T</i>): ≈ 10–17 bits is re-made without heredity in our nursery</td></tr>
         <tr><td class="n">L2 Keeping</td><td>Kept at level <i>L</i> over <i>T</i> ⇔ headroom when rare &gt; 0 and edge head-to-head &gt; 0. Kept ⇔ erosion per division &lt; payoff edge per division; steady share of protocells carrying it <i>f</i>* = 1 − <i>E</i><sub>div</sub>/<i>e</i><sub>pay</sub>.</td><td><i>e</i><sub>pay</sub> (free); copy attempts <i>k</i></td></tr>
         <tr><td class="n">L3 Copy floor</td><td class="f">log₂(<i>k</i> · <i>P</i><sub>func</sub> ⁄ <i>s</i>) &gt; 0</td><td><i>k</i>; <i>s</i> = 2 strand steps for +/− copying</td></tr>
         <tr><td class="n">L4 Rent</td><td class="f"><i>R</i><sub>c</sub> = Σ<sub>j</sub> log₂(1/<i>p</i><sub>j</sub>) + <i>n</i><sub>c</sub> · log₂(1/(1 − ε))</td><td><i>p</i><sub>j</sub>, ε, <i>n</i><sub>c</sub>, junctions per copy</td></tr>
@@ -436,7 +464,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
         <tr><td class="n">Holding</td><td class="f"><i>I</i><sub>closure</sub> − <i>I</i><sub>gift,s</sub> ≤ β · <i>n</i><sub>c,max</sub></td><td><i>n</i><sub>c,max</sub> from L2 and L4 at the rate gifts in force</td></tr>
         <tr><td class="n">L9 Drift</td><td class="f">|<i>e</i>| ≳ 1/(<i>N</i><sub>e</sub> ln 2) to be selected</td><td><i>N</i><sub>e</sub> (state with each edge)</td></tr>
         <tr><td class="n">L10 Exchange</td><td>Discrimination: ΔΔ<i>G</i>/(<i>kT</i> ln 2) bits per event. Kelly: signal value ≤ <i>I</i>(signal; state) per signal. Mass: <i>k</i> ≤ monomer supply ÷ monomers per copy. Energy enters only through discrimination and mass.</td><td>ΔΔ<i>G</i>, signals per generation, monomer supply</td></tr>
-        <tr><td class="n">L11 Keeping identity</td><td>At steady state, the information selection must supply each protocell generation to hold a kept lineage equals its rent: the genetic load in bits, −log₂(<i>w̄</i>/<i>w</i><sub>max</sub>) = <i>E</i><sub>div</sub>. This is housekeeping information. What selection actually writes is at most this; the rest is paid by losses that still leave descendants, or by resupply from outside. Checked in three model families (within 3%).</td><td>level <i>L</i>; stationary population</td></tr>
+        <tr><td class="n">L11 Keeping identity</td><td>At steady state, the information selection must supply each protocell generation to hold a kept lineage equals its rent: the genetic load in bits, −log₂(<i>w̄</i>/<i>w</i><sub>max</sub>) = <i>E</i><sub>div</sub>. This is housekeeping information. What selection actually writes is at most this; the rest is paid by losses that still leave descendants, or by resupply from outside. Checked in three independent models (within 3%).</td><td>level <i>L</i>; stationary population</td></tr>
       </tbody>
     </table></div>
     <p><b>Corollaries:</b> exit (L2 and L7 applied at the destination); the fidelity check before escape; content must copy at least as fast as its unit divides; a lasting code comes only after completion stops depending on freeze–thaw, because the same cycles release a fluid membrane's contents. The walls of Part 2 are these laws with constants filled in. The order of the walls is not a law: it follows from which constants bind first.</p>
@@ -444,22 +472,23 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
       <thead><tr><th>Key constant</th><th>Value or bracket</th><th>Status</th></tr></thead>
       <tbody>
         <tr><td class="n"><i>e</i><sub>pay</sub></td><td>free; ours 0.405 bits per protocell generation</td><td>scanned</td></tr>
-        <tr><td class="n">Copies per division</td><td>keep threshold <i>R</i><sub>c</sub>* ≈ 3.8–3.9 bits/copy at 40 attempts (a model choice; +1 bit per doubling); ≳ 5–9 complete copies per division</td><td>one family</td></tr>
+        <tr><td class="n">Copies per division</td><td>keep threshold <i>R</i><sub>c</sub>* ≈ 3.8–3.9 bits/copy at 40 attempts (a model choice; +1 bit per doubling); ≳ 5–9 complete copies per division</td><td>one model</td></tr>
         <tr><td class="n">Completion <i>p</i><sub>j</sub></td><td>QT45 0.66; a cis genome of ~130 nt needs ≈ 0.97</td><td>literature + model</td></tr>
         <tr><td class="n">Re-priming ρ</td><td>≥ 0.5 with a ×5 tether</td><td><b>unmeasured: the first decisive measurement</b></td></tr>
         <tr><td class="n">Fidelity ε</td><td>QT45 0.059; the path needs ≈ 0.02</td><td>literature</td></tr>
         <tr><td class="n">Membrane Mg²⁺ tolerance</td><td>single-chain ≈ 1–5 mM (pure fatty acid) to ≈ 10 mM (with monoester); ≈ 4 + 150<i>x</i> mM with phospholipid fraction <i>x</i> (a fit to one study)</td><td>literature</td></tr>
-        <tr><td class="n">Handle cutoff</td><td>≈ 25–35 mM Mg²⁺ (lost at ≈ 38–42 mM in a rising-Mg²⁺ pond)</td><td>two families</td></tr>
-        <tr><td class="n">Charging supply</td><td>≈ 2–15 charges per vesicle per lifetime</td><td>two families (×2–4 apart)</td></tr>
-        <tr><td class="n">Bridge lifetime needed</td><td>≳ 25–100 years; measured hours to days</td><td>two families</td></tr>
+        <tr><td class="n">Handle cutoff</td><td>≈ 25–35 mM Mg²⁺ (lost at ≈ 38–42 mM in a rising-Mg²⁺ pond)</td><td>two models</td></tr>
+        <tr><td class="n">Charging supply</td><td>≈ 2–15 charges per vesicle per lifetime</td><td>two models (×2–4 apart)</td></tr>
+        <tr><td class="n">Bridge lifetime needed</td><td>≳ 25–100 years; measured hours to days</td><td>two models</td></tr>
         <tr><td class="n">Feeding limit <i>x</i><sub>e</sub></td><td>0.83–0.94 phospholipid fraction</td><td>analytic + literature</td></tr>
-        <tr><td class="n">Exchange between units</td><td>≲ 0.5–1% per generation</td><td>two families</td></tr>
-        <tr><td class="n">Content release per freeze–thaw</td><td>lasting code needs ≲ 4–8% per cycle; fluid phospholipid membranes measured at 18–57%</td><td>one family + literature</td></tr>
-        <tr><td class="n">Escape edge</td><td>−log₂ P(content survives a generation) − tightening cost: +0.5 to +1.5 bits per generation in separated droplets; −0.08 in the pond</td><td>two families (form)</td></tr>
+        <tr><td class="n">Exchange between units</td><td>≲ 0.5–1% per generation</td><td>two models</td></tr>
+        <tr><td class="n">Content release per freeze–thaw</td><td>lasting code needs ≲ 4–8% per cycle; fluid phospholipid membranes measured at 18–57%</td><td>one model + literature</td></tr>
+        <tr><td class="n">Escape edge</td><td>−log₂ P(content survives a generation) − tightening cost: +0.5 to +1.5 bits per generation in separated droplets; −0.08 in the pond</td><td>two models (form)</td></tr>
         <tr><td class="n">Charging discrimination</td><td>single pass: ≥ 3 <i>kT</i> to found, ≈ 5 <i>kT</i> for a majority code; or 2 <i>kT</i> + one recheck. Close amino-acid pairs measured at ≤ 2.2 <i>kT</i></td><td>model + literature</td></tr>
-        <tr><td class="n">Whole-path search</td><td>cost 93–152 bits<sub>s</sub> vs budget 92–133</td><td>estimate</td></tr>
+        <tr><td class="n">Whole-path search</td><td>cost 93–152 bits vs budget 92–133</td><td>estimate</td></tr>
       </tbody>
     </table></div>
+    </details>
   </div>
 </section>
 
@@ -483,7 +512,9 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
       <li><b>It supplies dispersal.</b> Freeze rupture and mixing spread lineages. Tightening later throws this away.</li>
     </ul>
     <p>The nursery is not a claim about a particular place. Templates it supplies are a stock, not heredity: a flow-fed stock collapses when the feed stops. Whatever the nursery supplies, the lineage has not yet learned to provide for itself. To leave, it must internalize each gift it depends on, in an order the walls allow, and still pay its rent. That is the funnel.</p>
+    <details class="mt"><summary>Show the math</summary>
     <div class="math" style="white-space:normal">exit ⇔ for every gift: supplied at the destination, or internalized,  and <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there</div>
+    </details>
   </div>
 </section>
 
@@ -510,7 +541,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     </div>
   </div>
   <div class="pay">
-    <div><b>Order, not a story</b>Each crossing needs a payer that only exists after the one before it. The basins are the orders that fail. Where our runs leave an order open, the crossing says so.</div>
+    <div><b>Order, not a story</b>Each crossing needs a payer that only exists after the one before it. The basins are the orders that fail. Where our simulations leave an order open, the crossing says so.</div>
     <div><b>A number for each wall</b>The binding term at each ring is a slack, so the hardest wall can be named.</div>
     <div><b>A measurement to make</b>A negative slack names what must have paid, and which measured number would show it.</div>
   </div>
@@ -544,7 +575,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     <div class="tag">D · A CROSS-SECTION</div>
     <h2>Why the basin holds: it is deeper than the path</h2>
     <p>Cut the map at one step and plot how hard it is to stay at each level of copying power. The window is a shallow channel. Past the ceiling, the ground drops into a deeper well. A lineage that falls in is more stable there than on the path, which is why it doesn't come back.</p>
-    <p>Depth depends on population size: a basin is about 2N<sub>e</sub> times as deep, in bits, as the edge (bits per generation) that holds it. At N<sub>e</sub> ≈ 900, an edge of only −0.01 bits per generation makes a dead end about 18 bits deep. In our runs the window is 0–5 bits deep and dead ends are effectively permanent, unless about 0.5% mixing per cycle lets a lineage climb back out.</p>
+    <p>Depth depends on population size: a basin is about 2N<sub>e</sub> times as deep, in bits, as the edge (bits per generation) that holds it. At N<sub>e</sub> ≈ 900, an edge of only −0.01 bits per generation makes a dead end about 18 bits deep. In our simulations the window is 0–5 bits deep and dead ends are effectively permanent, unless about 0.5% mixing per cycle lets a lineage climb back out.</p>
     <p>The well is stable but has no exit. Shedding content made it faster, and nothing in it pays for building the next tie.</p>
   </div>
   <div class="draw">
@@ -555,16 +586,16 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
   <div class="cap">
     <div class="tag">E · EXAMPLES FROM THE LEDGER</div>
     <h2>Crossings we have seen</h2>
-    <p>Each one is a measured or modelled failure from the lab's runs, placed on this map.</p>
+    <p>Each one is a measured or modelled failure from our simulations, placed on this map.</p>
   </div>
   <div class="draw">
     <div class="ex">
-      <div><b>Speed with content, before coupling</b>A faster copier, or extra freeze–thaw cycles, in uncoupled compartments. Shorter, faster, meaning-free copies take over, as in Spiegelman's Qβ experiments ("Spiegelman's monster"; W2, W3).</div>
-      <div><b>A product released too early</b>Below about 70% phospholipid, a released peptide or cofactor helps everyone equally. Non-makers free-ride, and the makers lose (W11).</div>
-      <div><b>A gift that is too complete</b>Supplied templates, or a near-full-strength label-blind substitute. Nothing needs to be tied, and the stock persists only while it is fed (W6, C8). This basin is held by its supply, not by selection: it collapses when the feed stops.</div>
+      <div><b>Speed with content, before coupling</b>A faster copier, or extra freeze–thaw cycles, in uncoupled compartments. Shorter, faster, meaning-free copies take over, as in Spiegelman's Qβ experiments ("Spiegelman's monster").</div>
+      <div><b>A product released too early</b>Below about 70% phospholipid, a released peptide or cofactor helps everyone equally. Non-makers free-ride, and the makers lose.</div>
+      <div><b>A gift that is too complete</b>Supplied templates, or a near-full-strength label-blind substitute. Nothing needs to be tied, and the stock persists only while it is fed. This basin is held by its supply, not by selection: it collapses when the feed stops.</div>
             <div class="lo"><b>Below the floor: the wrong step first</b>Fidelity before completion, or a membrane in the Mg²⁺ dead zone. The lineage can't pay its rent and dies out.</div>
       <div class="lo"><b>Below the floor: tightening before coupling</b>A membrane sealed before division waits on content. The copier is smothered by its own broken copies.</div>
-      <div class="lo"><b>Below the floor: a gift withdrawn too fast</b>Escape before what it depended on is internalized (X1, X2).</div>
+      <div class="lo"><b>Below the floor: a gift withdrawn too fast</b>Escape before what it depended on is internalized.</div>
     </div>
     <p class="note2">Axes are schematic: "copying power" stands for speed and yield together, and "organization" for the order of crossings on the funnel. The curve shapes are illustrative, not fitted.</p>
   </div>
@@ -584,13 +615,13 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     <div class="tw"><table class="t">
       <thead><tr><th>Step</th><th>Status</th><th>Where it stands</th></tr></thead>
       <tbody>
-        <tr><td class="n">A ribozyme copier</td><td><span class="status s-part">in parts</span></td><td>QT45-class copiers exist. Finding one costs ≤ 42 bits<sub>s</sub> (our estimate), well inside the budget (+18). Fidelity is nearly enough (−0.1 to −0.6). <b>Completion is the bill:</b> −3.3 at the junction, payable by a tether (gain assumed) plus re-priming across freeze–thaw.</td></tr>
+        <tr><td class="n">A ribozyme copier</td><td><span class="status s-part">in parts</span></td><td>QT45-class copiers exist. Finding one costs ≤ 42 bits (our estimate), well inside the budget (+18). Fidelity is nearly enough (−0.1 to −0.6). <b>Completion is the bill:</b> −3.3 at the junction, payable by a tether (gain assumed) plus re-priming across freeze–thaw.</td></tr>
         <tr><td class="n">An attached amino acid (the handle)</td><td><span class="status s-part">in parts</span></td><td>Aminoacylated primers extend ~×100 faster at 0 Mg²⁺ in nonenzymatic, activated-monomer extension (Radakovic 2021), which passes the ledger by +2.6 to +5.9. Not yet shown on a ribozyme copier. Needed only in low-Mg²⁺, fatty-acid compartments.</td></tr>
-        <tr><td class="n">One chromosome</td><td><span class="status s-model">modelled</span></td><td>A shared copying budget forces linkage (one simulation family plus an analytic check). A cis genome is kept from completion ≈ 0.97 (~130 nt, 40 attempts per division); linkage is forced by ≈ 0.98.</td></tr>
+        <tr><td class="n">One chromosome</td><td><span class="status s-model">modelled</span></td><td>A shared copying budget forces linkage (one simulation model plus an analytic check). A cis genome is kept from completion ≈ 0.97 (~130 nt, 40 attempts per division); linkage is forced by ≈ 0.98.</td></tr>
         <tr><td class="n">Compartments that grow and divide</td><td><span class="status s-ok">shown</span></td><td>Fatty-acid vesicles grow, divide and keep RNA, at low Mg²⁺; division needs gentle shear (Zhu &amp; Szostak 2009). Phospholipid drives competitive growth (Budin &amp; Szostak 2011): +0.7 to +2.9 at the loose stage.</td></tr>
         <tr><td class="n">Converting the membrane</td><td><span class="status s-part">in parts</span></td><td>This growth advantage is inherited only if gained fatty acid is converted to phospholipid. No acylating ribozyme yet, but thioester transacylation of lysophospholipids works without enzymes (Liu et al. 2020).</td></tr>
         <tr><td class="n">Charging and the first code bit</td><td><span class="status s-part">in parts</span></td><td>Tiny aminoacylating ribozymes exist (Turk 2010). Measured selectivity for close amino-acid pairs is ≤ 2.2 kT, enough only with one freeze–thaw recheck. <b>Which</b> label a code takes needs only a slight bias (of order 1/N<sub>e</sub> per cycle); keeping it accurate needs the recheck or ≈ 5 kT. In models, the first bit lands on the polarity position whether handles or channels pay first.</td></tr>
-        <tr><td class="n">Coupling, channels, tightening, escape</td><td><span class="status s-model">modelled</span></td><td>Ordered and priced in the models. Phospholipid-driven growth comes before coupling, or with it. Feeding limit (where a tighter membrane starts to starve the cell) at 0.83–0.94 phospholipid fraction. In separated droplets, tight beats loose by −log₂ of the chance content survives a generation (+0.5 to +1.5 bits per generation, two families). At high Mg²⁺, tight + channels are favoured. A lasting code needs to leave the freeze–thaw, which releases a fluid membrane's contents.</td></tr>
+        <tr><td class="n">Coupling, channels, tightening, escape</td><td><span class="status s-model">modelled</span></td><td>Ordered and priced in the models. Phospholipid-driven growth comes before coupling, or with it. Feeding limit (where a tighter membrane starts to starve the cell) at 0.83–0.94 phospholipid fraction. In separated droplets, tight beats loose by −log₂ of the chance content survives a generation (+0.5 to +1.5 bits per generation, two independent models). At high Mg²⁺, tight + channels are favoured. A lasting code needs to leave the freeze–thaw, which releases a fluid membrane's contents.</td></tr>
       </tbody>
     </table></div>
     <div class="callout">Most of the deficits that remain are in keeping; whole-path search sits at the edge of its budget. Each one has a bypass that the models show would work, and a measurement that would show whether nature had it.</div>
@@ -614,7 +645,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
         <tr><td class="n">4</td><td>Complete genome copies made per protocell division</td><td>≳ 5–9; every rent threshold moves by log₂ of this number</td></tr>
         <tr><td class="n">5</td><td>Copying fidelity at useful yield</td><td>ε ≈ 0.02 per site</td></tr>
         <tr><td class="n">6</td><td>RNA retention through freeze–thaw of fatty-acid vesicles with some phospholipid, at 25–50 mM Mg²⁺</td><td>tolerance ≈ 4 + 150<i>x</i> mM (a fit to one study) predicts ≥ 40 mM at <i>x</i> ≈ 0.25; above that, no handle is needed</td></tr>
-        <tr><td class="n">7</td><td>Content release per freeze–thaw cycle vs phospholipid fraction</td><td>≲ 4–8% per cycle for a lasting code (one family); fluid phospholipid membranes measured at 18–57%</td></tr>
+        <tr><td class="n">7</td><td>Content release per freeze–thaw cycle vs phospholipid fraction</td><td>≲ 4–8% per cycle for a lasting code (one model); fluid phospholipid membranes measured at 18–57%</td></tr>
         <tr><td class="n">8</td><td>Release under slow freezing for gel-phase (saturated) phospholipid blends at ≈ 30 mM Mg²⁺: where a lasting code could be kept</td><td>≲ 4–8% per cycle</td></tr>
         <tr><td class="n">9</td><td>An acylating ribozyme, or thioester transacylation of lysophospholipids (shown without enzymes, Liu 2020), ideally at neutral pH</td><td>conversion ≳ 0.5–1 per year</td></tr>
         <tr><td class="n">10</td><td>Rupture and dispersal per freeze–thaw cycle</td><td>sets the escape edge, −log₂ P(content survives a generation)</td></tr>
@@ -625,6 +656,23 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     </table></div>
     <div class="callout" style="border-color:var(--poss)">Each measurement, with what it decides and our registered expectation, is on the <a href="/origin-of-life-measurements.html">collaboration page</a>.</div>
     <div class="callout"><b>Two starting conditions the ledger favours:</b> a cold, freeze–thaw (and pH-cycling) setting at low Mg²⁺, with fatty-acid vesicles and a copier carrying an attached amino acid; or Mg²⁺ ≳ 35 mM with membranes ≥ 25% phospholipid and no handle. In both, completion must be paid first.</div>
+  </div>
+</section>
+
+<!-- ============ METHODS ============ -->
+<div class="part" id="methods">
+  <div class="eyebrow">Methods</div>
+  <h1>How the work was done</h1>
+  <p class="lede">We asked the same questions four different ways, so that the walls and their order would not rest on any one model.</p>
+</div>
+<section class="panel fpanel">
+  <div class="draw">
+    <div class="mis">
+      <div class="card"><h3>Four models, four specialties</h3><p>We built four simulation models, each run by its own Claude session and each specializing in a different part of the problem and its literature. Each was built independently, with its own formulas and code.</p></div>
+      <div class="card"><h3>One coordinator</h3><p>A fifth session coordinated them. It put the same question to all four, compared their answers, and kept the shared record of constraints that this page calls the ledger.</p></div>
+      <div class="card"><h3>The same question, four ways</h3><p>Asking each question four ways is how we mapped the walls and the order in which they must be crossed. An order counts only where it held across models. Where the models leave an order open, the page says so.</p></div>
+      <div class="card"><h3>When a result counts</h3><p>A result marked "two models" was reproduced by two models built independently; "one model" means it has not yet been checked that way. Experimental numbers are cited to their published sources. We did no bench work.</p></div>
+    </div>
   </div>
 </section>
 
@@ -643,7 +691,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
       <div class="card"><h3>It builds on the stochastic corrector</h3><p>The keeping law extends Szathmáry and Demeter's stochastic corrector and the origin of chromosomes. What it adds: the threshold in one currency with the payoff free, the copy-number map, helper RNAs losing at any benefit, and the amino-acid handle and first chromosome as one step.</p></div>
       <div class="card"><h3>What "kept" means</h3><p>Kept is persistence at a stated level against a matched control with the function erased. It is not fixation. The control can persist too, so persistence on its own is not taken as evidence of function.</p></div>
       <div class="card"><h3>The handle result is conditional</h3><p>The amino-acid handle is needed only at low Mg²⁺ in fatty-acid membranes. It reverses at about 25% phospholipid in a Mg²⁺-rich pond, so it is a statement about conditions rather than about a peptide world.</p></div>
-      <div class="card"><h3>The code's bits are prices</h3><p>For the code we price finding (bits<sub>s</sub>) and keeping (bit rates). These are different quantities from the ≈ 4.2 bits of codon-table entropy per codon.</p></div>
+      <div class="card"><h3>The code's bits are prices</h3><p>For the code we price finding (bits) and keeping (bit rates). These are different quantities from the ≈ 4.2 bits of codon-table entropy per codon.</p></div>
       <div class="card"><h3>Housekeeping information is an analogy of role</h3><p>It plays the role that housekeeping heat plays in nonequilibrium thermodynamics: the steady cost of holding a driven state. It is measured in bits per protocell generation, not in heat, and population entropy production is not used as a test of keeping.</p></div>
       <div class="card"><h3>Stereochemistry and selection, at different steps</h3><p>A slight chemical bias can pick a label; selection and proofreading keep it. "Cells before code" concerns founding; sharing between coded lineages can come later.</p></div>
     </div>
@@ -651,7 +699,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
   </div>
 </section>
 
-<footer>Numbers are from the lab's constraint ledger, v2.4 (20 Nov 2026). Model results come from four model families run in parallel; thresholds marked "two families" were reproduced in both. QT45: Gianni et al. 2026. Other measurements: Radakovic &amp; Szostak 2021; Budin &amp; Szostak 2011; Chen, Salehi-Ashtiani &amp; Szostak 2005; Chen, Roberts &amp; Szostak 2004; Dalai et al. 2018; Zhu &amp; Szostak 2009; Liu et al. 2020 (thioester transacylation); Salibi et al. 2023 and Litschel et al. 2018 (freeze–thaw release); Tagami, Attwater &amp; Holliger 2017; Attwater et al. 2025; Turk et al. 2010; Haldane 1937 and Muller 1950 (genetic load); Leibler &amp; Kussell 2010; aptamer selectivities as compiled. Search budgets are estimates.</footer>
+<footer>Numbers are from our constraint ledger as of 20 November 2026. Model results come from four simulation models built independently; results marked "two models" were reproduced in two of them. QT45: Gianni et al. 2026. Other measurements: Radakovic &amp; Szostak 2021; Budin &amp; Szostak 2011; Chen, Salehi-Ashtiani &amp; Szostak 2005; Chen, Roberts &amp; Szostak 2004; Dalai et al. 2018; Zhu &amp; Szostak 2009; Liu et al. 2020 (thioester transacylation); Salibi et al. 2023 and Litschel et al. 2018 (freeze–thaw release); Tagami, Attwater &amp; Holliger 2017; Attwater et al. 2025; Turk et al. 2010; Haldane 1937 and Muller 1950 (genetic load); Leibler &amp; Kussell 2010; aptamer selectivities as compiled. Search budgets are estimates.</footer>
 </div>
 <div class="tip" id="tip" hidden></div>
 
@@ -811,7 +859,7 @@ function axis(y,max,step,unit){const sc=v=>L+(v/max)*(R-L);
  for(let v=0;v<=max;v+=step){el('line',{x1:sc(v),y1:y,x2:sc(v),y2:y+4,stroke:css('muted')},s);el('text',{x:sc(v),y:y+17,'font-size':11,'text-anchor':'middle'},s,v);}
  el('text',{x:R,y:y+32,'font-size':11,'text-anchor':'end'},s,unit);return sc;}
 el('text',{x:0,y:18,'font-size':13,style:'fill:var(--poss);font-weight:600'},s,'SEARCH · paid once per step');
-let sc=axis(124,160,20,'bits_s');
+let sc=axis(124,160,20,'bits');
 el('text',{x:0,y:52,'font-size':12.5,style:'fill:var(--ink)'},s,'QT45-class copier');
 el('rect',{x:L,y:38,width:sc(60)-L,height:20,fill:css('poss-soft'),stroke:css('poss'),'stroke-width':1},s);
 el('rect',{x:L,y:43,width:sc(42)-L,height:10,fill:css('poss')},s);
@@ -838,10 +886,10 @@ el('text',{x:sk(11.3)-6,y:268,'font-size':11.5,'text-anchor':'end',style:'fill:v
 (function(){const s=document.getElementById('hoyle');
 const base=250;
 el('text',{x:20,y:20,'font-size':13,style:'fill:var(--ink);font-weight:600'},s,'One draw');
-el('text',{x:20,y:38,'font-size':11.5},s,'thousands of bits_s, found at once');
+el('text',{x:20,y:38,'font-size':11.5},s,'thousands of bits, found at once');
 el('rect',{x:60,y:50,width:90,height:base-50,fill:css('fail'),opacity:.18},s);
 el('line',{x1:60,y1:50,x2:150,y2:50,stroke:css('fail'),'stroke-width':2},s);
-el('text',{x:105,y:72,'font-size':11.5,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},s,'b ≫ log₂M');
+el('text',{x:105,y:72,'font-size':11.5,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},s,'far beyond any budget');
 const by=base-60;
 el('line',{x1:40,y1:by,x2:180,y2:by,stroke:css('poss'),'stroke-width':2,'stroke-dasharray':'5 3'},s);
 el('text',{x:40,y:by-8,'font-size':11},s,'budget ≈ 100');
@@ -849,7 +897,7 @@ el('line',{x1:30,y1:base,x2:650,y2:base,stroke:css('rule')},s);
 el('text',{x:105,y:base+18,'font-size':11.5,'text-anchor':'middle'},s,'fails, as Hoyle says');
 el('text',{x:250,y:20,'font-size':13,style:'fill:var(--ink);font-weight:600'},s,'A ratchet');
 el('text',{x:250,y:38,'font-size':11.5},s,'each step searched alone, then kept');
-const steps=['copier + handle','PL growth','code bit','coupling','channels','escape'];
+const steps=['copier','membrane growth','first code','coupling','channels','escape'];
 const w=56,h=28;let x=250,y=base;
 steps.forEach((nm,i)=>{const nx=x+w,ny=y-h;
  el('path',{d:`M${x},${y} L${x},${ny} L${nx},${ny}`,fill:'none',stroke:css('copy'),'stroke-width':2},s);
@@ -889,14 +937,14 @@ el('text',{x:R,y:190,'font-size':11,'text-anchor':'end'},s,'bits per copy');
 /* H slack */
 (function(){const s=document.getElementById('slack');const tip=document.getElementById('tip');
 const rows=[
- ['QT45 find cost','search · bits_s',18,18,'Search cost ≤ 42 bits_s against a budget of about 60. The copier is not the hard part to find.'],
+ ['QT45 find cost','search · bits',18,18,'Search cost ≤ 42 bits against a budget of about 60. The copier is not the hard part to find.'],
  ['Radakovic 2021, ×100 at 0 Mg²⁺','handle · bits',2.6,5.9,'The restoring form: an attached amino acid restores copying at low Mg²⁺.'],
  ['Budin & Szostak 2011, x̄ 0.5','membrane growth · bits',0.7,2.9,'Phospholipid-driven growth pays at the leaky stage; near the feeding limit it fades (−3.9 to +0.9 at x̄ 0.85).'],
  ['Aptamer selectivity ×7 (2 kT)','charging · bits/event',-1.5,0,'Fails alone; reaches 0 with one freeze–thaw recheck. Proofreading is needed.'],
  ['QT45 completion (p₀ 0.66)','completion · bits/copy',-3.3,-3.3,'Closed by a ×5 tether plus re-priming ρ ≥ 0.5.'],
  ['Single-chain Mg²⁺ tolerance 1–10 mM','Mg²⁺ ceiling · log₂ conc.',-4.6,-1.0,'Tolerance vs the 20–35 mM copying needs without help: a handle (or a chelator) is required. About 25% phospholipid lifted tolerance above 40 mM in one study.'],
  ['QT45 whole rent','rent · bits/copy',-7.5,-7.5,'Completion is 9.0 of the 11.3 bits per copy; fidelity is 2.3.'],
- ['Radakovic bridges, t½ 9–72 h','bridge lifetime · log₂',-11.5,-8,'Bridges make, never keep (two model families).'],
+ ['Radakovic bridges, t½ 9–72 h','bridge lifetime · log₂',-11.5,-8,'Bridges make, never keep (two independent models).'],
  ['Chen, Roberts & Szostak 2004','osmotic coupling · log₂',-16.5,-11,'Osmotic coupling needs ≈ 0.27 M nucleotide. Not a founding mechanism.'],
 ];
 const L=250,R=660,lo=-17,hi=20,sc=v=>L+(v-lo)/(hi-lo)*(R-L),rh=34,top=14;
@@ -924,37 +972,37 @@ rows.forEach((r,i)=>{const y=top+i*rh+rh/2;const [nm,u,a,b,info]=r; const col=(a
 /* FUNNEL */
 (function(){
 const F=[
- {s:'nursery',t:'The nursery',w:['W1','W6','W10'],
-  what:['Gifts: cold, freeze–thaw cycling, concentration, amino acids with thioester activation, low Mg²⁺, dispersal.','Search pays for the copier: cost ≤ 42 bits<sub>s</sub> against a budget of about 60, slack +18.'],
+ {s:'nursery',t:'The nursery',
+  what:['Gifts: cold, freeze–thaw cycling, concentration, amino acids with thioester activation, low Mg²⁺, dispersal.','Search pays for the copier: cost ≤ 42 bits against a budget of about 60, slack +18.'],
   ineq:'<i>M</i> · 2<sup>−<i>b</i></sup> ≥ 1  (found)',
-  fail:['Supplied templates give a stock, not a lineage (W6): it collapses when the feed stops.']},
- {s:'copier + handle',t:'Copier and reader, with a cis amino-acid handle where Mg²⁺ is low: the first chromosome',w:['W9','W14','W16','W17'],
+  fail:['Supplied templates give a stock, not a lineage: it collapses when the feed stops.']},
+ {s:'copier + handle',t:'Copier and reader, with a cis amino-acid handle where Mg²⁺ is low: the first chromosome',
   what:['<b>The rate gap comes first.</b> QT45\'s rent is 11.3 bits per copy against ≈ 3.8 affordable (slack −7.5), mostly completion. A tether × freeze–thaw cycles plus re-priming must pay it.','<b>Copier and reader are one step.</b> The reader is the copier copying itself; erase it and the lineage dies. Reading is what lets copy number buy back per-copy losses.','<b>The handle.</b> Without an amino acid, copying works above ≈ 20 mM Mg²⁺ and beats a handle only above ≈ 30–35 mM, but single-chain membranes hold about 1–10 mM. An attached amino acid restores copying (×100 at 0 Mg²⁺, ×1 at 50 mM). Any of the α-amino acids tested works: no identity is needed.','<b>Linkage.</b> A shared copying budget keeps the handle only in cis and forces linkage; the linked chromosome is kept once completion reaches ≈ 0.97 (~130 nt, 40 attempts per division).','<b>Pond-dependent.</b> With about 25% phospholipid, membranes held ≥ 40 mM in one study; in a Mg²⁺-rich pond a copier without a handle then wins. In a pond whose Mg²⁺ rises, the handle is lost at ≈ 38–42 mM.'],
   ineq:'<i>E</i><sub>div</sub>(<i>R</i><sub>c</sub>, <i>k</i>) &lt; <i>e</i><sub>pay</sub>  ⇔  <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>* ≈ 3.9 bits/copy at <i>k</i> = 40',
   fail:['The Mg²⁺ dead zone, in fatty-acid (low-phospholipid) membranes only: more Mg²⁺ than the membrane holds, less than copying needs.','Free (trans) handles lose to the shared budget at any benefit. Bridges make but never keep (−8 to −11.5).']},
- {s:'phospholipid growth',t:'Phospholipid-driven growth, with conversion, to x ≈ 0.8',w:['W11'],
-  what:['Vesicles with more phospholipid take fatty acid from their neighbours and grow faster (Budin &amp; Szostak 2011). The advantage is inherited only if the fatty acid gained is converted (≳ 0.5–1 per year). Slack +0.7 to +2.9 at x̄ 0.5, fading near the feeding limit.','Released products start to pay above x ≈ 0.7 (retention = x).','<b>Before coupling, or with it.</b> This growth advantage invades a pond of already-coupled protocells only where outside fatty acid is scarce (≲ 0.1 membrane units per year); growth first, or both together, sweeps 20 of 20 (one family).'],
+ {s:'phospholipid growth',t:'Phospholipid-driven growth, with conversion, to x ≈ 0.8',
+  what:['Vesicles with more phospholipid take fatty acid from their neighbours and grow faster (Budin &amp; Szostak 2011). The advantage is inherited only if the fatty acid gained is converted (≳ 0.5–1 per year). Slack +0.7 to +2.9 at x̄ 0.5, fading near the feeding limit.','Released products start to pay above x ≈ 0.7 (retention = x).','<b>Before coupling, or with it.</b> This growth advantage invades a pond of already-coupled protocells only where outside fatty acid is scarce (≲ 0.1 membrane units per year); growth first, or both together, sweeps 20 of 20 in one model.'],
   ineq:'edge ∝ content-tied share of the gift',
-  fail:['A released product below x ≈ 0.7 is a public good, and non-makers free-ride (a free K10 peptide gives no edge).']},
- {s:'code bit',t:'The first code bit: founding is a plateau, a ratchet and a lock',w:['W15'],
-  what:['<b>Plateau:</b> the code first lives in a mixed steady state (25–45% of vesicles coded). <b>Ratchet:</b> a fidelity check tips it (22–98 generations after onset). <b>Lock:</b> once frozen, an inconsistent site loses −0.39 bits per division.','<b>The label is chosen, not bought.</b> A charging bias of order 1/<i>N</i><sub>e</sub> per cycle decides which label freezes (≈ 0.06–0.14 bits per cycle at <i>N</i><sub>e</sub> ≈ 300).','<b>Two possible payers</b> can fund the same bit: a handle-stage benefit before the feeding limit, or channels after it. The first to pay sets which codon position carries meaning; every model family predicts the 2nd base (polarity). In models the bit lands on the position its first payer reads: polarity, whether handles (4 of 6) or channels (18–20 of 20) pay first.','<b>Founded in the nursery, kept after the exit.</b> A lasting code needs units releasing ≲ 4–8% of contents per cycle, but freeze–thaw releases 18–57% from fluid membranes. So the code lasts once completion no longer depends on freeze–thaw. In a warm pond with no recheck, a majority code needs ≈ 5 kT.'],
+  fail:['A released product below x ≈ 0.7 is a public good, and non-makers free-ride (a free lysine peptide gives no edge).']},
+ {s:'code bit',t:'The first code bit: founding is a plateau, a ratchet and a lock',
+  what:['<b>Plateau:</b> the code first lives in a mixed steady state (25–45% of vesicles coded). <b>Ratchet:</b> a fidelity check tips it (22–98 generations after onset). <b>Lock:</b> once frozen, an inconsistent site loses −0.39 bits per division.','<b>The label is chosen, not bought.</b> A charging bias of order 1/<i>N</i><sub>e</sub> per cycle decides which label freezes (≈ 0.06–0.14 bits per cycle at <i>N</i><sub>e</sub> ≈ 300).','<b>Two possible payers</b> can fund the same bit: a handle-stage benefit before the feeding limit, or channels after it. The first to pay sets which codon position carries meaning; every model predicts the 2nd base (polarity). In models the bit lands on the position its first payer reads: polarity, whether handles (4 of 6) or channels (18–20 of 20) pay first.','<b>Founded in the nursery, kept after the exit.</b> A lasting code needs units releasing ≲ 4–8% of contents per cycle, but freeze–thaw releases 18–57% from fluid membranes. So the code lasts once completion no longer depends on freeze–thaw. In a warm pond with no recheck, a majority code needs ≈ 5 kT.'],
   ineq:'<i>B</i><sub>id</sub> · <i>f</i><sub>ch</sub> ≳ 1.15 bits/div  (founds);  release per cycle ≲ 4–8%  (lasts)',
   fail:['An identity-blind benefit writes no bit (Lys ≈ 0.08 bits/div, far below the bar).']},
- {s:'coupling',t:'Coupling: division waits on content',w:['W2','W3'],
+ {s:'coupling',t:'Coupling: division waits on content',
   what:['A protocell divides only once its content has copied, with some activated monomers made inside: the first compartment individual.','Content must copy at least as fast as the unit divides.','Comes with or after phospholipid-driven growth in most ponds (see crossing 3).'],
   ineq:'<i>r</i><sub>content</sub> ≥ <i>r</i><sub>div</sub>',
   fail:['Content or speed before privacy and coupling: the Spiegelman-monster basin, as in the Qβ experiments: a shorter, faster, meaning-free replicator.']},
- {s:'feeding limit',t:'Pinned at the feeding limit: tighter membranes starve',w:['W5 = W7'],
+ {s:'feeding limit',t:'Pinned at the feeding limit: tighter membranes starve',
   what:['Tightening starves the cell past x ≈ 0.83–0.94. The pond holds x at that edge.'],
   ineq:'<i>x</i> ≤ <i>x</i><sub>e</sub> ≈ 0.83–0.94 without a transporter',fail:['Tightening past the feeding limit with no channel.']},
- {s:'channels',t:'Channels, in a population that holds itself just past the feeding limit',w:['W12'],
+ {s:'channels',t:'Channels, in a population that holds itself just past the feeding limit',
   what:['A function is internalized only where the gift fails, and only if repaid.','The trigger needs an overshoot of ≈ 0.01–0.02 past the feeding limit, in a population that exchanges ≲ 1% per generation with its neighbours. Fidelity paid by the environment must be internalized before escape.','At 50 mM Mg²⁺, tight + channel sweeps a loose pond (20 of 20), but loose ponds still survive with measured membranes: the pair is favoured, not forced.'],
   ineq:'(1 − <i>a</i>) · τ · <i>e</i><sub>f</sub> &gt; <i>E</i><sub>int</sub>  (repaid)',fail:['A small patch inside one pool is swamped by migrants from the rest of it.']},
- {s:'tightening',t:'The last tightening',w:['W8','W17'],
-  what:['Route 1: escape into separate droplets (small volumes split off from the nursery). The edge is −log₂ of the chance content survives a generation without a rupture loss, minus tightening\'s cost: +0.5 to +1.5 bits per generation (two families). In the pond tightening costs −0.08.','Route 2: rising Mg²⁺ favours tight + channel (20 of 20), and forces it only where Mg²⁺ exceeds what loose membranes tolerate (≳ 40–50 mM, unmeasured).'],
+ {s:'tightening',t:'The last tightening',
+  what:['Route 1: escape into separate droplets (small volumes split off from the nursery). The edge is −log₂ of the chance content survives a generation without a rupture loss, minus tightening\'s cost: +0.5 to +1.5 bits per generation (two independent models). In the pond tightening costs −0.08.','Route 2: rising Mg²⁺ favours tight + channel (20 of 20), and forces it only where Mg²⁺ exceeds what loose membranes tolerate (≳ 40–50 mM, unmeasured).'],
   ineq:'kept at the destination ⇔ <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there',
   fail:['Escape withdraws gifts in order: activation, then lipid, then strand separation. Dispersal is given up.']},
- {s:'leaves the nursery',t:'The first individual able to leave the nursery',w:['X1'],
+ {s:'leaves the nursery',t:'The first individual able to leave the nursery',
   what:['Every gift it depends on is present at the destination or has been internalized, and the rent still fits.','Above ≈ 25–30 mM Mg²⁺ the copying handle is a cost, so it is lost or freed for other jobs.'],
   ineq:'exit ⇔ ∀ gifts: supplied or internalized, and <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there',fail:[]}
 ];
@@ -965,11 +1013,11 @@ let Lp=[],Rp=[];for(let i=0;i<=60;i++){const t=i/60*0.97;Lp.push([cx-hw(t),Y(t)]
 el('path',{d:'M'+Lp.map(p=>p.join(',')).join(' L')+' L'+Rp.reverse().map(p=>p.join(',')).join(' L')+'Z',fill:css('band'),stroke:css('rule'),'stroke-width':1.5},S);
 const defs=el('defs',{},S);const mk=el('marker',{id:'fa',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:6,markerHeight:6,orient:'auto'},defs);
 el('path',{d:'M0,0 L10,5 L0,10 z',fill:css('fail')},mk);
-const B=[[1,'Mg²⁺ dead zone','fatty-acid membranes','W17'],[2,'public good','released, x < 0.7','W11'],[4,'Spiegelman basin','content before coupling','W2']];
-B.forEach(([i,a,b,w])=>{const t=tt(i)+0.04,y=Y(t),bx=cx+hw(t)+92;
+const B=[[1,'Mg²⁺ dead zone','fatty-acid membranes'],[2,'public good','released, x < 0.7'],[4,'Spiegelman basin','content before coupling']];
+B.forEach(([i,a,b])=>{const t=tt(i)+0.04,y=Y(t),bx=cx+hw(t)+92;
  el('ellipse',{cx:bx,cy:y,rx:80,ry:28,fill:css('band'),stroke:css('fail'),'stroke-width':1.3,'stroke-dasharray':'4 3'},S);
  el('text',{x:bx,y:y-3,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},S,a);
- el('text',{x:bx,y:y+12,'font-size':10.5,'text-anchor':'middle',style:'fill:var(--fail)'},S,b+' · '+w);
+ el('text',{x:bx,y:y+12,'font-size':10.5,'text-anchor':'middle',style:'fill:var(--fail)'},S,b);
  const sx=cx+hw(tt(i))*0.55,sy=Y(tt(i));
  el('path',{d:`M${sx},${sy} C ${sx+40},${sy} ${bx-90},${y} ${bx-72},${y}`,fill:'none',stroke:css('fail'),'stroke-width':1.5,'stroke-dasharray':'5 4','marker-end':'url(#fa)'},S);});
 const pts=[[cx,fTop-4]];F.forEach((f,i)=>{const sg=i%2?1:-1;pts.push([cx+sg*hw(tt(i))*0.45,Y(tt(i))]);});
@@ -991,7 +1039,7 @@ const ul=a=>'<ul>'+a.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
 function show(i){const f=F[i];
  document.getElementById('fst').textContent='Crossing '+(i+1)+' of '+F.length;
  document.getElementById('ftt').textContent=f.t;
- document.getElementById('fwl').innerHTML=f.w.map(w=>'<span class="pill x">'+w+'</span>').join('');
+ document.getElementById('fwl').innerHTML='';
  let h='<div class="ineq">'+f.ineq+'</div><div class="sec"><h4>What crosses it, and the numbers</h4>'+ul(f.what)+'</div>';
  if(f.fail.length)h+='<div class="sec f"><h4>Orders and bypasses that fail</h4>'+ul(f.fail)+'</div>';
  document.getElementById('fbody').innerHTML=h;
