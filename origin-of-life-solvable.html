@@ -409,8 +409,8 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     <ul class="plain">
       <li><b>Needed only where membranes can't hold Mg²⁺.</b> Single-chain membranes tolerate about 1–5 mM (pure fatty acid) to about 10 mM (with monoesters). Copying without help works above about 20 mM and beats a handle only above about 30–35 mM. Below about 20 mM an attached amino acid is required, and any of the α-amino acids tested will do: a free α-amine is what matters. Identity matters only if the handle is also to found a code.</li>
       <li><b>It must ride on the genome.</b> A free-floating (trans) handle loses to the shared copying budget at every benefit tested (×1–×100), unless a controller holds its copying to a fixed ratio, which costs more than linkage. Attached to the genome (in cis), it keeps the chromosome, so the handle and the first chromosome are one step.</li>
-      <li><b>It needs a supply.</b> About 55–80% of handles must be charged at 0–2.5 mM Mg²⁺: roughly 2–15 charges per vesicle per charge lifetime, in two independent models. A charge lasts about 29 times longer at 0 °C than at 25 °C, and Mg²⁺ shortens it.</li>
-      <li><b>It stops paying at about 25–35 mM Mg²⁺</b> (two independent models; +0.43 bits per division at 10 mM, +0.08 at 20, −0.07 at 50, derived rather than head to head). About 25% phospholipid raised tolerance to ≥ 40 mM in one study (a dye, at room temperature). In a pond whose Mg²⁺ rises as it evaporates, the handle is lost at about 38–42 mM, a few mM after the static crossover, and freed for other jobs.</li>
+      <li><b>It needs a supply.</b> About 55–80% of handles must be charged at 0–2.5 mM Mg²⁺: roughly 2–15 charges per vesicle per charge lifetime, in two different models. A charge lasts about 29 times longer at 0 °C than at 25 °C, and Mg²⁺ shortens it.</li>
+      <li><b>It stops paying at about 25–35 mM Mg²⁺</b> (two different models; +0.43 bits per division at 10 mM, +0.08 at 20, −0.07 at 50, derived rather than head to head). About 25% phospholipid raised tolerance to ≥ 40 mM in one study (a dye, at room temperature). In a pond whose Mg²⁺ rises as it evaporates, the handle is lost at about 38–42 mM, a few mM after the static crossover, and freed for other jobs.</li>
     </ul>
     <div class="callout">One example shows a slack, the other an order. The handle comes <b>with</b> the copier in fatty-acid compartments, not after it.</div>
   </div>
@@ -446,7 +446,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
     <div class="new">
       <div class="card"><h3>1 · Weigh finding against keeping</h3><p>Search bills and rent bills are both log₂ of counts, so we can say which one binds. Most often it is keeping.</p></div>
       <div class="card"><h3>2 · Slack for any measurement</h3><p>A rate constant, a fidelity or a tolerance becomes a pass or fail by a stated number of bits, plus the bypass that would pay for it.</p></div>
-      <div class="card"><h3>3 · Tiers of certainty</h3><p>Laws hold for any chemistry. Constants hold within a chemistry class, or where two independent models agree, or come from one model. Readers can see which layer each claim rests on.</p></div>
+      <div class="card"><h3>3 · Tiers of certainty</h3><p>Laws hold for any chemistry. Constants hold within a chemistry class, or where two different models agree, or come from one model. Readers can see which layer each claim rests on.</p></div>
     </div>
     <div class="callout"><b>Where the currency is approximate:</b> possibilities and copies meet through exchange rates, not by definition. The Eigen rent is per site; the copy-number map assumes a copier that picks intact templates; Kelly's rate is an upper bound.</div>
   </div>
@@ -456,7 +456,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
 <div class="part" id="laws">
   <div class="eyebrow">Between the parts</div>
   <h1>Laws and constants</h1>
-  <p class="lede">We split the ledger the way physics does. A <b>law</b> holds for any chemistry and any parameters. A <b>constant</b> is a number a law takes as input: from the literature, from two independent models that agree, or from one model. The laws say what any path must pay and in what units; the constants say how much this chemistry charges.</p>
+  <p class="lede">We split the ledger the way physics does. A <b>law</b> holds for any chemistry and any parameters. A <b>constant</b> is a number a law takes as input: from the literature, from two different models that agree, or from one model. The laws say what any path must pay and in what units; the constants say how much this chemistry charges.</p>
 </div>
 
 <section class="panel fpanel">
@@ -476,7 +476,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
         <tr><td class="n">L8 Holding</td><td class="f"><i>I</i><sub>closure</sub> − <i>I</i><sub>gift,s</sub> ≤ β · <i>n</i><sub>c,max</sub></td><td><i>n</i><sub>c,max</sub> from L2 and L4 at the rate gifts in force</td></tr>
         <tr><td class="n">L9 Drift</td><td class="f">|<i>e</i>| ≳ 1/(<i>N</i><sub>e</sub> ln 2) to be selected</td><td><i>N</i><sub>e</sub> (state with each edge)</td></tr>
         <tr><td class="n">L10 Exchange</td><td>Discrimination: ΔΔ<i>G</i>/(<i>kT</i> ln 2) bits per event. Kelly: signal value ≤ <i>I</i>(signal; state) per signal. Mass: <i>k</i> ≤ monomer supply ÷ monomers per copy. Energy enters only through discrimination and mass.</td><td>ΔΔ<i>G</i>, signals per generation, monomer supply</td></tr>
-        <tr><td class="n">L11 Keeping identity</td><td>At steady state, the information selection must supply each protocell generation to hold a kept lineage equals its rent: the genetic load in bits, −log₂(<i>w̄</i>/<i>w</i><sub>max</sub>) = <i>E</i><sub>div</sub>. This is housekeeping information. What selection actually writes is at most this; the rest is paid by losses that still leave descendants, or by resupply from outside. Checked in three independent models (within 3%).</td><td>level <i>L</i>; stationary population</td></tr>
+        <tr><td class="n">L11 Keeping identity</td><td>At steady state, the information selection must supply each protocell generation to hold a kept lineage equals its rent: the genetic load in bits, −log₂(<i>w̄</i>/<i>w</i><sub>max</sub>) = <i>E</i><sub>div</sub>. This is housekeeping information. What selection actually writes is at most this; the rest is paid by losses that still leave descendants, or by resupply from outside. Checked in three different models (within 3%).</td><td>level <i>L</i>; stationary population</td></tr>
       </tbody>
     </table></div>
     <p><b>Corollaries:</b> exit (L2 and L7 applied at the destination); the fidelity check before escape; content must copy at least as fast as its unit divides; a lasting code comes only after completion stops depending on freeze–thaw, because the same cycles release a fluid membrane's contents. The walls of Part 2 are these laws with constants filled in. The order of the walls is not a law: it follows from which constants bind first.</p>
@@ -647,7 +647,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
         <tr><td class="n">Compartments that grow and divide</td><td><span class="status s-ok">shown</span></td><td>Fatty-acid vesicles grow, divide and keep RNA, at low Mg²⁺; division needs gentle shear (Zhu &amp; Szostak 2009). Phospholipid drives competitive growth (Budin &amp; Szostak 2011): +0.7 to +2.9 bits at the loose stage.</td></tr>
         <tr><td class="n">Converting the membrane</td><td><span class="status s-part">in parts</span></td><td>This growth advantage is inherited only if gained fatty acid is converted to phospholipid. No acylating ribozyme yet, but thioester transacylation of lysophospholipids works without enzymes (Liu et al. 2020).</td></tr>
         <tr><td class="n">Charging and the first code bit</td><td><span class="status s-part">in parts</span></td><td>Tiny aminoacylating ribozymes exist (Turk 2010). Measured selectivity for close amino-acid pairs is ≤ 2.2 kT (kT is the scale of thermal energy), enough only with one freeze–thaw recheck. <b>Which</b> label a code takes needs only a slight bias (of order 1/N<sub>e</sub> per cycle, where N<sub>e</sub> is the effective population size); keeping it accurate needs the recheck or ≈ 5 kT. In models, the first bit lands on the polarity position whether handles or channels pay first.</td></tr>
-        <tr><td class="n">Coupling, channels, tightening, escape</td><td><span class="status s-model">modelled</span></td><td>Ordered and priced in the models. Phospholipid-driven growth comes before coupling, or with it. Feeding limit (where a tighter membrane starts to starve the cell) at 0.83–0.94 phospholipid fraction. In separated droplets, tight beats loose by −log₂ of the chance content survives a generation (+0.5 to +1.5 bits per generation, two independent models). At high Mg²⁺, tight + channels are favoured. A lasting code needs to leave the freeze–thaw, which releases a fluid membrane's contents.</td></tr>
+        <tr><td class="n">Coupling, channels, tightening, escape</td><td><span class="status s-model">modelled</span></td><td>Ordered and priced in the models. Phospholipid-driven growth comes before coupling, or with it. Feeding limit (where a tighter membrane starts to starve the cell) at 0.83–0.94 phospholipid fraction. In separated droplets, tight beats loose by −log₂ of the chance content survives a generation (+0.5 to +1.5 bits per generation, two different models). At high Mg²⁺, tight + channels are favoured. A lasting code needs to leave the freeze–thaw, which releases a fluid membrane's contents.</td></tr>
       </tbody>
     </table></div>
     <div class="callout">Most of the deficits that remain are in keeping; whole-path search sits at the edge of its budget. Each one has a bypass that the models show would work, and a measurement that would show whether nature had it.</div>
@@ -689,15 +689,15 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
 <div class="part" id="methods">
   <div class="eyebrow">Methods</div>
   <h1>How the work was done</h1>
-  <p class="lede">We asked the same questions four different ways, so that the walls and their order would not rest on any one model.</p>
+  <p class="lede">We put the same questions to four models, each built on a different method, with a fifth session coordinating them.</p>
 </div>
 <section class="panel fpanel">
   <div class="draw">
     <div class="mis">
-      <div class="card"><h3>Four models, four specialties</h3><p>We built four simulation models, each run by its own Claude session and each specializing in a different part of the problem and its literature. Each was built independently, with its own formulas and code.</p></div>
-      <div class="card"><h3>One coordinator</h3><p>A fifth session coordinated them. It put the same question to all four, compared their answers, and kept the shared record of constraints that this page calls the ledger.</p></div>
-      <div class="card"><h3>The same question, four ways</h3><p>Asking each question four ways is how we mapped the walls and the order in which they must be crossed. An order counts only where it held across models. Where the models leave an order open, the page says so.</p></div>
-      <div class="card"><h3>When a result counts</h3><p>A result marked "two models" was reproduced by two models built independently; "one model" means it has not yet been checked that way. Experimental numbers are cited to their published sources. We did no bench work.</p></div>
+      <div class="card"><h3>Why several models</h3><p>All four models are Claude, run in separate sessions. Splitting the work this way is not an error filter. It keeps each session focused on one method and its details, which a single session holding everything at once cannot do for long.</p></div>
+      <div class="card"><h3>Different methods, as confidence tiers</h3><p>Each model addresses the same question in a different way: a deterministic ODE model, a population-genetics model, a stochastic-corrector model, and a variety of open chemostat. A result that comes out the same under different methods is more trustworthy than one that rests on a single method. It is still not independent validation.</p></div>
+      <div class="card"><h3>One coordinator</h3><p>A fifth session put the same questions to each model, compared the answers, and kept the shared record that this page calls the ledger.</p></div>
+      <div class="card"><h3>What still needs checking</h3><p>Agreement between models catches some errors, but every model here is the same AI. Every claim on this page still needs checking by people and by experiment. The measurement list is where that starts.</p></div>
     </div>
   </div>
 </section>
@@ -725,7 +725,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
   </div>
 </section>
 
-<footer>Numbers are from our constraint ledger as of 20 November 2026. Model results come from four simulation models built independently; results marked "two models" were reproduced in two of them. QT45: Gianni et al. 2026. Other measurements: Radakovic &amp; Szostak 2021; Budin &amp; Szostak 2011; Chen, Salehi-Ashtiani &amp; Szostak 2005; Chen, Roberts &amp; Szostak 2004; Dalai et al. 2018; Zhu &amp; Szostak 2009; Liu et al. 2020 (thioester transacylation); Salibi et al. 2023 and Litschel et al. 2018 (freeze–thaw release); Tagami, Attwater &amp; Holliger 2017; Attwater et al. 2025; Turk et al. 2010; Haldane 1937 and Muller 1950 (genetic load); Oono &amp; Paniconi 1998 and Hatano &amp; Sasa 2001 (housekeeping and excess heat); Leibler &amp; Kussell 2010; aptamer selectivities as compiled. Search budgets are estimates.</footer>
+<footer>Numbers are from our constraint ledger as of 20 November 2026. Model results come from four simulation models, each a separate Claude session built on a different method (see Methods); results marked "two models" were reproduced by two of them. QT45: Gianni et al. 2026. Other measurements: Radakovic &amp; Szostak 2021; Budin &amp; Szostak 2011; Chen, Salehi-Ashtiani &amp; Szostak 2005; Chen, Roberts &amp; Szostak 2004; Dalai et al. 2018; Zhu &amp; Szostak 2009; Liu et al. 2020 (thioester transacylation); Salibi et al. 2023 and Litschel et al. 2018 (freeze–thaw release); Tagami, Attwater &amp; Holliger 2017; Attwater et al. 2025; Turk et al. 2010; Haldane 1937 and Muller 1950 (genetic load); Oono &amp; Paniconi 1998 and Hatano &amp; Sasa 2001 (housekeeping and excess heat); Leibler &amp; Kussell 2010; aptamer selectivities as compiled. Search budgets are estimates.</footer>
 </div>
 <div class="tip" id="tip" hidden></div>
 
@@ -970,7 +970,7 @@ const rows=[
  ['QT45 completion (p₀ 0.66)','completion · bits/copy',-3.3,-3.3,'Closed by a ×5 tether plus re-priming ρ ≥ 0.5.'],
  ['Single-chain Mg²⁺ tolerance 1–10 mM','Mg²⁺ ceiling · log₂ conc.',-4.6,-1.0,'Tolerance vs the 20–35 mM copying needs without help: a handle (or a chelator) is required. About 25% phospholipid lifted tolerance above 40 mM in one study.'],
  ['QT45 whole rent','rent · bits/copy',-7.5,-7.5,'Completion is 9.0 of the 11.3 bits per copy; fidelity is 2.3.'],
- ['Radakovic bridges, t½ 9–72 h','bridge lifetime · log₂',-11.5,-8,'Bridges make, never keep (two independent models).'],
+ ['Radakovic bridges, t½ 9–72 h','bridge lifetime · log₂',-11.5,-8,'Bridges make, never keep (two different models).'],
  ['Chen, Roberts & Szostak 2004','osmotic coupling · log₂',-16.5,-11,'Osmotic coupling needs ≈ 0.27 M nucleotide. Not a founding mechanism.'],
 ];
 const L=250,R=660,lo=-17,hi=20,sc=v=>L+(v-lo)/(hi-lo)*(R-L),rh=34,top=14;
@@ -1025,7 +1025,7 @@ const F=[
   what:['A function is internalized only where the gift fails, and only if repaid.','The trigger needs an overshoot of ≈ 0.01–0.02 past the feeding limit, in a population that exchanges ≲ 1% per generation with its neighbours. Fidelity paid by the environment must be internalized before escape.','At 50 mM Mg²⁺, tight + channel sweeps a loose pond (20 of 20), but loose ponds still survive with measured membranes: the pair is favoured, not forced.'],
   ineq:'(1 − <i>a</i>) · τ · <i>e</i><sub>f</sub> &gt; <i>E</i><sub>int</sub>  (repaid)',fail:['A small patch inside one pool is swamped by migrants from the rest of it.']},
  {s:'sealed off',t:'The last tightening',
-  what:['Route 1: escape into separate droplets (small volumes split off from the nursery). The edge is −log₂ of the chance content survives a generation without a rupture loss, minus tightening\'s cost: +0.5 to +1.5 bits per generation (two independent models). In the pond tightening costs −0.08.','Route 2: rising Mg²⁺ favours tight + channel (20 of 20), and forces it only where Mg²⁺ exceeds what loose membranes tolerate (≳ 40–50 mM, unmeasured).'],
+  what:['Route 1: escape into separate droplets (small volumes split off from the nursery). The edge is −log₂ of the chance content survives a generation without a rupture loss, minus tightening\'s cost: +0.5 to +1.5 bits per generation (two different models). In the pond tightening costs −0.08.','Route 2: rising Mg²⁺ favours tight + channel (20 of 20), and forces it only where Mg²⁺ exceeds what loose membranes tolerate (≳ 40–50 mM, unmeasured).'],
   ineq:'kept at the destination ⇔ <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there',
   fail:['Escape withdraws gifts in order: activation, then lipid, then strand separation. Dispersal is given up.']},
  {s:'able to leave',t:'The first individual able to leave the nursery',
