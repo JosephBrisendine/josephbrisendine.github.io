@@ -522,14 +522,15 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
   <div class="fhead">
     <div class="tag">B · THE FUNNEL</div>
     <h2>Coming alive, as walls in order</h2>
-    <p>Read down from the nursery to the first cell able to leave it. Each ring is a wall: an inequality the lineage must satisfy to be kept at that level. A published measurement lands on a particular wall with a slack.</p>
-    <p>A step whose payer does not exist yet falls into a side basin. These walls hold whatever the setting was. Settings only change where on the map a lineage starts, and which basins are open.</p>
+    <p>Read down from the nursery to the first cell able to leave it. Each ring is a wall: a condition the lineage has to meet before it can go further, in the order the walls must be crossed.</p>
+    <p>Off to the side are dead ends. Most of them are traps of getting too good too soon: a faster copier, or a product shared with the neighbours, before the structure exists that would keep the gain tied to the lineage that made it. A lineage that falls in stays there. The next section shows why.</p>
+    <p>The walls hold whatever the setting was. The setting only changes where a lineage starts, and which dead ends are open.</p>
   </div>
   <div class="fun">
-    <div><svg id="funnel" viewBox="0 0 640 640" role="img" aria-label="A funnel of nine crossings from the nursery to the first individual, with three side basins for orders that fail"></svg>
+    <div><svg id="funnel" viewBox="0 0 640 640" role="img" aria-label="A funnel of nine crossings from the nursery to the first individual, with three dead ends to the side"></svg>
       <div class="legend" style="margin-top:8px">
         <span><i style="background:var(--copy)"></i>path that is kept</span>
-        <span><i style="background:var(--fail)"></i>order that fails</span>
+        <span><i style="background:var(--fail)"></i>dead end</span>
         <span>Tap a ring or a number.</span>
       </div></div>
     <div class="det" aria-live="polite">
@@ -692,7 +693,7 @@ footer{font-size:13px;color:var(--muted);max-width:760px}
       <div class="card"><h3>What "kept" means</h3><p>Kept is persistence at a stated level against a matched control with the function erased. It is not fixation. The control can persist too, so persistence on its own is not taken as evidence of function.</p></div>
       <div class="card"><h3>The handle result is conditional</h3><p>The amino-acid handle is needed only at low Mg²⁺ in fatty-acid membranes. It reverses at about 25% phospholipid in a Mg²⁺-rich pond, so it is a statement about conditions rather than about a peptide world.</p></div>
       <div class="card"><h3>The code's bits are prices</h3><p>For the code we price finding (bits) and keeping (bit rates). These are different quantities from the ≈ 4.2 bits of codon-table entropy per codon.</p></div>
-      <div class="card"><h3>Housekeeping information is an analogy of role</h3><p>It plays the role that housekeeping heat plays in nonequilibrium thermodynamics: the steady cost of holding a driven state. It is measured in bits per protocell generation, not in heat, and population entropy production is not used as a test of keeping.</p></div>
+      <div class="card"><h3>Housekeeping information is an analogy of role</h3><p>It plays the role that housekeeping heat plays in nonequilibrium thermodynamics: the steady cost of holding a driven state. It is measured in bits per protocell generation, not in heat.</p></div>
       <div class="card"><h3>Stereochemistry and selection, at different steps</h3><p>A slight chemical bias can pick a label; selection and proofreading keep it. "Cells before code" concerns founding; sharing between coded lineages can come later.</p></div>
     </div>
     <div class="callout"><b>The field's words for ours:</b> edge = invasion fitness (in bits per generation); headroom = growth when rare; rent = the Eigen threshold generalized to completion; the tie = privatization (kin selection); kept at a level = a stable unit of selection at that level.</div>
@@ -972,37 +973,37 @@ rows.forEach((r,i)=>{const y=top+i*rh+rh/2;const [nm,u,a,b,info]=r; const col=(a
 /* FUNNEL */
 (function(){
 const F=[
- {s:'nursery',t:'The nursery',
+ {s:'the nursery',t:'The nursery',
   what:['Gifts: cold, freeze–thaw cycling, concentration, amino acids with thioester activation, low Mg²⁺, dispersal.','Search pays for the copier: cost ≤ 42 bits against a budget of about 60, slack +18.'],
   ineq:'<i>M</i> · 2<sup>−<i>b</i></sup> ≥ 1  (found)',
   fail:['Supplied templates give a stock, not a lineage: it collapses when the feed stops.']},
- {s:'copier + handle',t:'Copier and reader, with a cis amino-acid handle where Mg²⁺ is low: the first chromosome',
+ {s:'a working copier',t:'Copier and reader, with a cis amino-acid handle where Mg²⁺ is low: the first chromosome',
   what:['<b>The rate gap comes first.</b> QT45\'s rent is 11.3 bits per copy against ≈ 3.8 affordable (slack −7.5), mostly completion. A tether × freeze–thaw cycles plus re-priming must pay it.','<b>Copier and reader are one step.</b> The reader is the copier copying itself; erase it and the lineage dies. Reading is what lets copy number buy back per-copy losses.','<b>The handle.</b> Without an amino acid, copying works above ≈ 20 mM Mg²⁺ and beats a handle only above ≈ 30–35 mM, but single-chain membranes hold about 1–10 mM. An attached amino acid restores copying (×100 at 0 Mg²⁺, ×1 at 50 mM). Any of the α-amino acids tested works: no identity is needed.','<b>Linkage.</b> A shared copying budget keeps the handle only in cis and forces linkage; the linked chromosome is kept once completion reaches ≈ 0.97 (~130 nt, 40 attempts per division).','<b>Pond-dependent.</b> With about 25% phospholipid, membranes held ≥ 40 mM in one study; in a Mg²⁺-rich pond a copier without a handle then wins. In a pond whose Mg²⁺ rises, the handle is lost at ≈ 38–42 mM.'],
   ineq:'<i>E</i><sub>div</sub>(<i>R</i><sub>c</sub>, <i>k</i>) &lt; <i>e</i><sub>pay</sub>  ⇔  <i>R</i><sub>c</sub> &lt; <i>R</i><sub>c</sub>* ≈ 3.9 bits/copy at <i>k</i> = 40',
   fail:['The Mg²⁺ dead zone, in fatty-acid (low-phospholipid) membranes only: more Mg²⁺ than the membrane holds, less than copying needs.','Free (trans) handles lose to the shared budget at any benefit. Bridges make but never keep (−8 to −11.5).']},
- {s:'phospholipid growth',t:'Phospholipid-driven growth, with conversion, to x ≈ 0.8',
+ {s:'competing membranes',t:'Phospholipid-driven growth, with conversion, to x ≈ 0.8',
   what:['Vesicles with more phospholipid take fatty acid from their neighbours and grow faster (Budin &amp; Szostak 2011). The advantage is inherited only if the fatty acid gained is converted (≳ 0.5–1 per year). Slack +0.7 to +2.9 at x̄ 0.5, fading near the feeding limit.','Released products start to pay above x ≈ 0.7 (retention = x).','<b>Before coupling, or with it.</b> This growth advantage invades a pond of already-coupled protocells only where outside fatty acid is scarce (≲ 0.1 membrane units per year); growth first, or both together, sweeps 20 of 20 in one model.'],
   ineq:'edge ∝ content-tied share of the gift',
   fail:['A released product below x ≈ 0.7 is a public good, and non-makers free-ride (a free lysine peptide gives no edge).']},
- {s:'code bit',t:'The first code bit: founding is a plateau, a ratchet and a lock',
+ {s:'the first code',t:'The first code bit: founding is a plateau, a ratchet and a lock',
   what:['<b>Plateau:</b> the code first lives in a mixed steady state (25–45% of vesicles coded). <b>Ratchet:</b> a fidelity check tips it (22–98 generations after onset). <b>Lock:</b> once frozen, an inconsistent site loses −0.39 bits per division.','<b>The label is chosen, not bought.</b> A charging bias of order 1/<i>N</i><sub>e</sub> per cycle decides which label freezes (≈ 0.06–0.14 bits per cycle at <i>N</i><sub>e</sub> ≈ 300).','<b>Two possible payers</b> can fund the same bit: a handle-stage benefit before the feeding limit, or channels after it. The first to pay sets which codon position carries meaning; every model predicts the 2nd base (polarity). In models the bit lands on the position its first payer reads: polarity, whether handles (4 of 6) or channels (18–20 of 20) pay first.','<b>Founded in the nursery, kept after the exit.</b> A lasting code needs units releasing ≲ 4–8% of contents per cycle, but freeze–thaw releases 18–57% from fluid membranes. So the code lasts once completion no longer depends on freeze–thaw. In a warm pond with no recheck, a majority code needs ≈ 5 kT.'],
   ineq:'<i>B</i><sub>id</sub> · <i>f</i><sub>ch</sub> ≳ 1.15 bits/div  (founds);  release per cycle ≲ 4–8%  (lasts)',
   fail:['An identity-blind benefit writes no bit (Lys ≈ 0.08 bits/div, far below the bar).']},
- {s:'coupling',t:'Coupling: division waits on content',
+ {s:'copy before dividing',t:'Coupling: division waits on content',
   what:['A protocell divides only once its content has copied, with some activated monomers made inside: the first compartment individual.','Content must copy at least as fast as the unit divides.','Comes with or after phospholipid-driven growth in most ponds (see crossing 3).'],
   ineq:'<i>r</i><sub>content</sub> ≥ <i>r</i><sub>div</sub>',
   fail:['Content or speed before privacy and coupling: the Spiegelman-monster basin, as in the Qβ experiments: a shorter, faster, meaning-free replicator.']},
- {s:'feeding limit',t:'Pinned at the feeding limit: tighter membranes starve',
+ {s:'tighter, but still fed',t:'Pinned at the feeding limit: tighter membranes starve',
   what:['Tightening starves the cell past x ≈ 0.83–0.94. The pond holds x at that edge.'],
   ineq:'<i>x</i> ≤ <i>x</i><sub>e</sub> ≈ 0.83–0.94 without a transporter',fail:['Tightening past the feeding limit with no channel.']},
- {s:'channels',t:'Channels, in a population that holds itself just past the feeding limit',
+ {s:'its own channels',t:'Channels, in a population that holds itself just past the feeding limit',
   what:['A function is internalized only where the gift fails, and only if repaid.','The trigger needs an overshoot of ≈ 0.01–0.02 past the feeding limit, in a population that exchanges ≲ 1% per generation with its neighbours. Fidelity paid by the environment must be internalized before escape.','At 50 mM Mg²⁺, tight + channel sweeps a loose pond (20 of 20), but loose ponds still survive with measured membranes: the pair is favoured, not forced.'],
   ineq:'(1 − <i>a</i>) · τ · <i>e</i><sub>f</sub> &gt; <i>E</i><sub>int</sub>  (repaid)',fail:['A small patch inside one pool is swamped by migrants from the rest of it.']},
- {s:'tightening',t:'The last tightening',
+ {s:'sealed off',t:'The last tightening',
   what:['Route 1: escape into separate droplets (small volumes split off from the nursery). The edge is −log₂ of the chance content survives a generation without a rupture loss, minus tightening\'s cost: +0.5 to +1.5 bits per generation (two independent models). In the pond tightening costs −0.08.','Route 2: rising Mg²⁺ favours tight + channel (20 of 20), and forces it only where Mg²⁺ exceeds what loose membranes tolerate (≳ 40–50 mM, unmeasured).'],
   ineq:'kept at the destination ⇔ <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there',
   fail:['Escape withdraws gifts in order: activation, then lipid, then strand separation. Dispersal is given up.']},
- {s:'leaves the nursery',t:'The first individual able to leave the nursery',
+ {s:'able to leave',t:'The first individual able to leave the nursery',
   what:['Every gift it depends on is present at the destination or has been internalized, and the rent still fits.','Above ≈ 25–30 mM Mg²⁺ the copying handle is a cost, so it is lost or freed for other jobs.'],
   ineq:'exit ⇔ ∀ gifts: supplied or internalized, and <i>E</i><sub>div</sub> &lt; <i>e</i><sub>pay</sub> there',fail:[]}
 ];
@@ -1013,7 +1014,7 @@ let Lp=[],Rp=[];for(let i=0;i<=60;i++){const t=i/60*0.97;Lp.push([cx-hw(t),Y(t)]
 el('path',{d:'M'+Lp.map(p=>p.join(',')).join(' L')+' L'+Rp.reverse().map(p=>p.join(',')).join(' L')+'Z',fill:css('band'),stroke:css('rule'),'stroke-width':1.5},S);
 const defs=el('defs',{},S);const mk=el('marker',{id:'fa',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:6,markerHeight:6,orient:'auto'},defs);
 el('path',{d:'M0,0 L10,5 L0,10 z',fill:css('fail')},mk);
-const B=[[1,'Mg²⁺ dead zone','fatty-acid membranes'],[2,'public good','released, x < 0.7'],[4,'Spiegelman basin','content before coupling']];
+const B=[[1,'dead end: no copying','membrane can\'t hold Mg²⁺'],[2,'dead end: free riders','a shared product, too soon'],[4,'dead end: fast junk','copying too good, too soon']];
 B.forEach(([i,a,b])=>{const t=tt(i)+0.04,y=Y(t),bx=cx+hw(t)+92;
  el('ellipse',{cx:bx,cy:y,rx:80,ry:28,fill:css('band'),stroke:css('fail'),'stroke-width':1.3,'stroke-dasharray':'4 3'},S);
  el('text',{x:bx,y:y-3,'font-size':12,'text-anchor':'middle',style:'fill:var(--fail);font-weight:600'},S,a);
